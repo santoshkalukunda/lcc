@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class CompanyInfo extends Model
 {
-    protected $gugared=['id'];
+    protected $guarded=['id'];
 }

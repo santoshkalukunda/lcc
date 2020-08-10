@@ -22,7 +22,7 @@ class CreateCompanyInfosTable extends Migration
             $table->string('address');
             $table->string('contact_no');
             $table->unsignedBigInteger('added_by')->nullable();
-            $table->foreign('added_by')->references('id')->on('users')->onDelete('SET NULL')->onUpdate('CASCADE');
+            $table->foreign('added_by')->references('id')->on('users')->onDelete('SET NULL')->onUpdate('CASCADe');
             $table->timestamps();
         });
     }

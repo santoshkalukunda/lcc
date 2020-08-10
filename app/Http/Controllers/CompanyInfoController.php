@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CompanyInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyInfoController extends Controller
 {
@@ -35,7 +36,7 @@ class CompanyInfoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $request['added_by']=Auth::user()->id;
         CompanyInfo::create($request->all());
         return redirect()->back()->with('success', 'The data has been recorded.');
     }

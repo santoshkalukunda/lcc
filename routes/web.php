@@ -23,4 +23,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/company','CompanyInfoController');
+Route::resource('/company','CompanyInfoController')->middleware('auth');

@@ -49,6 +49,7 @@
                 </div>
                </div>
                <div class="row">
+              
                  <div class="col-2"><input class="btn btn-success" type="submit"></div>
                  <div class="col-2"><input class="btn btn-danger" type="reset"></div>
                </div>
