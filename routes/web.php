@@ -20,7 +20,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::resource('/company','CompanyInfoController')->middleware('auth');
+Route::resource('/document','DocumentController');

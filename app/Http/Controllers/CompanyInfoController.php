@@ -17,8 +17,9 @@ class CompanyInfoController extends Controller
      */
     public function index()
     {
-        $company_data = CompanyInfo::orderBy('id', 'DESC')->Paginate(5);
-        return view('company.index')->with('company_data', $company_data);
+        // $company_data = CompanyInfo::latest()->Paginate(5);
+        $companies = Auth::user()->companies()->latest()->paginate(5);
+        return view('company.index')->with('company_data', $companies);
     }
 
     /**

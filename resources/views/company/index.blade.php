@@ -15,7 +15,8 @@
             <div class="card-header">Company List </div>
             <br>
           
-            <form action="" method="POST" class="container-fluid" >
+            <form action="" method="get" class="container-fluid" >
+                @csrf
                 <div class="row">
                   <div class="col-3">
                     <select name="search_type" class="form-control" for="search" id="">
