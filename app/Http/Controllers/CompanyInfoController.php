@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CompanyInfo;
+use App\Http\Requests\companyrequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,9 @@ class CompanyInfoController extends Controller
      */
     public function index()
     {
-        
+        $company_data = CompanyInfo::orderBy('id', 'DESC')->Paginate(5);
+
+        return view('company.index')->with('company_data', $company_data);
     }
 
     /**
@@ -25,7 +28,7 @@ class CompanyInfoController extends Controller
      */
     public function create()
     {
-        return view('add_company');
+        return view('company.create');
     }
 
     /**
@@ -34,10 +37,14 @@ class CompanyInfoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(companyrequest $request)
     {
-        $request['added_by']=Auth::user()->id;
+        $request['added_by'] = Auth::user()->id;
         CompanyInfo::create($request->all());
+        
+        // $currentUser = Auth::user();
+        // $currentUser->companies()->create($request->all());
+
         return redirect()->back()->with('success', 'The data has been recorded.');
     }
 
