@@ -3,7 +3,6 @@
 Add Commpany
 @endsection
 @section('body')
-
     <div class="col-md-8">
         <div class="card">
             @if (Session::has('success'))
