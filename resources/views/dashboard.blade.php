@@ -11,8 +11,8 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-university ">Company Info </i> </a>
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('company.create')}}"> <i class="fa fa-plus-square-o"> Add</i></a>
-                    <a class="dropdown-item" href="{{route('company.index')}}"><i class="fa fa-list">  List</i></a>
-                    </div>
+                    <a class="dropdown-item" href="{{route('company.index')}}"><i class="fa fa-list">  List</i></a>                  
+                </div>
                 </ul>
                 </div>
                 
