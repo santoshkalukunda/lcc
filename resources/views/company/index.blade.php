@@ -2,6 +2,7 @@
 @section('title')
   Company List  
 @endsection
+
 @section('body')
 <div class="col-md-10">
     <div class="card">
