@@ -14,20 +14,20 @@
 
             <div class="card-header">Company List </div>
             <br>
-          
-            <form action="" method="get" class="container-fluid" >
+
+            <form action="" method="get" class="container-fluid">
                 @csrf
                 <div class="row">
-                  <div class="col-3">
-                    <select name="search_type" class="form-control" for="search" id="">
-                      <option value="name">Company Name</option>
-                      <option value="reg_no">Reg. No.</option>
-                      <option value="reg_date">Reg. Date</option>
-                      <option value="fiscal_year">Fiscal Year</option>
-                      <option value="contact_no">Contact No.</option>
-                      <option value="id">Id</option>
-                    </select>
-                  </div>
+                    <div class="col-3">
+                        <select name="search_type" class="form-control" for="search" id="">
+                            <option value="name">Company Name</option>
+                            <option value="reg_no">Reg. No.</option>
+                            <option value="reg_date">Reg. Date</option>
+                            <option value="fiscal_year">Fiscal Year</option>
+                            <option value="contact_no">Contact No.</option>
+                            <option value="id">Id</option>
+                        </select>
+                    </div>
                     <div class="col-4"><input type="search" class="form-control" name="search" id="search"
                             placeholder="Search"></div>
                     <div class="col-1"><input type="submit" class="btn btn-info" value="Search"></div>
@@ -45,7 +45,7 @@
                             <th scope="col">Address</th>
                             <th scope="col">Cantact No.</th>
 
-                            <th colspan="2" scope="col">Action</th>
+                            <th colspan="3" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,7 +61,9 @@
                                     <td>{{ $item->contact_no }}</td>
 
                                     <td><a href="{{ route('company.edit', $item->id) }}"><i
-                                                class="fa fa-edit btn btn-primary"></i></a></td>
+                                                class="fa fa-edit btn btn-primary btn-sm"></i></a></td>
+                                    <td><a href="{{ route('document.index', $item->id) }}"><i
+                                                class="fa fa-file btn btn-primary btn-sm"></i></a></td>
                                     <td>
                                         <form method="post" action="{{ route('company.destroy', $item->id) }}">
                                             @csrf
@@ -69,6 +71,7 @@
                                             <button class="btn btn-danger btn-sm" type="submit"
                                                 onclick="return confirm('Are you sure to delete this banner?')"><i
                                                     class="fa fa-trash"></i></button>
+
                                         </form>
                                     </td>
                                 </tr>

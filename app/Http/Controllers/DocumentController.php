@@ -14,7 +14,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        //
+        return view('document.index');
     }
 
     /**
@@ -44,9 +44,10 @@ class DocumentController extends Controller
      * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function show(Document $document)
+    public function show($document)
     {
-        //
+        dd($document);
+        return view('document.create');
     }
 
     /**
