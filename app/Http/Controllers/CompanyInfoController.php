@@ -67,7 +67,7 @@ class CompanyInfoController extends Controller
      */
     public function edit(CompanyInfo $companyInfo)
     {
-        //
+        
     }
 
     /**
