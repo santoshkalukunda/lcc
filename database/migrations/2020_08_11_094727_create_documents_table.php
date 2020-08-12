@@ -15,6 +15,9 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->string('file');
+            $table->string('type');
+            $table->foreignId('company_id')->constrained('company_infos')->onDelete('cascade');
             $table->timestamps();
         });
     }

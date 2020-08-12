@@ -61,16 +61,16 @@
                                     <td>{{ $item->contact_no }}</td>
 
                                     <td><a href="{{ route('company.edit', $item->id) }}"><i
-                                                class="fa fa-edit btn btn-primary btn-sm"></i></a></td>
-                                    <td><a href="{{ route('document.index', $item->id) }}"><i
-                                                class="fa fa-file btn btn-primary btn-sm"></i></a></td>
+                                                class="fa fa-edit btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"></i></a></td>
+                                    <td><a href="{{ route('document.show', $item->id) }}"><i
+                                                class="fa fa-file btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Document"></i></a></td>
                                     <td>
                                         <form method="post" action="{{ route('company.destroy', $item->id) }}">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger btn-sm" type="submit"
                                                 onclick="return confirm('Are you sure to delete this banner?')"><i
-                                                    class="fa fa-trash"></i></button>
+                                                    class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Delete"></i></button>
 
                                         </form>
                                     </td>

@@ -12,8 +12,6 @@
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('company.create')}}"> <i class="fa fa-plus-square-o"> Add</i></a>
                     <a class="dropdown-item" href="{{route('company.index')}}"><i class="fa fa-list">  List</i></a>                  
-                    <a class="dropdown-item" href="{{route('document.create')}}"><i class="fa fa-file">  Document Upload</i></a>                  
-                
                 </div>
                 </ul>
                 </div>

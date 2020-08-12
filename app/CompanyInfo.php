@@ -12,4 +12,8 @@ class CompanyInfo extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function documents()
+    {
+        return $this->hasMany('App\Document', 'company_id');
+    }
 }
