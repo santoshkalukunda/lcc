@@ -18,7 +18,6 @@ class DocumentController extends Controller
      */
     public function index()
     {
-       
     }
 
     /**
@@ -28,7 +27,6 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -39,38 +37,38 @@ class DocumentController extends Controller
      */
     public function store(documentrequest $request)
     {
-          $request->all();
+        $request->all();
         $baseDir = 'upload/documents/' . date('Y') . '/' . date('M');
         //$baseDir = 'upload/documents';
         $imgPath = Storage::putFile($baseDir, $request->file('file'));
 
-    //     $path=public_path().'/upload/doc';
-    //     if(File::exists($path)){
-    //         File::makeDirectory($path,0777,true,true);
-    //     }
-    //     $file_name="doc-".date("Ymdhis").rand(0,9999).".".$request->file->getClientOriginalExtension();
-    //    $request->file->move($path,$file_name);
-    //   $data['file']=$file_name;
+        //     $path=public_path().'/upload/doc';
+        //     if(File::exists($path)){
+        //         File::makeDirectory($path,0777,true,true);
+        //     }
+        //     $file_name="doc-".date("Ymdhis").rand(0,9999).".".$request->file->getClientOriginalExtension();
+        //    $request->file->move($path,$file_name);
+        //   $data['file']=$file_name;
 
-    $document = new Document([
-        'file' => $imgPath,
-        'type' => $request->type,
-        'company_id' => $request->company_id
-    ]);
+        $document = new Document([
+            'file' => $imgPath,
+            'type' => $request->type,
+            'company_id' => $request->company_id
+        ]);
 
-    $document->save();
+        $document->save();
 
-    return redirect()->back()->with('success', 'Document has been uploaded successfully.');
+        return redirect()->back()->with('success', 'Document has been uploaded successfully.');
 
-   // $status = Document::create($data);
-   // if($status){
-      //  $request->session()->flash('success','Upload Successfully');
-    //}else{
-    //    $request->session()->flash('error','While Uploading');
-   // }
-    
-  //  return redirect()->back();
-    
+        // $status = Document::create($data);
+        // if($status){
+        //  $request->session()->flash('success','Upload Successfully');
+        //}else{
+        //    $request->session()->flash('error','While Uploading');
+        // }
+
+        //  return redirect()->back();
+
     }
 
     /**
@@ -79,11 +77,11 @@ class DocumentController extends Controller
      * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function show( $document)
+    public function show($document)
     {
-    $company_id=$document;
-    $data=Document::get();
-    return view('document.index')->with('company_id',$company_id)->with('document',$data);
+        $company_id = $document;
+        $data = Document::get();
+        return view('document.index')->with('company_id', $company_id)->with('document', $data);
     }
 
     /**
@@ -106,7 +104,6 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-       
     }
 
     /**
@@ -122,7 +119,7 @@ class DocumentController extends Controller
         Storage::delete($document->file);
         $document->delete();
 
-        
-        return redirect()->back()->with('success','Record Deleted');
+
+        return redirect()->back()->with('success', 'Record Deleted');
     }
 }

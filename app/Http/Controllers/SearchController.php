@@ -8,39 +8,14 @@ use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
-    function index()
+    function search(Request $request)
     {
-        return view('dashboard');
+        $data=$request->search;
+        $search=CompanyInfo::where('name','like',"$data%")->latest()->paginate(6);
+        return view('company.search')->with('search',$search);
     }
-
-    function action(Request $request)
-    {
-        if ($request->ajax()) {
-            $output = '';
-            $query = $request->get('query');
-            if ($query != '') {
-                $data = DB::table('company_infos')
-                    ->where('name', 'like', '%' . $query . '%')
-                    ->get();
-            } else {
-                $data = DB::table('company_infos')->get();
-            }
-            $total_row = $data->count();
-            if ($total_row > 0) {
-                foreach ($data as $row) {
-                    $output .= '
-        
-         <option>' . $row->name . '</option>
-      
-        ';
-                }
-            }
-            $data = array(
-                'table_data'  => $output,
-                //'total_data'  => $total_row
-            );
-
-            echo json_encode($data);
-        }
-    }
+     function dash(){
+         return view('dashboard');
+     }
+  
 }

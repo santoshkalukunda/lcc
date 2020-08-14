@@ -43,10 +43,10 @@
 
                     </ul>
                     <div class="col-8">
-                        <form action="" method="post">
+                    <form action="{{route('company-search')}}" method="post">
                             @csrf
                             <div class="input-group">
-                                <input type="text" id="company-search-input" class="form-control"
+                                <input type="text" id="company-search-input" name="search" class="form-control"
                                     list="suggestions-data-list" placeholder="Search Company"
                                     aria-label="Search Company" aria-describedby="search">
                                 <div class="input-group-append">

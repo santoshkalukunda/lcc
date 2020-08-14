@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CompanyInfoController extends Controller
 {
-  
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +18,7 @@ class CompanyInfoController extends Controller
     public function index()
     {
         $companies = CompanyInfo::latest()->Paginate(5);
-       // $companies = Auth::user()->companies()->latest()->paginate(5);
+        // $companies = Auth::user()->companies()->latest()->paginate(5);
         return view('company.index')->with('company_data', $companies);
     }
 
@@ -41,11 +41,11 @@ class CompanyInfoController extends Controller
     public function store(companyrequest $request)
     {
         $request['added_by'] = Auth::user()->id;
-        $status=CompanyInfo::create($request->all());
-        if ($status){
-            $request->session()->flash('success','Register Successfully');
-        }else{
-            $request->session()->flash('error','While Rigistering Company');
+        $status = CompanyInfo::create($request->all());
+        if ($status) {
+            $request->session()->flash('success', 'Register Successfully');
+        } else {
+            $request->session()->flash('error', 'While Rigistering Company');
         }
         // $currentUser = Auth::user();
         // $currentUser->companies()->create($request->all());
@@ -59,9 +59,11 @@ class CompanyInfoController extends Controller
      * @param  \App\CompanyInfo  $companyInfo
      * @return \Illuminate\Http\Response
      */
-    public function show(CompanyInfo $companyInfo)
+    public function show(CompanyInfo $company)
     {
-        
+        return view('company.show')->with([
+            'companyInfo' => $company
+        ]);
     }
 
     /**
@@ -70,10 +72,11 @@ class CompanyInfoController extends Controller
      * @param  \App\CompanyInfo  $companyInfo
      * @return \Illuminate\Http\Response
      */
-    public function edit($companyInfo)
+    public function edit(CompanyInfo $company)
     {
-    $company_data=CompanyInfo::findOrFail($companyInfo);
-        return view('company.edit')->with('company_data',$company_data);
+        return view('company.edit')->with([
+            'companyInfo' => $company
+        ]);
     }
 
     /**
@@ -85,18 +88,17 @@ class CompanyInfoController extends Controller
      */
     public function update(companyrequest $request, $companyInfo)
     {
-        $company_data=CompanyInfo::findOrFail($companyInfo);
-        $data=$request->all();
-        $data['added_by']=$request->user()->id;
+        $company_data = CompanyInfo::findOrFail($companyInfo);
+        $data = $request->all();
+        $data['added_by'] = $request->user()->id;
         $company_data->fill($data);
-        $status=$company_data->save();
-        if ($status){
-            $request->session()->flash('success','Update successfully');
-        }else{
-            $request->session()->flash('error','while updating Banner');
+        $status = $company_data->save();
+        if ($status) {
+            $request->session()->flash('success', 'Update successfully');
+        } else {
+            $request->session()->flash('error', 'while updating Banner');
         }
-        return redirect()->route('company.index');
-
+        return redirect()->back();
     }
 
     /**
@@ -107,8 +109,8 @@ class CompanyInfoController extends Controller
      */
     public function destroy($companyInfo)
     {
-        $company_data=CompanyInfo::findOrFail($companyInfo);
+        $company_data = CompanyInfo::findOrFail($companyInfo);
         $company_data->delete();
-        return redirect()->back()->with('success','Record Deleted');
+        return redirect()->back()->with('success', 'Record Deleted');
     }
 }
