@@ -1,4 +1,4 @@
-@extends('home')
+@extends('menu')
 @section('title')
 Edit Commpany
 @endsection

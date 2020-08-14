@@ -6,29 +6,14 @@ use App\CompanyInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class HomeController extends Controller
+class SearchController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    function index()
     {
-        $this->middleware('auth');
+        return view('dashboard');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-    
-        return view('home');
-    }
-    function search(Request $request)
+    function action(Request $request)
     {
         if ($request->ajax()) {
             $output = '';

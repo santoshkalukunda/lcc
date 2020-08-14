@@ -1,8 +1,7 @@
 @extends('menu')
 @section('title')
-    Dashboard
+    dashboard
 @endsection
-
 @section('body')
 <div class="col-md-8">
     <div class="card">

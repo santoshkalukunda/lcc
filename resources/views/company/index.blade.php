@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('menu')
 @section('title')
     Company List
 @endsection
@@ -37,7 +37,6 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Id</th>
                             <th scope="col">Company Name</th>
                             <th scope="col">Reg. No.</th>
                             <th scope="col">Reg. date</th>
@@ -45,14 +44,14 @@
                             <th scope="col">Address</th>
                             <th scope="col">Cantact No.</th>
 
-                            <th colspan="3" scope="col">Action</th>
+                            <th colspan="4" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if ($company_data)
                             @foreach ($company_data as $item)
                                 <tr>
-                                    <th>{{ $item->id }}</th>
+                                   
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->reg_no }}</td>
                                     <td>{{ $item->reg_date }}</td>
@@ -61,16 +60,22 @@
                                     <td>{{ $item->contact_no }}</td>
 
                                     <td><a href="{{ route('company.edit', $item->id) }}"><i
-                                                class="fa fa-edit btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"></i></a></td>
+                                                class="fa fa-edit btn btn-primary btn-sm" data-toggle="tooltip"
+                                                data-placement="bottom" title="Edit"></i></a></td>
                                     <td><a href="{{ route('document.show', $item->id) }}"><i
-                                                class="fa fa-file btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Document"></i></a></td>
+                                                class="fa fa-file btn btn-info btn-sm" data-toggle="tooltip"
+                                                data-placement="bottom" title="Document"></i></a></td>
+                                    <td><a href="{{ route('shareholder.index', $item->id) }}"><i
+                                                class="fa fa-users btn btn-success btn-sm" data-toggle="tooltip"
+                                                data-placement="bottom" title="Shareholder"></i></a></td>
                                     <td>
                                         <form method="post" action="{{ route('company.destroy', $item->id) }}">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger btn-sm" type="submit"
-                                                onclick="return confirm('Are you sure to delete this banner?')"><i
-                                                    class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Delete"></i></button>
+                                                onclick="return confirm('Are you sure to delete?')"><i
+                                                    class="fa fa-trash" data-toggle="tooltip" data-placement="bottom"
+                                                    title="Delete"></i></button>
 
                                         </form>
                                     </td>

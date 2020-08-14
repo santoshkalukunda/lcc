@@ -39,9 +39,9 @@ class DocumentController extends Controller
      */
     public function store(documentrequest $request)
     {
-    $data=$request->all();
-        //$baseDir = 'upload/documents/' . date('Y') . '/' . date('M');
-        $baseDir = 'upload/documents';
+          $request->all();
+        $baseDir = 'upload/documents/' . date('Y') . '/' . date('M');
+        //$baseDir = 'upload/documents';
         $imgPath = Storage::putFile($baseDir, $request->file('file'));
 
     //     $path=public_path().'/upload/doc';
@@ -115,11 +115,14 @@ class DocumentController extends Controller
      * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function destroy($document)
+    public function destroy(Document $document)
     {
-      
-        $data=Document::findOrFail($document);
-        $data->delete();
+        // $document = Document::findOrFail($document);
+        // dd($document);
+        Storage::delete($document->file);
+        $document->delete();
+
+        
         return redirect()->back()->with('success','Record Deleted');
     }
 }

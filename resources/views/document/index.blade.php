@@ -1,11 +1,17 @@
-@extends('dashboard')
+@extends('menu')
 @section('title')
     Company Document
 @endsection
 @section('body')
     <div class="col-md-8">
         <div class="card">
+            @if (Session::has('success'))
+                <div class="bg-success text-white p-2">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
             <div class="card-header">Company Document </div>
+        
             <div class="card-body">
                 <form action="{{ route('document.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -59,13 +65,14 @@
                             @foreach ($document as $item)
                                 @if ($item->company_id == $company_id)
                                     <tr>
-                                        <td>{{ $item->type }}</td>
+                                        
+                                        <td><a href="{{ asset('storage/'.$item->file)}}" target="_blank">{{ $item->type }}</a></td>
                                         <td>
                                         <form method="post" action="{{route('document.destroy',$item->id) }}">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-danger btn-sm" type="submit"
-                                                    onclick="return confirm('Are you sure to delete this banner?')"><i
+                                                    onclick="return confirm('Are you sure to delete?')"><i
                                                         class="fa fa-trash" data-toggle="tooltip" data-placement="bottom"
                                                         title="Delete"></i></button>
                                             </form>

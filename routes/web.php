@@ -21,7 +21,16 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/search','HomeController@search');
 Route::resource('/company','CompanyInfoController')->middleware('auth');
 Route::resource('/document','DocumentController')->middleware('auth');
+Route::resource('/shareholder','ShareholderController')->middleware('auth');
+Route::get('/dashboard',function(){
+return view('dashboard');
+});
 
 Route::get('company/{CompanyInfo}/documents', 'CompanyDocumentController@index');
+
+
+Route::get('/das', 'SearchController@index');
+Route::get('/das/action', 'SearchController@action')->name('live_search.action');
