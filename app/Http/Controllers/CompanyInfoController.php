@@ -95,10 +95,8 @@ class CompanyInfoController extends Controller
         $status = $company_data->save();
         if ($status) {
             $request->session()->flash('success', 'Update successfully');
-        } else {
-            $request->session()->flash('error', 'while updating Banner');
-        }
-        return redirect()->back();
+        } 
+        return redirect()->route('company.show',$companyInfo);
     }
 
     /**
@@ -111,6 +109,6 @@ class CompanyInfoController extends Controller
     {
         $company_data = CompanyInfo::findOrFail($companyInfo);
         $company_data->delete();
-        return redirect()->back()->with('success', 'Record Deleted');
+        return redirect("home");
     }
 }

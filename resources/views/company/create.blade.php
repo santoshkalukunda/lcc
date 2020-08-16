@@ -100,6 +100,20 @@ Add Commpany
                     @enderror
                 </div>
             </div>
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="share">Total Share:</label>
+                </div>
+                <div class="col-8">
+                    <input type="number"  value="{{ old('share') }}"
+                        name="share" id="share" required placeholder="Total Share" class="form-control @error('share')is-invalid @enderror">
+                    @error('share')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
             <div class="row">
 
                 <div class="col-2"><input class="btn btn-success" type="submit"></div>

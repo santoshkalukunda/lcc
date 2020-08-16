@@ -11,10 +11,21 @@
                         href="{{ route('company.show', $companyInfo) }}" role="tab" aria-controls="about">About</a>
                     <a class="list-group-item list-group-item-action" id="list-documenet-list" 
                         href="{{ route('document.show', $companyInfo) }}" role="tab" aria-controls="documenet">Document</a>
-                    <a class="list-group-item list-group-item-action" id="list-Shareholder-list" data-toggle="list"
-                        href="#list-Shareholder" role="tab" aria-controls="Shareholder">Shareholder</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
-                        href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                    <a class="list-group-item list-group-item-action" id="list-Shareholder-list" 
+                        href="{{ route('shareholder.show', $companyInfo) }}" role="tab" >Shareholder</a>
+                  
+                <hr>
+                        <a class="alert alert-danger mt-5" 
+                        href="#" > <form method="post" action="{{ route('company.destroy', $companyInfo) }}">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger btn-md" type="submit"
+                                onclick="return confirm('Are you sure to delete?')"><i
+                                    class="fa fa-trash" data-toggle="tooltip" data-placement="bottom"
+                                    title="Delete"> Company Delete </i></button>
+
+                        </form></a>
+                   
                 </div>
             </div>
            

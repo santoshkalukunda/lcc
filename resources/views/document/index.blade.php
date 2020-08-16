@@ -9,7 +9,7 @@
                 <x-company-sidebar :id="$company_id"></x-company-sidebar>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="card">
                     @if (Session::has('success'))
                         <div class="bg-success text-white p-2">
@@ -22,8 +22,7 @@
                         <form action="{{ route('document.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row form-group">
-                                <div class="col-4"><input class="form-control @error('file')is-invalid @enderror""  type= "
-                                        file" name="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                                <div class="col-4"><input class="form-control @error('file')is-invalid @enderror""  type= "file" name="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
                                                                         text/plain, application/pdf, image/*" required>
                                     @error('file')
                                     <div class="invalid-feedback">
@@ -33,18 +32,9 @@
                                 </div>
                                 <div class="col-4 form-group">
                                     <input type="hidden" name="company_id" value="{{ $company_id }}">
-                                    <input type="text" name="type" id="name" list="suggestions"
+                                    <input type="text" name="type" id="type" 
                                         class="form-control @error('type') is-invalid @enderror"" required
                                                                         placeholder=" Document Type">
-                                    <datalist id="suggestions">
-                                        <option value="Reg">
-                                        <option value="PAN">
-                                        <option value="Banijya">
-                                        <option value="Mun">
-                                        <option value="Prabandha Patra">
-                                        <option value="Niyemawali">
-                                        <option value="Share Lagat">
-                                    </datalist>
                                     @error('type')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -95,4 +85,5 @@
             </div>
         </div>
     </div>
+    <script src="../script/script.js"></script>
 @endsection

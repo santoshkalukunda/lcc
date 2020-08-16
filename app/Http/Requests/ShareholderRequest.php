@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class companyrequest extends FormRequest
+class ShareholderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +25,10 @@ class companyrequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'reg_no'=>'required',
-            'reg_date'=>'required',
-            'fiscal_year'=>'required',
             'address'=>'required',
-            'contact_no'=>'required',
+            'contact'=>'required',
+            'email'=>'required|email',
             'share'=> 'required|numeric'
         ];
-
     }
 }

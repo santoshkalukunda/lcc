@@ -25,5 +25,7 @@ Route::get('home/search','HomeController@search')->name('live_search.action');
 Route::resource('company','CompanyInfoController')->middleware('auth');
 Route::resource('document','DocumentController')->middleware('auth');
 Route::resource('shareholder','ShareholderController')->middleware('auth');
+Route::any('search', 'SearchController@search')->name('company-search')->middleware('auth');
+
+
 Route::any('dash','SearchController@dash')->name('dash');
-Route::any('search', 'SearchController@search')->name('company-search');

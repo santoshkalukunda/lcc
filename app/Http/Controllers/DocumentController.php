@@ -80,7 +80,7 @@ class DocumentController extends Controller
     public function show($document)
     {
         $company_id = $document;
-        $data = Document::get();
+        $data = Document::where('company_id','=',"$document")->get();
         return view('document.index')->with('company_id', $company_id)->with('document', $data);
     }
 

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\CompanyInfo;
+use App\Http\Requests\ShareholderRequest;
 use App\Shareholder;
 use Illuminate\Http\Request;
 
 class ShareholderController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,7 @@ class ShareholderController extends Controller
      */
     public function index()
     {
-        return view('shareholder.index');
+   
     }
 
     /**
@@ -22,9 +25,10 @@ class ShareholderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $companyInfo)
     {
-        return view('shareholder.create');
+        
+        return view('shareholder.create')->with('companyInfo', $companyInfo);
     }
 
     /**
@@ -33,9 +37,10 @@ class ShareholderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ShareholderRequest $request)
     {
-        //
+        Shareholder::create($request->all());
+        return redirect()->back()->with('success',"Shareholder Registed");
     }
 
     /**
@@ -44,9 +49,10 @@ class ShareholderController extends Controller
      * @param  \App\Shareholder  $shareholder
      * @return \Illuminate\Http\Response
      */
-    public function show(Shareholder $shareholder)
+    public function show($company_id)
     {
-        
+        $shareholder=Shareholder::where('company_id','=',"$company_id")->latest()->paginate(6);
+        return view('shareholder.show')->with('company_id', $company_id)->with('shareholder',$shareholder);
     }
 
     /**
@@ -57,7 +63,10 @@ class ShareholderController extends Controller
      */
     public function edit($shareholder)
     {
-        return view('shareholder.edit');
+       
+        $data=Shareholder::where('id','=',"$shareholder")->get();
+        
+        return view('shareholder.edit')->with('shareholder',$data);
     }
 
     /**
@@ -67,9 +76,13 @@ class ShareholderController extends Controller
      * @param  \App\Shareholder  $shareholder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shareholder $shareholder)
+    public function update(ShareholderRequest $request, Shareholder $shareholder)
     {
-        //
+       
+      $shareholder->fill($request->all());
+      $shareholder->save();
+      return redirect()->back()->with("success","Shareholder Record Updated");
+       //return view('shareholder.show')->with("success","Shareholder Record Updated")->with('company_id',$shareholder->company_id);
     }
 
     /**

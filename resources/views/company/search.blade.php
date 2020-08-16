@@ -19,6 +19,7 @@
                                             <p class="card-text">Address: {{ $item->address }}</p>
                                             <p class="card-text">Contact: {{ $item->contact_no }}</p>
                                             <p class="card-text">Reg. No.: {{ $item->reg_no }}</p>
+                                            <p class="card-text">Total share: {{ $item->share }}</p>
                                         </div>
                                     </div>
                                 </a>

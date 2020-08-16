@@ -13,26 +13,6 @@
             @endif
 
             <div class="card-header">Company List </div>
-            <br>
-
-            <form action="" method="get" class="container-fluid">
-                @csrf
-                <div class="row">
-                    <div class="col-3">
-                        <select name="search_type" class="form-control" for="search" id="">
-                            <option value="name">Company Name</option>
-                            <option value="reg_no">Reg. No.</option>
-                            <option value="reg_date">Reg. Date</option>
-                            <option value="fiscal_year">Fiscal Year</option>
-                            <option value="contact_no">Contact No.</option>
-                            <option value="id">Id</option>
-                        </select>
-                    </div>
-                    <div class="col-4"><input type="search" class="form-control" name="search" id="search"
-                            placeholder="Search"></div>
-                    <div class="col-1"><input type="submit" class="btn btn-info" value="Search"></div>
-                </div>
-            </form>
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
@@ -43,6 +23,7 @@
                             <th scope="col">Fiscal Year</th>
                             <th scope="col">Address</th>
                             <th scope="col">Cantact No.</th>
+                            <th scope="col">Total Share</th>
 
                             <th colspan="4" scope="col">Action</th>
                         </tr>
@@ -58,6 +39,7 @@
                                     <td>{{ $item->fiscal_year }}</td>
                                     <td>{{ $item->address }}</td>
                                     <td>{{ $item->contact_no }}</td>
+                                    <td>{{ $item->share }}</td>
 
                                     <td><a href="{{ route('company.edit', $item->id) }}"><i
                                                 class="fa fa-edit btn btn-primary btn-sm" data-toggle="tooltip"
@@ -65,7 +47,7 @@
                                     <td><a href="{{ route('document.show', $item->id) }}"><i
                                                 class="fa fa-file btn btn-info btn-sm" data-toggle="tooltip"
                                                 data-placement="bottom" title="Document"></i></a></td>
-                                    <td><a href="{{ route('shareholder.index', $item->id) }}"><i
+                                    <td><a href="{{ route('shareholder.show', $item->id) }}"><i
                                                 class="fa fa-users btn btn-success btn-sm" data-toggle="tooltip"
                                                 data-placement="bottom" title="Shareholder"></i></a></td>
                                     <td>
