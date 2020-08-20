@@ -81,6 +81,7 @@ class DocumentController extends Controller
     {
         $company_id = $document;
         $data = Document::where('company_id','=',"$document")->get();
+      
         return view('document.index')->with('company_id', $company_id)->with('document', $data);
     }
 

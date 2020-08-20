@@ -1,114 +1,126 @@
 @extends('layouts.app')
-@section('title')
-Edit Commpany
-@endsection
-@section('main')
-    <div class="col-md-8">
-        <div class="card">
-            @if (Session::has('success'))
-                <div class="bg-success text-white p-2">
-                    {{ Session::get('success') }}
-                </div>
-            @endif
-            <div class="card-header">Edit Company</div>
+@section('content')
+    <style>
+        .wrapper {
+            display: flex;
+            width: 100%;
+            align-items: stretch;
+        }
 
-            <div class="card-body">
-                <form action="" method="post" class="form-group">
-                    @method('put')
-                    @csrf
-                    <div class="row form-group">
-                        <div class="col-3">
-                            <label for="company-name" class="">Company Name :</label>
-                        </div>
-                        <div class="col-8">
-                            <input value="" type="text" id="company-name" name="name" required placeholder="Comapany Name"
-                        class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" >
-                            @error('name')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-3">
-                            <label for="reg_no">Reg. No:</label>
-                        </div>
-                        <div class="col-8">
-                            <input type="text" value="" id="reg_no" value="{{ old('reg_no') }}" required name="reg_no" placeholder="Reg. no"
-                                class="form-control @error('reg_no')is-invalid @enderror">
-                            @error('reg_no')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-            </div>
-            <div class="row form-group">
+        #sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            background: #7386D5;
+            color: #fff;
+            transition: all 0.3s;
+        }
 
-                <div class="col-3">
-                    <label for="reg_date">Reg. Date:</label>
-                </div>
-                <div class="col-8">
-                    <input type="date" value="" id="reg_date" value="{{ old('reg_date') }}" name="reg_date" required placeholder="Reg. Date"
-                        class="form-control @error('reg_date')is-invalid @enderror">
-                    @error('reg_date')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="fiscal_year" >Reg. Fiscal Year:</label>
-                </div>
-                <div class="col-8">
-                    <input type="number" value="" id="fiscal_year" value="{{ old('fiscal_year') }}"
-                name="fiscal_year" value="{{date('yyyy')}}"  required placeholder="Reg. Fiscal Year" class="form-control @error('fiscal_year') is-invalid @enderror">
-                    @error('fiscal_year')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="address" >Address:</label>
-                </div>
-                <div class="col-8">
-                    <input type="text" value="" id="address" value="{{ old('address') }}" name="address"
-                        required placeholder="Address" class="form-control @error('address')is-invalid @enderror">
-                    @error('address')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="contact_no">Office Contact No.:</label>
-                </div>
-                <div class="col-8">
-                    <input type="tel" value="" value="{{ old('contact_no') }}"
-                        name="contact_no" id="contact_no" required placeholder="Office Contact No." class="form-control @error('contact_no')is-invalid @enderror">
-                    @error('contact_no')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-            </div>
-            <div class="row">
+        #sidebar.active {
+            margin-left: -250px;
+        }
 
-                <div class="col-2"><input class="btn btn-success" type="submit" value="Update"></div>
-                <div class="col-2"><input class="btn btn-danger" type="reset"></div>
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background: #6d7fcc;
+        }
+
+        #sidebar ul.components {
+            padding: 20px 0;
+            border-bottom: 1px solid #47748b;
+        }
+
+        #sidebar ul p {
+            color: #fff;
+            padding: 10px;
+        }
+
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+
+        #content {
+            width: 0%;
+            padding: -3px;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            #sidebar {
+                margin-left: -250px;
+            }
+
+            #sidebar.active {
+                margin-left: 0;
+            }
+
+            #sidebarCollapse span {
+                display: none;
+            }
+        }
+
+    </style>
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
+    </script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+    </script>
+    
+
+    <body>
+        <div class="wrapper">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Bootstrap Sidebar</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Dummy Heading</p>
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="#">Home 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content  -->
+            <div id="content">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                        </button>
+                    </div>
+                </nav>
             </div>
-            </form>
         </div>
-    </div>
-    </div>
-@endsection
 
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <!-- Popper.JS -->
+        <!-- Bootstrap JS -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#sidebarCollapse').on('click', function() {
+                    $('#sidebar').toggleClass('active');
+                });
+            });
+
+        </script>
+
+    @endsection

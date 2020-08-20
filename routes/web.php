@@ -21,11 +21,21 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('home', 'HomeController@index')->name('home');
-Route::get('home/search','HomeController@search')->name('live_search.action');
-Route::resource('company','CompanyInfoController')->middleware('auth');
-Route::resource('document','DocumentController')->middleware('auth');
-Route::resource('shareholder','ShareholderController')->middleware('auth');
+Route::get('home/search', 'HomeController@search')->name('live_search.action');
+Route::resource('company', 'CompanyInfoController')->middleware('auth');
+Route::resource('document', 'DocumentController')->middleware('auth');
+
+// Must be before Shareholder Resource route
+Route::get('shareholder/view/{id}', 'ShareholderSearchController@view')->name('shareholder.view');
+Route::get('shareholder/search', 'ShareholderSearchController@show')->name('shareholder-search');
+Route::any('shareholder/search/result', 'ShareholderSearchController@search')->name('shareholder-search.result');
+
+Route::resource('shareholder', 'ShareholderController')->middleware('auth');
 Route::any('search', 'SearchController@search')->name('company-search')->middleware('auth');
+Route::get('report',function(){
+return view('report.index');
+})->name('report');
 
 
-Route::any('dash','SearchController@dash')->name('dash');
+
+Route::any('dash', 'SearchController@dash')->name('dash');

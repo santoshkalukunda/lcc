@@ -1,10 +1,10 @@
-@extends('menu')
+@extends('layouts.app')
 @section('title')
     Dashboard
 @endsection
 
-@section('body')
-<div class="col-md-8">
+@section('content')
+<div class="col-md-9">
     <div class="card">
         <div class="card-header">{{ __('Dashboard') }}</div>
 

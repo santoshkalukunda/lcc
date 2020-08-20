@@ -1,10 +1,10 @@
-@extends('menu')
+@extends('layouts.app')
 @section('title')
     Company List
 @endsection
 
-@section('body')
-    <div class="col-md-10">
+@section('content')
+    <div class="col-md-9">
         <div class="card">
             @if (Session::has('success'))
                 <div class="bg-success text-white p-2">

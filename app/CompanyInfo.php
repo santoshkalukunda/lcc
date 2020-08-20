@@ -16,6 +16,7 @@ class CompanyInfo extends Model
     {
         return $this->hasMany('App\Document', 'company_id');
     }
+    
     public function shareholder()
     {
         return $this->hasMany('App\Shareholder', 'company_id');

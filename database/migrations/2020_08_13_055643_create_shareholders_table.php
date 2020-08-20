@@ -15,11 +15,11 @@ class CreateShareholdersTable extends Migration
     {
         Schema::create('shareholders', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address');
-            $table->string('contact');
-            $table->string('email');
-            $table->unsignedBigInteger('share');
+            $table->string('shareholder_name');
+            $table->string('shareholder_address');
+            $table->string('shareholder_contact');
+            $table->string('shareholder_email');
+            $table->unsignedBigInteger('shareholder_share');
             $table->foreignId('company_id')->constrained('company_infos')->onDelete('cascade');
             $table->timestamps();
         });

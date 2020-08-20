@@ -1,35 +1,37 @@
-<div class="card border-info" style="max-width: 18rem;">
-    @isset($companyInfo)
-        <div class="card-header text-info">{{ $companyInfo->name }}</div>
-        <div class="card-body text-info">
-            <p class="card-text">Contact: {{ $companyInfo->contact_no }}</p>
-        </div>
-        <div class="row mt-5">
-            <div class="col-12">
-                <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action" id="list-about-list" 
-                        href="{{ route('company.show', $companyInfo) }}" role="tab" aria-controls="about">About</a>
-                    <a class="list-group-item list-group-item-action" id="list-documenet-list" 
-                        href="{{ route('document.show', $companyInfo) }}" role="tab" aria-controls="documenet">Document</a>
-                    <a class="list-group-item list-group-item-action" id="list-Shareholder-list" 
-                        href="{{ route('shareholder.show', $companyInfo) }}" role="tab" >Shareholder</a>
-                  
-                <hr>
-                        <a class="alert alert-danger mt-5" 
-                        href="#" > <form method="post" action="{{ route('company.destroy', $companyInfo) }}">
-                            @csrf
-                            @method('delete')
-                            <button class="btn btn-danger btn-md" type="submit"
-                                onclick="return confirm('Are you sure to delete?')"><i
-                                    class="fa fa-trash" data-toggle="tooltip" data-placement="bottom"
-                                    title="Delete"> Company Delete </i></button>
+<style>
+    .profile{
+        background-color:rgb(77, 79, 85); 
+    }
+  
+    .menu-profile:hover{
+        background-color:rgb(56, 52, 58);
+        color: white;
+    }
+</style>
+<div class="border profile" style="height:100%;">
+    <nav class="navbar navbar-expand-lg  navbar-light col-md-3 ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-                        </form></a>
-                   
-                </div>
-            </div>
-           
-        </div>
+            <ul class="nav flex-column">
+               <a class="navbar-brand text-white" href="{{ route('company.show', $companyInfo) }}">
+            <h6> {{ $companyInfo->name }}</h6>
+                </a>
+               
+                <li class="nav-item mt-3">
+                    <a class="nav-link text-white menu-profile" href="{{ route('company.show', $companyInfo) }}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white menu-profile" href="{{ route('document.show', $companyInfo) }}">Document</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white menu-profile" href="{{ route('shareholder.show', $companyInfo) }}">Shareholder</a>
+                </li>
+            </ul>
 
-    @endisset
+        </div>
+    </nav>
 </div>

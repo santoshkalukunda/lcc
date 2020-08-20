@@ -100,5 +100,22 @@ function autocomplete(inp, arr) {
 
 /*An array containing all the country names in the world:*/
 var countries = ["Reg", "PAN", "Banijya", "Mun", "Prabandha Patra", "Niyemawali", "Share Lagat"];
+
+
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("type"), countries);
+
+////////////************************************************************************* */
+/* menu selctor*/
+// Add active class to the current button (highlight it)
+var header = document.getElementById("myDIV");
+var btns = header.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        if (current.length > 0) {
+            current[0].className = current[0].className.replace(" active", "");
+        }
+        this.className += " active";
+    });
+}

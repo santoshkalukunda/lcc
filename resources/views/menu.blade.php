@@ -1,28 +1,50 @@
-@extends('layouts.app')
-@section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-2">
-            <div class="card">
-                <div class="card-header">Menu</div>
-                <div class="card-body">
-                <ul class="nav nav-tabs">
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-university ">Company</i> </a>
-                    <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('company.create')}}"> <i class="fa fa-plus-square-o"> Add</i></a>
-                    <a class="dropdown-item" href="{{route('company.index')}}"><i class="fa fa-list">  List</i></a>                  
-                </div>
-                </ul>
-                </div>
-                
-            </div>
-
-        </div>
+<div class="col-md-6">
+    <form action="{{ route('company-search') }}" method="post">
+        @csrf
         
-        @yield('body')
-    </div>
+        <div class="input-group col-12 ">
+            <input type="text" id="company-search-input" name="search"
+                class="form-control badge-pill " list="suggestions-data-list"
+                placeholder="Search Company" aria-label="Search Company"
+                aria-describedby="search">
+            
+            <div class="input-group-append">
+                <span id="search">
+                    <button type="submit" class="btn btn-secondary"><i
+                            class="fa fa-search"></i></button></span>
+            </div>
+            <datalist id="suggestions-data-list">
+            </datalist>
+        </div>
+    </form>   
 </div>
-@endsection
-
+<h6 >
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link text-white menu" href="{{route('home')}}">Home</a>
+        </li>
+        <li class="nav-item dropdown menu">
+            
+            <a class="nav-link dropdown-toggle text-white " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Company
+            </a>
+            <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item menu"  href="{{ route('company.create') }}">Register</a>
+              <a class="dropdown-item menu" href="{{ route('company.index') }}">List</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown menu">
+            <a class="nav-link dropdown-toggle text-white " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Shareholder
+            </a>
+            <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item menu"  href="{{route('shareholder-search')}}">Search</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white manu" href="{{route('report')}}">Report</a>
+        </li>
+       
+    </ul>
+</h6>
 

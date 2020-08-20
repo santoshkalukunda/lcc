@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3">
+            <div class="col-md-3">
                 <x-company-sidebar :id="$companyInfo->id"></x-company-sidebar>
             </div>
             <div class="col-md-8">
@@ -21,47 +21,47 @@
                             @csrf
                             <div class="row">
                             <input type="text" name="company_id" value="{{$companyInfo->id}}" hidden>
-                                <div class="col-3 form-group">
+                                <div class="col-md-3 form-group">
                                     <label for="name">Name</label>
                                 </div>
-                                <div class="col-8 form-group">
-                                    <input type="text" class="form-control" name="name" id="name"
+                                <div class="col-md-8 form-group">
+                                    <input type="text" class="form-control" name="shareholder_name" id="name"
                                         placeholder="Shareholder Name" required>
                                 </div>
-                                <div class="col-3 form-group">
+                                <div class="col-md-3 form-group">
                                     <label for="address">Address</label>
                                 </div>
-                                <div class="col-8 form-group">
-                                    <input type="text" class="form-control" name="address" id="address"
+                                <div class="col-md-8 form-group">
+                                    <input type="text" class="form-control" name="shareholder_address" id="address"
                                         placeholder="Shareholder Address" required>
                                 </div>
-                                <div class="col-3 form-group">
+                                <div class="col-md-3 form-group">
                                     <label for="contact">Cantact No.</label>
                                 </div>
-                                <div class="col-8 form-group">
-                                    <input type="tel" class="form-control" name="contact" id="contact"
+                                <div class="col-md-8 form-group">
+                                    <input type="tel" class="form-control" name="shareholder_contact" id="contact"
                                         placeholder="Shareholder Contact No." required>
                                 </div>
-                                <div class="col-3 form-group">
+                                <div class="col-md-3 form-group">
                                     <label for="email">Email</label>
                                 </div>
-                                <div class="col-8 form-group">
-                                    <input type="email" class="form-control" name="email" id="email"
+                                <div class="col-md-8 form-group">
+                                    <input type="email" class="form-control" name="shareholder_email" id="email"
                                         placeholder="Shareholder Email" required>
                                 </div>
-                                <div class="col-3 form-group">
+                                <div class="col-md-3 form-group">
                                     <label for="share">No. of Share</label>
                                 </div>
-                                <div class="col-8 form-group">
-                                    <input type="number" class="form-control" name="share" id="share" placeholder="No. of Share"
+                                <div class="col-md-8 form-group">
+                                    <input type="number" class="form-control" name="shareholder_share" id="share" placeholder="No. of Share"
                                         required>
                                 </div>
-                                <div class="col-3 form-group">
+                                <div class="col-md-3 form-group">
 
                                 </div>
-                                <div class="col-8 form-group">
-                                    <input class="btn btn-success" type="submit" value="Submit">
-                                    <input type="reset" class="btn btn-danger" value="Reset">
+                                <div class="col-md-8 form-group">
+                                    <input class="btn btn-success badge-pill" type="submit" value="Submit">
+                                    <input type="reset" class="btn btn-danger badge-pill" value="Reset">
                                 </div>
                             </div>
                         </form>

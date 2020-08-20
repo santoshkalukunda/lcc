@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3">
+            <div class="col-md-3">
                 <x-company-sidebar :id="$companyInfo->id"></x-company-sidebar>
             </div>
             <div class="col-md-8">
@@ -132,8 +132,8 @@
                           
                             <div class="row">
 
-                                <div class="col-2"><input class="btn btn-success" type="submit" value="Update"></div>
-                            <div class="col-2"><button class="btn btn-danger" ><a href="{{ route('company.show', $companyInfo->id) }}" class="text-decoration-none text-white">Cancel</a></button></div>
+                                <div class="col-2"><input class="btn btn-success badge-pill" type="submit" value="Update"></div>
+                            <div class="col-2"><button class="btn btn-info badge-pill" ><a href="{{ route('company.show', $companyInfo->id) }}" class="text-decoration-none text-white">Cancel</a></button></div>
                             </div>
                         </form>
                     </div>
@@ -141,4 +141,5 @@
             </div>
         </div>
     </div>
+
 @endsection

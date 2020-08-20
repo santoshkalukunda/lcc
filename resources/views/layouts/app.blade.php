@@ -20,17 +20,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                    Dashboard
-                </a>
+        <div class="container-fuild">
 
+            <nav class="navbar navbar-expand-md fixed-top navbar-dark  shadow-sm" style="background-color: #3a76a0;" >
+
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                   LCC
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -39,28 +40,9 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-                    <div class="col-8">
-                    <form action="{{route('company-search')}}" method="post">
-                            @csrf
-                            <div class="input-group">
-                                <input type="text" id="company-search-input" name="search" class="form-control"
-                                    list="suggestions-data-list" placeholder="Search Company"
-                                    aria-label="Search Company" aria-describedby="search">
-                                <div class="input-group-append">
-                                    <span id="search">
-                                        <button type="submit" class="btn btn-secondary"><i
-                                                class="fa fa-search"></i></button></span>
-                                </div>
-                                <datalist id="suggestions-data-list">
-                                </datalist>
-                            </div>
-                        </form>
-                    </div>
+                 @include('menu')
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav nav nav-pill ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -73,14 +55,15 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -93,10 +76,12 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
-        </nav>
 
-        <main class="py-4">
+            </nav>
+
+        </div>
+        <main class="py-4 mt-5">
+
             @yield('content')
         </main>
     </div>
@@ -126,7 +111,8 @@
 
                     data.forEach(function(data) {
                         console.log(data.name);
-                        $('#suggestions-data-list').append('<option>' + data.name + '</option>');
+                        $('#suggestions-data-list').append('<option>' + data.name +
+                            '</option>');
                     });
 
                 });
@@ -144,28 +130,30 @@
 
 </script>--}}
 <script>
-    $(document).ready(function(){
-    
-     fetch_customer_data();
-    
-     function fetch_customer_data(query = '')
-     {
-      $.ajax({
-       url:"{{ route('live_search.action') }}",
-       method:'GET',
-       data:{query:query},
-       dataType:'json',
-       success:function(data)
-       {
-        $('datalist').html(data.table_data);
-       }
-      })
-     }
-    
-     $(document).on('keyup', '#search', function(){
-      var query = $(this).val();
-      fetch_customer_data(query);
-     });
+    $(document).ready(function() {
+
+        fetch_customer_data();
+
+        function fetch_customer_data(query = '') {
+            $.ajax({
+                url: "{{ route('live_search.action') }}",
+                method: 'GET',
+                data: {
+                    query: query
+                },
+                dataType: 'json',
+                success: function(data) {
+                    $('datalist').html(data.table_data);
+                }
+            })
+        }
+
+        $(document).on('keyup', '#search', function() {
+            var query = $(this).val();
+            fetch_customer_data(query);
+        });
     });
-    </script>
+
+</script>
+
 </html>

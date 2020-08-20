@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3">
+            <div class="col-md-3">
                 <x-company-sidebar :id="$company_id"></x-company-sidebar>
             </div>
 
@@ -22,7 +22,7 @@
                         <form action="{{ route('document.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row form-group">
-                                <div class="col-4"><input class="form-control @error('file')is-invalid @enderror""  type= "file" name="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                                <div class="col-md-5"><input class="form-control @error('file')is-invalid @enderror""  type= "file" name="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
                                                                         text/plain, application/pdf, image/*" required>
                                     @error('file')
                                     <div class="invalid-feedback">
@@ -30,7 +30,7 @@
                                     </div>
                                     @enderror
                                 </div>
-                                <div class="col-4 form-group">
+                                <div class="col-md-4 form-group">
                                     <input type="hidden" name="company_id" value="{{ $company_id }}">
                                     <input type="text" name="type" id="type" 
                                         class="form-control @error('type') is-invalid @enderror"" required
@@ -41,12 +41,12 @@
                                     </div>
                                     @enderror
                                 </div>
-                                <div class="col-3"><input class="btn btn-primary" type="submit" value="Upload">
-                                    <input class="btn btn-danger" type="reset" value="Reset"></div>
+                                <div class="col-md-3"><input class="btn btn-primary badge-pill" type="submit" value="Upload">
+                                    <input class="btn btn-danger badge-pill" type="reset" value="Reset"></div>
 
                             </div>
                         </form>
-                        <table class="table table-hover mt-3">
+                        <table class="table responsive table-hover mt-3">
                             <thead>
 
                                 <tr>

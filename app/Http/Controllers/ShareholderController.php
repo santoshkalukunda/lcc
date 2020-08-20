@@ -52,7 +52,8 @@ class ShareholderController extends Controller
     public function show($company_id)
     {
         $shareholder=Shareholder::where('company_id','=',"$company_id")->latest()->paginate(6);
-        return view('shareholder.show')->with('company_id', $company_id)->with('shareholder',$shareholder);
+        $count=Shareholder::where('company_id','=',"$company_id")->count();
+        return view('shareholder.show')->with('company_id', $company_id)->with('shareholder',$shareholder)->with('count',$count);
     }
 
     /**
@@ -93,6 +94,7 @@ class ShareholderController extends Controller
      */
     public function destroy(Shareholder $shareholder)
     {
-        //
+        $shareholder->delete();
+        return redirect()->back()->with('success', 'Record Deleted');
     }
 }

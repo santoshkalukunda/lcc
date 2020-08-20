@@ -24,11 +24,11 @@ class ShareholderRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'address'=>'required',
-            'contact'=>'required',
-            'email'=>'required|email',
-            'share'=> 'required|numeric'
+            'shareholder_name'=>'required',
+            'shareholder_address'=>'required',
+            'shareholder_contact'=>'required',
+            'shareholder_email'=>'required|email',
+            'shareholder_share'=> 'required|numeric'
         ];
     }
 }
