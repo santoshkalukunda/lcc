@@ -2,9 +2,8 @@
 @section('title')
     Company List
 @endsection
-
 @section('content')
-    <div class="col-md-9">
+    <div class="col-md-10">
         <div class="card">
             @if (Session::has('success'))
                 <div class="bg-success text-white p-2">
@@ -14,7 +13,7 @@
 
             <div class="card-header">Company List </div>
             <div class="card-body">
-                <table class="table table-hover">
+                <table class="table table-responsive table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Company Name</th>

@@ -28,6 +28,7 @@ class companyrequest extends FormRequest
             'reg_no'=>'required',
             'reg_date'=>'required',
             'fiscal_year'=>'required',
+            'category'=>'required|in:private,public,non-profitable',
             'address'=>'required',
             'contact_no'=>'required',
             'share'=> 'required|numeric'

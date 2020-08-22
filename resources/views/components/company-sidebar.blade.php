@@ -1,37 +1,62 @@
 <style>
-    .profile{
-        background-color:rgb(77, 79, 85); 
-    }
-  
-    .menu-profile:hover{
-        background-color:rgb(56, 52, 58);
-        color: white;
-    }
-</style>
-<div class="border profile" style="height:100%;">
-    <nav class="navbar navbar-expand-lg  navbar-light col-md-3 ">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-            <ul class="nav flex-column">
-               <a class="navbar-brand text-white" href="{{ route('company.show', $companyInfo) }}">
-            <h6> {{ $companyInfo->name }}</h6>
-                </a>
-               
-                <li class="nav-item mt-3">
-                    <a class="nav-link text-white menu-profile" href="{{ route('company.show', $companyInfo) }}">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white menu-profile" href="{{ route('document.show', $companyInfo) }}">Document</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white menu-profile" href="{{ route('shareholder.show', $companyInfo) }}">Shareholder</a>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
-</div>
+    .sidebar {
+      margin: 0;
+      padding: 0;
+      width: 300px;
+      background-color: #f1f1f1;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+      
+    }
+    
+    .sidebar a {
+      display: block;
+      color: black;
+      padding: 16px;
+      text-decoration: none;
+    }
+     
+    .sidebar a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    .sidebar a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+    }
+    @media screen and (max-width: 800px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      .sidebar a {float: none; text-align: center;}
+    }
+    
+    @media screen and (max-width: 700px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      .sidebar a {float: none; text-align: center;}
+    }
+    
+    @media screen and (max-width: 400px) {
+      .sidebar a {
+        text-align: center;
+        float: none;
+      }
+    }
+    </style>
+    
+<div class="sidebar">
+    <a class="active" href="{{ route('company.show', $companyInfo) }}">{{ $companyInfo->name }}</a>
+    <a href="{{ route('company.show', $companyInfo) }}">Profile</a>
+    <a href="{{ route('document.show', $companyInfo) }}">Document</a>
+    <a href="{{ route('shareholder.show', $companyInfo) }}">Shareholder</a>
+  </div>
+ 

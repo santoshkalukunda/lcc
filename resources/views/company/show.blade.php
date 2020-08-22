@@ -9,6 +9,7 @@
             <div class="col-md-3">
                 <x-company-sidebar :id="$companyInfo->id"></x-company-sidebar>
             </div>
+            
             <div class="col-md-8">
                 @if (Session::has('success'))
                     <div class="bg-success text-white p-2">
@@ -60,6 +61,36 @@
                                     <input type="number" value="{{ $companyInfo->fiscal_year }}" id="fiscal_year"
                                         name="fiscal_year" value="{{ date('yyyy') }}" required
                                         placeholder="Reg. Fiscal Year" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-3">
+                                    <label for="category">Category:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select id="category" value="{{ $companyInfo->category }}" name="category"
+                                        class="form-control @error('category') is-invalid @enderror" disabled>
+                                        @error('category')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        @if ($companyInfo->category == 'private')
+                                            <option value="private" selected>Private</option>
+                                            <option value="public">Public</option>
+                                            <option value="non-profitable">Non-Profitable</option>
+                                        @endif
+                                        @if ($companyInfo->category == 'public')
+                                            <option value="public" selected>public</option>
+                                            <option value="private">Private</option>
+                                            <option value="non-profitable">Non-Profitable</option>
+                                        @endif
+                                        @if ($companyInfo->category == 'non-profitable')
+                                            <option value="non-profitable" selected>Non-Profitable</option>
+                                            <option value="private">Private</option>
+                                            <option value="public">Public</option>
+                                        @endif
+                                    </select>
                                 </div>
                             </div>
                             <div class="row form-group">

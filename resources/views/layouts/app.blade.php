@@ -40,6 +40,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    
                  @include('menu')
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav nav nav-pill ml-auto">
@@ -80,7 +81,7 @@
             </nav>
 
         </div>
-        <main class="py-4 mt-5">
+        <main class="py-3 mt-5">
 
             @yield('content')
         </main>
@@ -153,7 +154,6 @@
             fetch_customer_data(query);
         });
     });
-
 </script>
 
 </html>

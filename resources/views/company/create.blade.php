@@ -64,8 +64,8 @@
                             <label for="fiscal_year">Reg. Fiscal Year:</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="number" id="fiscal_year" value="{{ old('fiscal_year') }}" name="fiscal_year"
-                                value="{{ date('yyyy') }}" required placeholder="Reg. Fiscal Year"
+                            <input type="text" id="fiscal_year" value="{{ old('fiscal_year') }}" name="fiscal_year"
+                                value="{{ date('yyyy') }}" required placeholder="Reg. Fiscal Year (YYYY)"
                                 class="form-control @error('fiscal_year') is-invalid @enderror">
                             @error('fiscal_year')
                             <div class="invalid-feedback">
@@ -74,6 +74,25 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <label for="category">Category:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select type="text" id="category" value="{{ old('category') }}" name="category"
+                                class="form-control @error('category') is-invalid @enderror">
+                            @error('category')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <option value="private">Private</option>
+                            <option value="public">Public</option>
+                            <option value="non-profitable">Non-Profitable</option>
+                            </select>
+                        </div>
+                    </div>
+                    
                     <div class="row form-group">
                         <div class="col-md-3">
                             <label for="address">Address:</label>

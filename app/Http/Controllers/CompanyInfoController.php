@@ -17,7 +17,7 @@ class CompanyInfoController extends Controller
      */
     public function index()
     {
-        $companies = CompanyInfo::latest()->Paginate(5);
+        $companies = CompanyInfo::latest()->Paginate(10);
         // $companies = Auth::user()->companies()->latest()->paginate(5);
         return view('company.index')->with('company_data', $companies);
     }

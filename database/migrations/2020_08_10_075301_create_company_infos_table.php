@@ -19,6 +19,7 @@ class CreateCompanyInfosTable extends Migration
             $table->string('reg_no');
             $table->string('reg_date');
             $table->string('fiscal_year');
+            $table->enum('category',['private','public','non-profitable'])->default('private');
             $table->string('address');
             $table->string('contact_no');
             $table->unsignedBigInteger('share');

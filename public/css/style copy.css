@@ -1,0 +1,35 @@
+.card-slip:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-shadow: black;
+    font-weight: bold;
+}
+
+.menu:hover {
+    background-color: rgba(106, 106, 110, 0.541);
+    color: white;
+}
+
+.menu {
+    color: white;
+}
+
+
+/* menu selection csss */
+
+menu-select {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+/* Style the active class, and buttons on mouse-over */
+
+.active,
+.menu-select:hover {
+    background-color: #666;
+    color: white;
+}

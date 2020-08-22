@@ -74,15 +74,45 @@
                                     <label for="fiscal_year">Reg. Fiscal Year:</label>
                                 </div>
                                 <div class="col-8">
-                                    <input type="number" value="{{ $companyInfo->fiscal_year }}" id="fiscal_year"
+                                    <input type="text" value="{{ $companyInfo->fiscal_year }}" id="fiscal_year"
                                         value="{{ old('fiscal_year') }}" name="fiscal_year" value="{{ date('yyyy') }}"
-                                        required placeholder="Reg. Fiscal Year"
+                                        required placeholder="Reg. Fiscal Year (YYYY)"
                                         class="form-control @error('fiscal_year') is-invalid @enderror">
                                     @error('fiscal_year')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                     @enderror
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-3">
+                                    <label for="category">Category:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select id="category" value="{{ $companyInfo->category }}" name="category"
+                                        class="form-control @error('category') is-invalid @enderror">
+                                        @error('category')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        @if ($companyInfo->category == 'private')
+                                            <option value="private" selected>Private</option>
+                                            <option value="public">Public</option>
+                                            <option value="non-profitable">Non-Profitable</option>
+                                        @endif
+                                        @if ($companyInfo->category == 'public')
+                                            <option value="public" selected>public</option>
+                                            <option value="private">Private</option>
+                                            <option value="non-profitable">Non-Profitable</option>
+                                        @endif
+                                        @if ($companyInfo->category == 'non-profitable')
+                                            <option value="non-profitable" selected>Non-Profitable</option>
+                                            <option value="private">Private</option>
+                                            <option value="public">Public</option>
+                                        @endif
+                                    </select>
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -120,8 +150,8 @@
                                     <label for="share">Total Share:</label>
                                 </div>
                                 <div class="col-8">
-                                    <input type="number"  value="{{ $companyInfo->share }}"
-                                        name="share" id="share" required placeholder="Total Share" class="form-control @error('share')is-invalid @enderror">
+                                    <input type="number" value="{{ $companyInfo->share }}" name="share" id="share" required
+                                        placeholder="Total Share" class="form-control @error('share')is-invalid @enderror">
                                     @error('share')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -129,11 +159,14 @@
                                     @enderror
                                 </div>
                             </div>
-                          
+
                             <div class="row">
 
-                                <div class="col-2"><input class="btn btn-success badge-pill" type="submit" value="Update"></div>
-                            <div class="col-2"><button class="btn btn-info badge-pill" ><a href="{{ route('company.show', $companyInfo->id) }}" class="text-decoration-none text-white">Cancel</a></button></div>
+                                <div class="col-2"><input class="btn btn-success badge-pill" type="submit" value="Update">
+                                </div>
+                                <div class="col-2"><button class="btn btn-info badge-pill"><a
+                                            href="{{ route('company.show', $companyInfo->id) }}"
+                                            class="text-decoration-none text-white">Cancel</a></button></div>
                             </div>
                         </form>
                     </div>
@@ -141,5 +174,4 @@
             </div>
         </div>
     </div>
-
 @endsection
