@@ -3,27 +3,23 @@
     Company Document
 @endsection
 @section('content')
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
                 <x-company-sidebar :id="$company_id"></x-company-sidebar>
             </div>
-
-            <div class="col-md-7">
+            <div class="col-md-9">
                 <div class="card">
-                    @if (Session::has('success'))
-                        <div class="bg-success text-white p-2">
-                            {{ Session::get('success') }}
-                        </div>
-                    @endif
                     <div class="card-header">Document </div>
-
                     <div class="card-body">
                         <form action="{{ route('document.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row form-group">
-                                <div class="col-md-5"><input class="form-control @error('file')is-invalid @enderror""  type= "file" name="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-                                                                        text/plain, application/pdf, image/*" required>
+                                <div class="col-md-5">
+                                    <input class="form-control @error('file')is-invalid @enderror"  type= "file"
+                                        name="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                                                                            text/plain, application/pdf, image/*" required>
                                     @error('file')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -31,19 +27,20 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <input type="hidden" name="company_id" value="{{ $company_id }}">
-                                    <input type="text" name="type" id="type" 
-                                        class="form-control @error('type') is-invalid @enderror"" required
-                                                                        placeholder=" Document Type">
-                                    @error('type')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
+                                        <input type="hidden" name="company_id" value="{{ $company_id }}">
+                                        <input type="text" name="type" id="type" class="form-control @error('type') is-invalid @enderror" required placeholder=" Document Type">
+                                        @error('type')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                 </div>
-                                <div class="col-md-3"><input class="btn btn-primary badge-pill" type="submit" value="Upload">
-                                    <input class="btn btn-danger badge-pill" type="reset" value="Reset"></div>
-
+                                
+                                <div class="col-md-3 form-group">
+                                    <input class="btn btn-primary badge-pill" type="submit" value="Upload">
+                               
+                                    <input class="btn btn-danger badge-pill" type="reset" value="Reset">
+                                </div>
                             </div>
                         </form>
                         <table class="table table-responsive table-hover mt-3">
@@ -85,5 +82,5 @@
             </div>
         </div>
     </div>
-    <script src="../script/script.js"></script>
+
 @endsection

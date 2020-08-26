@@ -3,7 +3,7 @@
     Sharholder List
 @endsection
 @section('content')
-<link rel="stylesheet" href="../css/style.css">
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">

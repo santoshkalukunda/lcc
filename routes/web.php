@@ -32,8 +32,11 @@ Route::any('shareholder/search/result', 'ShareholderSearchController@search')->n
 
 Route::resource('shareholder', 'ShareholderController')->middleware('auth');
 Route::any('search', 'SearchController@search')->name('company-search')->middleware('auth');
-Route::get('report/company','CompanyReportController@index')->name('company.report')->middleware('auth');;
-Route::post('report/company','CompanyReportController@report')->name('company.report.show')->middleware('auth');;
+Route::any('search/changename', 'SearchController@changename')->name('namechange.search')->middleware('auth');
+Route::get('report/company','CompanyReportController@index')->name('company.report')->middleware('auth');
+Route::post('report/company','CompanyReportController@report')->name('company.report.show')->middleware('auth');
+Route::resource('renew','RenewController')->middleware('auth');
+Route::resource('namechange','NamechangeController');
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CompanyInfo;
 use App\Http\Requests\companyrequest;
+use App\Namechange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -91,6 +92,13 @@ class CompanyInfoController extends Controller
         $company_data = CompanyInfo::findOrFail($companyInfo);
         $data = $request->all();
         $data['added_by'] = $request->user()->id;
+        if($request->name!=$company_data->name)
+        {
+            
+            $change = array("change_date"=>date('yy-m-d'), "old_name"=>"$company_data->name", "new_name"=>"$request->name","status"=>"incomplete","company_id"=>"$company_data->id");
+            $status = Namechange::create($change);
+        }
+    
         $company_data->fill($data);
         $status = $company_data->save();
         if ($status) {

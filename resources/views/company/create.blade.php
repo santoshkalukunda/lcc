@@ -3,8 +3,8 @@
     Add Commpany
 @endsection
 @section('content')
-
-    <div class="col-md-8">
+  
+<div class="col-md-8">
         <div class="card">
             @if (Session::has('success'))
                 <div class="bg-success text-white p-2">
@@ -18,6 +18,7 @@
                     @csrf
                     <div class="row form-group">
                         <div class="col-md-3">
+                           
                             <label for="company-name" class="">Company Name :</label>
                         </div>
                         <div class="col-md-8">
@@ -47,11 +48,12 @@
                     <div class="row form-group">
 
                         <div class="col-md-3">
-                            <label for="reg_date">Reg. Date:</label>
+                            <label for="nepali-datepicker">Reg. Date:</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="date" id="reg_date" value="{{ old('reg_date') }}" name="reg_date" required
-                                placeholder="Reg. Date" class="form-control @error('reg_date')is-invalid @enderror">
+                           
+                            <input type="text" id="nepali-datepicker" value="{{ old('reg_date') }}" name="reg_date" required
+                                placeholder="Reg. Date YYYY-MMM-DD" class="form-control @error('reg_date')is-invalid @enderror">
                             @error('reg_date')
                             <div class="invalid-feedback">
                                 {{ $message }}

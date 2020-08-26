@@ -21,4 +21,10 @@ class CompanyInfo extends Model
     {
         return $this->hasMany('App\Shareholder', 'company_id');
     }
+    public function renew(){
+        return $this->hasMany('App\Renew', 'company_id');
+    }
+    public function namechange(){
+        return $this->hasMany('App\Namechange', 'company_id');
+    }
 }

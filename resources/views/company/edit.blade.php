@@ -56,12 +56,11 @@
                             <div class="row form-group">
 
                                 <div class="col-3">
-                                    <label for="reg_date">Reg. Date:</label>
+                                    <label for="nepali-datepicker">Reg. Date:</label>
                                 </div>
                                 <div class="col-8">
-                                    <input type="date" value="{{ $companyInfo->reg_date }}" id="reg_date"
-                                        value="{{ old('reg_date') }}" name="reg_date" required placeholder="Reg. Date"
-                                        class="form-control @error('reg_date')is-invalid @enderror">
+                                    <input type="text" id="nepali-datepicker"  name="reg_date"  value="{{ $companyInfo->reg_date }}"required
+                                placeholder="Reg. Date YYYY-MMM-DD" class="form-control @error('reg_date')is-invalid @enderror">
                                     @error('reg_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -174,4 +173,5 @@
             </div>
         </div>
     </div>
+  
 @endsection

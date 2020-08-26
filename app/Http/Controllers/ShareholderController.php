@@ -66,7 +66,6 @@ class ShareholderController extends Controller
     {
        
         $data=Shareholder::where('id','=',"$shareholder")->get();
-        
         return view('shareholder.edit')->with('shareholder',$data);
     }
 

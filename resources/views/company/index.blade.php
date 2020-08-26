@@ -20,22 +20,24 @@
                             <th scope="col">Reg. No.</th>
                             <th scope="col">Reg. date</th>
                             <th scope="col">Fiscal Year</th>
+                            <th scope="col">Category</th>
                             <th scope="col">Address</th>
                             <th scope="col">Cantact No.</th>
                             <th scope="col">Total Share</th>
 
-                            <th colspan="4" scope="col">Action</th>
+                            <th colspan="5" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if ($company_data)
                             @foreach ($company_data as $item)
                                 <tr>
-                                   
+
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->reg_no }}</td>
                                     <td>{{ $item->reg_date }}</td>
                                     <td>{{ $item->fiscal_year }}</td>
+                                    <td>{{ $item->category}}</td>
                                     <td>{{ $item->address }}</td>
                                     <td>{{ $item->contact_no }}</td>
                                     <td>{{ $item->share }}</td>
@@ -49,13 +51,16 @@
                                     <td><a href="{{ route('shareholder.show', $item->id) }}"><i
                                                 class="fa fa-users btn btn-success btn-sm" data-toggle="tooltip"
                                                 data-placement="bottom" title="Shareholder"></i></a></td>
+                                    <td><a href="{{ route('renew.show', $item->id) }}"><i
+                                                class="fa fa-redo btn btn-success btn-sm" data-toggle="tooltip"
+                                                data-placement="bottom" title="Renew"></i></a></td>
                                     <td>
                                         <form method="post" action="{{ route('company.destroy', $item->id) }}">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger btn-sm" type="submit"
-                                                onclick="return confirm('Are you sure to delete?')"><i
-                                                    class="fa fa-trash" data-toggle="tooltip" data-placement="bottom"
+                                                onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"
+                                                    data-toggle="tooltip" data-placement="bottom"
                                                     title="Delete"></i></button>
 
                                         </form>

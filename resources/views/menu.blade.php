@@ -31,6 +31,7 @@
             <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item menu" href="{{ route('company.create') }}">Register</a>
                 <a class="dropdown-item menu" href="{{ route('company.index') }}">List</a>
+                <a class="dropdown-item menu" href="{{ route('company.report') }}">Advance Search </a>
             </div>
         </li>
         <li class="nav-item dropdown menu">
@@ -49,7 +50,7 @@
                 Report
             </a>
             <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item menu" href="{{ route('company.report') }}">Company Filter</a>
+            <a class="dropdown-item menu" href="{{route('namechange.index')}}">Company Name Change</a>
 
             </div>
         </li>

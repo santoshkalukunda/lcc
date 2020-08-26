@@ -45,10 +45,10 @@
                             <div class="row form-group">
 
                                 <div class="col-md-3">
-                                    <label for="reg_date">Reg. Date:</label>
+                                    <label for="nepali-datepicker">Reg. Date:</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="date" value="{{ $companyInfo->reg_date }}" id="reg_date" name="reg_date"
+                                    <input type="text" value="{{ $companyInfo->reg_date }}" id="nepali-datepicker" name="reg_date"
                                         required placeholder="Reg. Date" class="form-control" disabled>
 
                                 </div>
@@ -146,4 +146,11 @@
             </div>
         </div>
     </div>
+    <script src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v3.2.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            window.onload = function() {
+                var mainInput = document.getElementById("nepali-datepicker");
+                mainInput.nepaliDatePicker();
+            };
+        </script>
 @endsection

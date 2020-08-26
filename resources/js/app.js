@@ -3,9 +3,11 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
-require('./bootstrap');
-
+global.$ = global.jquery = require('jquery');
+require("../../node_modules/bootstrap/dist/js/bootstrap");
+require("../script/nepalidate");
+require("../script/script");
+require("../script/sidemenu");
 window.Vue = require('vue');
 
 /**
@@ -29,4 +31,20 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+});
+var mainInput = document.getElementById("nepali-datepicker");
+
+/* Initialize Datepicker with options */
+mainInput.nepaliDatePicker({
+    ndpYear: true,
+    ndpMonth: true,
+    ndpYearCount: 200
+});
+var mainInput = document.getElementById("nepali-datepicker-1");
+
+/* Initialize Datepicker with options */
+mainInput.nepaliDatePicker({
+    ndpYear: true,
+    ndpMonth: true,
+    ndpYearCount: 200
 });
