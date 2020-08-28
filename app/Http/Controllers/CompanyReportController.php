@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CompanyInfo;
+use App\Documentreport;
 use Illuminate\Http\Request;
 
 class CompanyReportController extends Controller
@@ -66,4 +67,5 @@ class CompanyReportController extends Controller
    }
    */
     }
+  
 }

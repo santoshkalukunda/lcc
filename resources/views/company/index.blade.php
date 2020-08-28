@@ -13,6 +13,27 @@
 
             <div class="card-header">Company List </div>
             <div class="card-body">
+                <div class="col-md-8 mb-2">
+                    <form action="{{ route('company-search-list') }}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="input-group col-md-12">
+                                <input type="text" id="company-search-input" name="search" class="form-control badge-pill "
+                                    list="suggestions-data-list" placeholder="Search" aria-label="Search Company"
+                                    aria-describedby="search">
+                                <datalist id="suggestions-data-list">
+                                </datalist>
+                                <div class="input-group-append">
+
+                                    <span id="search">
+                                        <button type="submit" class="btn btn-secondary"><i
+                                                class="fa fa-search"></i></button></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <table class="table table-responsive table-hover">
                     <thead>
                         <tr>
@@ -37,7 +58,7 @@
                                     <td>{{ $item->reg_no }}</td>
                                     <td>{{ $item->reg_date }}</td>
                                     <td>{{ $item->fiscal_year }}</td>
-                                    <td>{{ $item->category}}</td>
+                                    <td>{{ $item->category }}</td>
                                     <td>{{ $item->address }}</td>
                                     <td>{{ $item->contact_no }}</td>
                                     <td>{{ $item->share }}</td>

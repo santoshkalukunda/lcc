@@ -13,8 +13,6 @@ require("../script/nepalidate");
 
 require("../script/script");
 
-require("../script/sidemenu");
-
 window.Vue = require('vue');
 /**
  * The following block of code may be used to automatically register your
@@ -51,4 +49,13 @@ mainInput.nepaliDatePicker({
   ndpYear: true,
   ndpMonth: true,
   ndpYearCount: 200
+});
+$(document).ready(function () {
+  $("#p").click(function () {
+    $(this).hide();
+  });
+});
+$(document).ready(function () {
+  var currentDate = NepaliFunctions.ConvertDateFormat(NepaliFunctions.GetCurrentBsDate(), "YYYY-MM-DD");
+  $('#nepali-datepicker-c').val(currentDate);
 });

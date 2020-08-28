@@ -13,8 +13,12 @@ class RenewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+         $search =Renew::with(['company'])->paginate(10);
+    
+        //$search=Renew::paginate(10);
+        return view('report.renew')->with('renew',$search);
+       
     }
 
     /**

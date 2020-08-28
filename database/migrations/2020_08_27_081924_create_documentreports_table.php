@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNamechangesTable extends Migration
+class CreateDocumentreportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateNamechangesTable extends Migration
      */
     public function up()
     {
-        Schema::create('namechanges', function (Blueprint $table) {
+        Schema::create('documentreports', function (Blueprint $table) {
             $table->id();
-            $table->string('change_date');
-            $table->string('old_name');
-            $table->string('new_name');
             $table->string('status');
             $table->string('comments');
             $table->foreignId('company_id')->constrained('company_infos')->onDelete('cascade');
@@ -32,6 +29,6 @@ class CreateNamechangesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('namechanges');
+        Schema::dropIfExists('documentreports');
     }
 }

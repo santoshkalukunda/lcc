@@ -87,7 +87,7 @@ render._withStripped = true
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {/**
+/* WEBPACK VAR INJECTION */(function(global, $) {/**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
@@ -99,8 +99,6 @@ __webpack_require__(/*! ../../node_modules/bootstrap/dist/js/bootstrap */ "./nod
 __webpack_require__(/*! ../script/nepalidate */ "./resources/script/nepalidate.js");
 
 __webpack_require__(/*! ../script/script */ "./resources/script/script.js");
-
-__webpack_require__(/*! ../script/sidemenu */ "./resources/script/sidemenu.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
@@ -139,7 +137,16 @@ mainInput.nepaliDatePicker({
   ndpMonth: true,
   ndpYearCount: 200
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+$(document).ready(function () {
+  $("#p").click(function () {
+    $(this).hide();
+  });
+});
+$(document).ready(function () {
+  var currentDate = NepaliFunctions.ConvertDateFormat(NepaliFunctions.GetCurrentBsDate(), "YYYY-MM-DD");
+  $('#nepali-datepicker-c').val(currentDate);
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -1370,37 +1377,6 @@ var NepaliFunctions = function () {
 /***/ (function(module, exports) {
 
 
-
-/***/ }),
-
-/***/ "./resources/script/sidemenu.js":
-/*!**************************************!*\
-  !*** ./resources/script/sidemenu.js ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(jQuery) {jQuery(function ($) {
-  $(".sidebar-dropdown > a").click(function () {
-    $(".sidebar-submenu").slideUp(200);
-
-    if ($(this).parent().hasClass("active")) {
-      $(".sidebar-dropdown").removeClass("active");
-      $(this).parent().removeClass("active");
-    } else {
-      $(".sidebar-dropdown").removeClass("active");
-      $(this).next(".sidebar-submenu").slideDown(200);
-      $(this).parent().addClass("active");
-    }
-  });
-  $("#close-sidebar").click(function () {
-    $(".page-wrapper").removeClass("toggled");
-  });
-  $("#show-sidebar").click(function () {
-    $(".page-wrapper").addClass("toggled");
-  });
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 

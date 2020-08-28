@@ -1,55 +1,132 @@
-<div id="time">
-
-    <!-- PRINTING NEPALI DATE AND TIME -->
-
-    <span class="time_date">
-    <?php 
-    $timezone = "Asia/Kathmandu";
-    if(function_exists('date_default_timezone_set')) date_default_timezone_set($timezone);
-    echo date('l F j, Y');?>  &nbsp;| &nbsp; <script type='text/javascript'>var __ndq = __ndq || {format:'W, M D, Y',color:'#555555'};var __sn = document.getElementsByTagName('script'); __sn = __sn[__sn.length-1];(function() {var __nd = document.createElement('script'); __nd.type = 'text/javascript'; __nd.async = true; __nd.src = ('http://') + 'goodies.softnep.com/nepali_date/nep.date.js'; __sn.parentNode.insertBefore(__nd, __sn);})();</script>&nbsp;|&nbsp; <span id="sn_nepalitime"></span></span>
-    <script type="text/javascript">
-    var currenttime = "<?php echo date('M-d,Y h:i:s');?>"; <!--"November 20, 2013 13:19:32"-->
-    var montharray = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
-    var numbers = Array("&#2406;", "&#2407;", "&#2408;", "&#2409;", "&#2410;", "&#2411;", "&#2412;", "&#2413;", "&#2414;", "&#2415;");
-    var serverdate = new Date(currenttime);
-    function padlength(what) {
-        var output = (what.toString().length == 1) ? "0" + what : what
-        return output
-    }
-    function displaytime() {
-        //alert(currenttime);
-        serverdate.setSeconds(serverdate.getSeconds() + 1)
-        var datestring = montharray[serverdate.getMonth()] + " " + padlength(serverdate.getDate()) + ", " + serverdate.getFullYear()
 
 
-        hr=padlength(serverdate.getHours());
-        mi=padlength(serverdate.getMinutes()) ;
-        se=padlength(serverdate.getSeconds());
-        dd="PM";
-           if (hr >= 12) {
-            hr = hr-12;
-            dd = "AM";
-        }
-        if (hr == 0) {
-            hr = 12;
-        }
-        var timestring = hr + ":" + mi + ":" + se +" "+ dd;
-            var arr = timestring.split("");
-            for (i = 0; i < (arr.length-3); i++) {
-                if (arr[i] != ":") {
-                    arr[i] = numbers[arr[i]];
-                } 
-            }
-            timestring = arr.join("");
-    /*        timestring = timestring.replace("AM","gu");       
-     timestring = timestring.replace("PM","gu");*/
-            document.getElementById("sn_nepalitime").innerHTML = " " + timestring;
 
-        setTimeout('displaytime()',1000);
-    }
-    displaytime();
-    </script>
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="lib/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      href="{{asset('date/nepali.datepicker.v3.2.min.css')}}"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <h1>Nepali Datepicker v3 with Bootstrap Modal</h1>
+
+    <p>
+      <input
+        type="text"
+        id="nepali-datepicker"
+        class="nepali-datepicker"
+        placeholder="Select Nepali Date"
+      />
+      <input
+        type="text"
+        id="nepali-datepicker-1"
+        class="nepali-datepicker"
+        placeholder="Select Nepali Date"
+      />
+    </p>
 
 
-    <!-- END OF NEPALI DATE AND TIME -->
-</div>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#exampleModal"
+    >
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              <input
+                type="text"
+                id="modal-nepali-datepicker"
+                placeholder="Select Nepali Date"
+              />
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+<script src="{{asset('date/nepali.datepicker.v3.2.min.js')}}" type="text/javascript"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+      // Add your code here
+window.onload = function() {
+    var modalInput = document.getElementById("modal-nepali-datepicker");
+    modalInput.nepaliDatePicker();
+};
+
+$(document).ready(function(){
+    var currentDate = NepaliFunctions.ConvertDateFormat(NepaliFunctions.GetCurrentBsDate());
+    
+    $('#nepali-datepicker-1').val(currentDate);
+
+    $('.nepali-datepicker').nepaliDatePicker({
+        ndpYear: true,
+        ndpMonth: true,
+    });
+});
+  </script>
+</html>

@@ -27,4 +27,7 @@ class CompanyInfo extends Model
     public function namechange(){
         return $this->hasMany('App\Namechange', 'company_id');
     }
+    public function documentreport(){
+        return $this->hasOne('App\Documentreport', 'company_id');
+    }
 }

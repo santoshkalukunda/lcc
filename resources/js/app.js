@@ -7,7 +7,7 @@ global.$ = global.jquery = require('jquery');
 require("../../node_modules/bootstrap/dist/js/bootstrap");
 require("../script/nepalidate");
 require("../script/script");
-require("../script/sidemenu");
+
 window.Vue = require('vue');
 
 /**
@@ -32,6 +32,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
 var mainInput = document.getElementById("nepali-datepicker");
 
 /* Initialize Datepicker with options */
@@ -47,4 +48,13 @@ mainInput.nepaliDatePicker({
     ndpYear: true,
     ndpMonth: true,
     ndpYearCount: 200
+});
+$(document).ready(function() {
+    $("#p").click(function() {
+        $(this).hide();
+    });
+});
+$(document).ready(function() {
+    var currentDate = NepaliFunctions.ConvertDateFormat(NepaliFunctions.GetCurrentBsDate(), "YYYY-MM-DD");
+    $('#nepali-datepicker-c').val(currentDate);
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CompanyInfo;
+use App\Documentreport;
 use App\Http\Requests\companyrequest;
 use App\Namechange;
 use Illuminate\Http\Request;
@@ -43,6 +44,8 @@ class CompanyInfoController extends Controller
     {
         $request['added_by'] = Auth::user()->id;
         $status = CompanyInfo::create($request->all());
+        $documentreport = array("status"=>"incomplete", "comments"=>"New company registed","company_id"=>"$status->id");
+        Documentreport::create( $documentreport);
         if ($status) {
             $request->session()->flash('success', 'Register Successfully');
         } else {

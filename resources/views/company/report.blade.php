@@ -47,7 +47,7 @@
                             From <input type="text" id="nepali-datepicker" class="form-control" name="reg_fdate" placeholder="YYYY-MM-DD">
                         </div>
                         <div class="col-md-3">
-                        to <input type="text" id="nepali-datepicker-1" class="form-control" name="reg_ldate" placeholder="YYYY-MM-DD">
+                        to <input type="text" id="nepali-datepicker-1" class="nepali-datepicker form-control" name="reg_ldate" placeholder="YYYY-MM-DD">
                         </div>
                     </div>
                     <div class="row form-group">
