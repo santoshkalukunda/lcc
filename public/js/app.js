@@ -87,7 +87,7 @@ render._withStripped = true
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global, $) {/**
+/* WEBPACK VAR INJECTION */(function(global) {/**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
@@ -137,16 +137,15 @@ mainInput.nepaliDatePicker({
   ndpMonth: true,
   ndpYearCount: 200
 });
-$(document).ready(function () {
-  $("#p").click(function () {
-    $(this).hide();
-  });
+var mainInput = document.getElementById("nepali-datepicker-2");
+/* Initialize Datepicker with options */
+
+mainInput.nepaliDatePicker({
+  ndpYear: true,
+  ndpMonth: true,
+  ndpYearCount: 200
 });
-$(document).ready(function () {
-  var currentDate = NepaliFunctions.ConvertDateFormat(NepaliFunctions.GetCurrentBsDate(), "YYYY-MM-DD");
-  $('#nepali-datepicker-c').val(currentDate);
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 

@@ -57,6 +57,17 @@
             </div>
             
         </li>
+        <li class="nav-item dropdown menu">
+            <a class="nav-link dropdown-toggle text-white " href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Setting
+            </a>
+            <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item menu" href="{{route('setdate.index')}}">Set Date</a>
+                <a class="dropdown-item menu" href="">List</a>
+                <a class="dropdown-item menu" href="">Advance Search </a>
+            </div>
+        </li>
         
     </ul>
 </h6>

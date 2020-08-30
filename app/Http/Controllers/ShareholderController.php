@@ -62,11 +62,9 @@ class ShareholderController extends Controller
      * @param  \App\Shareholder  $shareholder
      * @return \Illuminate\Http\Response
      */
-    public function edit($shareholder)
+    public function edit(Shareholder $shareholder)
     {
-       
-        $data=Shareholder::where('id','=',"$shareholder")->get();
-        return view('shareholder.edit')->with('shareholder',$data);
+        return view('shareholder.edit')->with(['shareholder'=>$shareholder]);
     }
 
     /**

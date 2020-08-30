@@ -4,7 +4,7 @@
 @endsection
 @section('content')
   
-<div class="col-md-8">
+<div class="col-md-10">
         <div class="card">
             @if (Session::has('success'))
                 <div class="bg-success text-white p-2">

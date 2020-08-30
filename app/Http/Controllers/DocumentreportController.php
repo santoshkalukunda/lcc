@@ -14,7 +14,7 @@ class DocumentreportController extends Controller
         return view('report.document');
     }
     public function edit(Request $request){
-       Documentreport::where('company_id','=',$request->id)->update(['comments'=>$request->comments .'('.Auth::user()->name.')','status'=>$request->status]);
-    return redirect()->back();
+       Documentreport::where('company_id','=',$request->id)->update(['comments'=>$request->comments .'('.Auth::user()->name.')'.date("Y-m-d h:i:sa"),'status'=>$request->status]);
+       return redirect()->back();
     }
 }

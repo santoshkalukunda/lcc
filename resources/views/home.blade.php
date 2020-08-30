@@ -2,10 +2,9 @@
 @section('title')
     Dashboard
 @endsection
-
 @section('content')
 
-<div class="col-md-9">
+<div class="col-md-10">
     <div class="card">
         <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -20,6 +19,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 

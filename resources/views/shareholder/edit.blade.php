@@ -3,7 +3,6 @@
     Sharehoder Update
 @endsection
 @section('content')
-@foreach ($shareholder as $shareholder)
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
@@ -18,6 +17,7 @@
                     @endif
                     <div class="card-header">Sharehoder Update</div>
                     <div class="card-body">
+                       
                     <form action="{{route('shareholder.update',$shareholder->id)}}" method="post">
                         @method('put')
                             @csrf
@@ -71,5 +71,4 @@
             </div>
         </div>
     </div>
-    @endforeach
 @endsection

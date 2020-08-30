@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\CompanyInfo;
-use App\Renew;
+use App\Setdate;
 use Illuminate\Http\Request;
 
-class RenewController extends Controller
+class SetdateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +13,9 @@ class RenewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-         $search =CompanyInfo::with(['renew'])->paginate(10);
-        //$search=Renew::paginate(10);
- 
-        return view('report.renew')->with('renew',$search);
-       
+    {
+        $setdate=Setdate::get();
+        return view('setting.setdate')->with('setdate',$setdate);
     }
 
     /**
@@ -40,54 +36,60 @@ class RenewController extends Controller
      */
     public function store(Request $request)
     {
-    Renew::create($request->all());
-    return redirect()->back()->with('success',"Company Renewed");
+        $setdate=Setdate::get();
+        if($setdate==null){
+            Setdate::create($request->all());
+            return redirect()->back()->with('success',"Set Date Done");
+        }else{
+            return redirect()->back()->with('success',"Already Date Set");
+        }
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Renew  $renew
+     * @param  \App\Setdate  $setdate
      * @return \Illuminate\Http\Response
      */
-    public function show($company_id)
+    public function show(Setdate $setdate)
     {
-        $renew=Renew::where('company_id','=',"$company_id")->orderBy('renew_date', 'desc')->paginate(10);
-        return view('company.renew')->with('company_id',$company_id)->with('renew',$renew);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Renew  $renew
+     * @param  \App\Setdate  $setdate
      * @return \Illuminate\Http\Response
      */
-    public function edit(Renew $renew)
+    public function edit(Setdate $setdate)
     {
-        //
+    return view('setting.setdateedit')->with(['setdate'=>$setdate]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Renew  $renew
+     * @param  \App\Setdate  $setdate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Renew $renew)
+    public function update(Request $request, Setdate $setdate)
     {
-        //
+        $setdate->fill($request->all());
+        $setdate->save();
+        return redirect('setdate')->with("success","Set Date Updated");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Renew  $renew
+     * @param  \App\Setdate  $setdate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Renew $renew)
+    public function destroy(Setdate $setdate)
     {
-        $renew->delete();
-        return redirect()->back()->with('success', 'Record Deleted');
+        //
     }
 }

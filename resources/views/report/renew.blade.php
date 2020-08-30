@@ -3,10 +3,9 @@
     Company Renew
 @endsection
 @section('content')
-
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-10">
                 @if (Session::has('success'))
                     <div class="bg-success text-white p-2">
                         {{ Session::get('success') }}
@@ -15,38 +14,7 @@
                 <div class="card">
                     <div class="card-header">Renew</div>
                     <div class="card-body">
-                        <form action="{{ route('renew.store') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="company_id" value="">
-                            <div class="row form-group">
-                                <div class="col-md-5">
-                                    <input type="text" id="nepali-datepicker" name="renew_date" required
-                                        placeholder="Renew Date (YYYY-MM-DD)"
-                                        class="form-control @error('renew_date')is-invalid @enderror">
-                                    @error('renew')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="col-md-4 form-group">
-
-                                    <input type="text" name="renew_fiscal" id="date"
-                                        class="form-control @error('renew_fiscal') is-invalid @enderror" required
-                                        placeholder=" Renew For Fiscal (YYYY)">
-                                    @error('renew_fiscal')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="col-md-3 form-group">
-                                    <input class="btn btn-primary badge-pill" type="submit" value="Renew">
-
-                                    <input class="btn btn-danger badge-pill" type="reset" value="Reset">
-                                </div>
-                            </div>
-                        </form>
+                    
                         <table class="table table-responsive table-hover mt-3">
                             <thead>
                                 <tr>
@@ -58,15 +26,21 @@
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody> 
                                 @isset($renew)
                                     @foreach ($renew as $item)
 
                                         <tr>
-                                        <td>{{$item->company->name}}</td>
+                                        <td>{{$item->name}}</td>
                                             <td></td>
-                                            <td>{{ $item->renew_date }}</td>
-                                            <td>{{ $item->renew_fiscal }}</td>
+                                            <td>@isset($item->renew->enew_fiscal)
+                                                {{ $item->renews->renew_date }}
+                                            @endisset
+                                              </td>
+                                            <td>@isset($item->renew->enew_fiscal)
+                                                {{ $item->renew->enew_fiscal }}
+                                            @endisset 
+                                             </td>
                                             <td></td>
                                             <td></td>
                                             <td>

@@ -49,12 +49,11 @@ mainInput.nepaliDatePicker({
     ndpMonth: true,
     ndpYearCount: 200
 });
-$(document).ready(function() {
-    $("#p").click(function() {
-        $(this).hide();
-    });
-});
-$(document).ready(function() {
-    var currentDate = NepaliFunctions.ConvertDateFormat(NepaliFunctions.GetCurrentBsDate(), "YYYY-MM-DD");
-    $('#nepali-datepicker-c').val(currentDate);
+var mainInput = document.getElementById("nepali-datepicker-2");
+
+/* Initialize Datepicker with options */
+mainInput.nepaliDatePicker({
+    ndpYear: true,
+    ndpMonth: true,
+    ndpYearCount: 200
 });
