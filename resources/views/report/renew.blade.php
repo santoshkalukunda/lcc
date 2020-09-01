@@ -14,45 +14,77 @@
                 <div class="card">
                     <div class="card-header">Renew</div>
                     <div class="card-body">
-                    
+                    <form action="{{route('renew.search')}}" method="post">
+                            @csrf
+                            <div class="row form-group">
+                                <div class="col-md-2">
+                                    Company Name
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" name="name" class="form-control" placeholder="Company Name">
+                                </div>
+                                <div class="col-md-1">
+                                    Status
+                                </div>
+                                <div class="col-md-2">
+                                    <select name="status" class="form-control" id="">
+                                        <option value="">All</option>
+                                        <option value="renewed">Renewed</option>
+                                        <option value="not_renew">Not Renew</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="submit" class="btn btn-info" value="Search">
+                                </div>
+                            </div>
+                        </form>
+
                         <table class="table table-responsive table-hover mt-3">
                             <thead>
                                 <tr>
                                     <th scope="col">Company name</th>
-                                    <th scope="col">Remaining Days</th>
+                                    <th scope="col">Contact</th>
                                     <th scope="col">Last Renew Date</th>
                                     <th scope="col">Fiscal Year</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Comment</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
-                            <tbody> 
+                            <tbody>
                                 @isset($renew)
                                     @foreach ($renew as $item)
 
                                         <tr>
-                                        <td>{{$item->name}}</td>
-                                            <td></td>
-                                            <td>@isset($item->renew->enew_fiscal)
-                                                {{ $item->renews->renew_date }}
-                                            @endisset
-                                              </td>
-                                            <td>@isset($item->renew->enew_fiscal)
-                                                {{ $item->renew->enew_fiscal }}
-                                            @endisset 
-                                             </td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><a href="{{ route('renew.show', $item->id) }}">{{ $item->name }}</a></td>
+                                            <td>{{$item->contact_no}}</td>
+                                            <td>{{ $date->renew_date }}</td>
+                                            <td>{{ $date->fiscal }}</td>
                                             <td>
-
-                                                <form method="post" action="{{ $item->id }}">
+                                                @php
+                                              
+                                                $d=$item->renew;
+                                                foreach ($d as $item){
+                                                if ($item->renew_fiscal==$date->fiscal) {
+                                                echo "Renewed";
+                                                break;
+                                                }
+                                                }
+                                                @endphp
+                                            </td>
+                                            <td>
+                                                <textarea  name="comment" class="form-control" rows="4" cols="40" disabled>{{ $item->renew_comments }} 
+                                                </textarea>
+                                            </td>
+                                            <td>
+                                                <form action="{{route('renew.update',$item->id)}}" method="POST">
+                                                    @method('put')
                                                     @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-danger btn-sm" type="submit"
-                                                        onclick="return confirm('Are you sure to delete?')"><i
-                                                            class="fa fa-trash" data-toggle="tooltip" data-placement="bottom"
-                                                            title="Delete"></i></button>
-                                                </form>
+                                             
+                                              <textarea name="renew_comments" class="form-control" rows="3" cols="35" placeholder="Comments here.." required>
+                                              </textarea>
+                                              <input type="submit" class="btn btn-success mt-1">
+                                              </form>
                                             </td>
                                         </tr>
 

@@ -17,6 +17,7 @@ class CreateRenewsTable extends Migration
             $table->id();
             $table->string('renew_date');
             $table->string('renew_fiscal');
+            $table->longText('renew_comments')->nullable();
             $table->foreignId('company_id')->constrained('company_infos')->onDelete('cascade');
             $table->timestamps();
         });

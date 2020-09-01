@@ -32,7 +32,7 @@ window.onload = function() {
 
 $(document).ready(function(){
     var currentDate = NepaliFunctions.ConvertDateFormat(NepaliFunctions.GetCurrentBsDate());
-    
+
     $('#nepali-datepicker-1').val(currentDate);
 
     $('.nepali-datepicker').nepaliDatePicker({

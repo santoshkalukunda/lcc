@@ -36,13 +36,18 @@ class SetdateController extends Controller
      */
     public function store(Request $request)
     {
-        $setdate=Setdate::get();
-        if($setdate==null){
-            Setdate::create($request->all());
-            return redirect()->back()->with('success',"Set Date Done");
-        }else{
-            return redirect()->back()->with('success',"Already Date Set");
-        }
+             $setdate=Setdate::count();
+            
+            if($setdate<1){
+                Setdate::create($request->all());
+                return redirect()->back()->with('success',"Set Date Done");
+            }else{
+                return redirect()->back()->with('success',"Date Already Set");
+            }
+                
+           
+           
+        
         
     }
 

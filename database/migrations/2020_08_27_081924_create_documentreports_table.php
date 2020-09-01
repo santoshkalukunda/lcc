@@ -16,7 +16,7 @@ class CreateDocumentreportsTable extends Migration
         Schema::create('documentreports', function (Blueprint $table) {
             $table->id();
             $table->string('status');
-            $table->string('comments');
+            $table->longText('comments')->nullable();
             $table->foreignId('company_id')->constrained('company_infos')->onDelete('cascade');
             $table->timestamps();
         });

@@ -42,8 +42,9 @@ Route::resource('namechange','NamechangeController')->middleware('auth');
 
 Route::any('documentreport','DocumentreportController@index')->name('documentreport.index');
 Route::any('documentreport/search', 'SearchController@documentreport')->name('documentreport.search')->middleware('auth');
-Route::post('documetreport/edit/{id}','DocumentreportController@edit')->name('documentreport.edit');
-Route::resource('setdate','SetdateController');
+Route::post('documetreport/edit/{id}','DocumentreportController@edit')->name('documentreport.edit')->middleware('auth');
+Route::resource('setdate','SetdateController')->middleware('auth');
+Route::any('search/renew', 'SearchController@renew')->name('renew.search')->middleware('auth');
 
 
 

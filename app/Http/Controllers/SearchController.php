@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\CompanyInfo;
 use App\Documentreport;
 use App\Namechange;
+use App\Renew;
+use App\Setdate;
 use App\Shareholder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -53,12 +55,29 @@ class SearchController extends Controller
            // $documentreport=Documentreport::Where('status', 'like', "$status%")->paginate(10);
                  return view('report.document')->with('documentreport',$documentreport)->with('current_date',$request->current_date);
            }else{
-            $documentreport=DB::table('documentreports')->join('company_infos','documentreports.company_id','=','company_infos.id')->select('documentreports.*','company_infos.*')->Where('documentreports.status', 'like', "$status%")->where('company_infos.name','like',"$request->name%")->orderBy('company_infos.reg_date')->paginate(6);
+            $documentreport=DB::table('documentreports')->join('company_infos','documentreports.company_id','=','company_infos.id')->select('documentreports.*','company_infos.name','company_infos.contact_no','company_infos.reg_date')->Where('documentreports.status', 'like', "$status%")->where('company_infos.name','like',"$request->name%")->orderBy('company_infos.reg_date')->paginate(6);
             //$documentreport=Documentreport::with(['company'])->Where('status', 'like', "$status%")->paginate(10);
             return view('report.document')->with('documentreport',$documentreport)->with('current_date',$request->current_date);
            
            }
           
+           }
+           public function renew(Request $request){
+            $fiscal=Setdate::first();
+            if($fiscal==null){
+                return view('setting.setdate');
+            }
+            if($request->status=="renewed"){
+                //$search =CompanyInfo::with(['renew'])->where('fiscal_year','!=',"$fiscal->fiscal")->where('name','like',"$request->name%")->paginate(10);
+           $search = Renew::Join('company_infos','renews.company_id','=','company_infos.id')->select('company_infos.*','renews.*')->get();
+           dd($search);
+            }
+                //$search = DB::table('company_infos')->leftJoin('renews', 'company_infos.id', '=', 'renews.company_id')->get();
+                 $search =CompanyInfo::with(['renew'])->where('fiscal_year','!=',"$fiscal->fiscal")->where('name','like',"$request->name%")->paginate(10);
+                //$search=Renew::paginate(10);
+             
+                $date=Setdate::first();
+                return view('report.renew')->with('renew',$search)->with('date',$date);
            }
 
     

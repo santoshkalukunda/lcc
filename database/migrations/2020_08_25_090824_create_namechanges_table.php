@@ -19,7 +19,7 @@ class CreateNamechangesTable extends Migration
             $table->string('old_name');
             $table->string('new_name');
             $table->string('status');
-            $table->string('comments');
+            $table->longText('comments')->nullable();
             $table->foreignId('company_id')->constrained('company_infos')->onDelete('cascade');
             $table->timestamps();
         });
