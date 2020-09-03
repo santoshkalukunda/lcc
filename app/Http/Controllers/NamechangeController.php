@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Namechange;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NamechangeController extends Controller
 {
@@ -14,7 +15,7 @@ class NamechangeController extends Controller
      */
     public function index()
     {
-        $namechange=Namechange::paginate(10);
+        $namechange=Namechange::with('company')->paginate(10);
         return view('report.namechange')->with('namechange',$namechange);
     }
 
@@ -45,9 +46,10 @@ class NamechangeController extends Controller
      * @param  \App\Namechange  $namechange
      * @return \Illuminate\Http\Response
      */
-    public function show(Namechange $namechange)
+    public function show($namechange)
     {
-        //
+        $data=Namechange::where('company_id','=',"$namechange")->paginate(10);
+        return view('company.namechange')->with('company_id',$namechange)->with('namechange',$data);
     }
 
     /**
@@ -70,7 +72,8 @@ class NamechangeController extends Controller
      */
     public function update(Request $request, Namechange $namechange)
     {
-
+        
+        $request['comments']=$request->comments . "</br> <b>" . '(' . Auth::user()->name . ')' . "</b></br>" . date("Y-m-d h:i:sa") . "<hr>" . $namechange->comments;
         $namechange->fill($request->all());
         $namechange->save();
         return redirect()->back();

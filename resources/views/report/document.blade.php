@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="col-md-10">
+    <div class="col-md-12">
         @include('report.currentdate')
         <div class="card">
             <div class="card-header">Document Report</div>
@@ -77,24 +77,28 @@
                                         } ?>
                                     </td>
                                     <td>{{ $item->status }}</td>
-                                    <td><textarea name="comment" class="form-control" rows="6" cols="40"
-                                            disabled>{{ $item->comments }}
-                                        </textarea></td>
+                                    <td>
+                                        <div
+                                            style="height:120px;width:250px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                                            {!! $item->comments !!}
+                                        </div>
+                                    </td>
                                     <td>
 
                                         <form action="{{ route('documentreport.edit', $item->id) }}" method="POST">
                                             @csrf
                                             <div class="row">
-                                            <div class="col-md-4">Status</div>
-                                            <div class="col-md-8">
-                                                <select name="status" class="form-control" id="">
-                                                    <option value="incomplete">Incomplete</option>
-                                                    <option value="complete">Complete</option>
-                                                </select>
+                                                <div class="col-md-4">Status</div>
+                                                <div class="col-md-8">
+                                                    <select name="status" class="form-control" id="">
+                                                        <option value="incomplete">Incomplete</option>
+                                                        <option value="complete">Complete</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            </div>
-                                            <textarea name="comments" class="form-control" rows="3" cols="35" placeholder="Comments Here.." required>
-                                          </textarea>
+                                            <textarea name="comments" class="form-control" rows="3" cols="35"
+                                                placeholder="Comments Here.." required>
+                                                          </textarea>
                                             <input type="submit" class="btn btn-success mt-1">
                                         </form>
                 </div>
@@ -108,6 +112,11 @@
         @endisset
         </tbody>
         </table>
+     @isset($documentreport)
+     {{$documentreport->links() }}
+     @endisset
+        
+        
     </div>
     </div>
     </div>

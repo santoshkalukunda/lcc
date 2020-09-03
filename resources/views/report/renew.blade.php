@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @if (Session::has('success'))
                     <div class="bg-success text-white p-2">
                         {{ Session::get('success') }}
@@ -56,25 +56,17 @@
                                     @foreach ($renew as $item)
 
                                         <tr>
-                                            <td><a href="{{ route('renew.show', $item->id) }}">{{ $item->name }}</a></td>
+                                            <td><a href="{{ route('renew.show', $item->company_id) }}">{{ $item->name }}</a></td>
                                             <td>{{$item->contact_no}}</td>
                                             <td>{{ $date->renew_date }}</td>
                                             <td>{{ $date->fiscal }}</td>
                                             <td>
-                                                @php
-                                              
-                                                $d=$item->renew;
-                                                foreach ($d as $item){
-                                                if ($item->renew_fiscal==$date->fiscal) {
-                                                echo "Renewed";
-                                                break;
-                                                }
-                                                }
-                                                @endphp
+                                                {{ $date->fiscal == $item->renewreport_fiscal ? '' : 'Not'}} Renewed
                                             </td>
                                             <td>
-                                                <textarea  name="comment" class="form-control" rows="4" cols="40" disabled>{{ $item->renew_comments }} 
-                                                </textarea>
+                                                <div style="height:120px;width:250px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                                                    {!! $item->renewreport_comments !!}
+                                                </div>
                                             </td>
                                             <td>
                                                 <form action="{{route('renew.update',$item->id)}}" method="POST">
@@ -93,6 +85,7 @@
                                 @endisset
                             </tbody>
                         </table>
+                        {{$renew->links() }}
                     </div>
                 </div>
             </div>

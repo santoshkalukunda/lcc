@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <link rel="stylesheet" href="../../css/style.css">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header">Shareholder Search</div>
             <div class="card-body">
@@ -28,10 +28,10 @@
                     @isset($search)
                         @foreach ($search as $item)
 
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <a href="{{ route('shareholder.view', $item->id) }}" class="text-decoration-none text-dark">
                                     <div class="card-slip">
-                                        <div class="card" style="max-width: 22rem;">
+                                        <div class="card" style="max-width: 24rem;">
                                             <div class="card-header"> Name: {{ $item->shareholder_name }}</div>
                                             <div class="card-body">
                                                 <p class="card-text">Address: {{ $item->shareholder_address }}</p>

@@ -16,7 +16,7 @@ class DocumentreportController extends Controller
     public function edit(Request $request){
      
         $previouscomment=Documentreport::where('id','=',$request->id)->select('comments')->first();
-       Documentreport::where('id','=',$request->id)->update(['comments'=>$request->comments." ".'('.Auth::user()->name.')'."  ".date("Y-m-d h:i:sa")."    >>>".$previouscomment->comments,'status'=>$request->status]);
+       Documentreport::where('id','=',$request->id)->update(['comments'=>$request->comments."<br><b>".'('.Auth::user()->name.')'."</b><br>".date("Y-m-d h:i:sa")."<hr>".$previouscomment->comments,'status'=>$request->status]);
        return redirect()->back();
     }
 }

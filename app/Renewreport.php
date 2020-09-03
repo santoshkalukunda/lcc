@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Renew extends Model
+class Renewreport extends Model
 {
     protected $guarded=['id'];
     public function company()
@@ -12,5 +12,4 @@ class Renew extends Model
         return $this->belongsTo('App\CompanyInfo');
     }
     
-
 }

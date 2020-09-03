@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-5">
     <form action="{{ route('company-search') }}" method="post">
         @csrf
         <div class="row">
@@ -64,8 +64,7 @@
             </a>
             <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
             <a class="dropdown-item menu" href="{{route('setdate.index')}}">Set Date</a>
-                <a class="dropdown-item menu" href="">List</a>
-                <a class="dropdown-item menu" href="">Advance Search </a>
+             
             </div>
         </li>
         

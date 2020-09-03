@@ -6,6 +6,7 @@ use App\CompanyInfo;
 use App\Documentreport;
 use App\Http\Requests\companyrequest;
 use App\Namechange;
+use App\Renewreport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,6 +47,8 @@ class CompanyInfoController extends Controller
         $status = CompanyInfo::create($request->all());
         $documentreport = array("status"=>"incomplete", "comments"=>"New company registed","company_id"=>"$status->id");
         Documentreport::create( $documentreport);
+        $renew_report = array("company_id"=>"$status->id","renewreport_reg_fiscal"=>"$request->fiscal_year","renewreport_comments"=>"New Created Account","renewreport_fiscal"=>"0000");
+        Renewreport::create($renew_report);
         if ($status) {
             $request->session()->flash('success', 'Register Successfully');
         } else {

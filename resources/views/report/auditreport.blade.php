@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-<div class="col-md-10">
+<div class="col-md-12">
     <div class="card">
         <div class="card-header">Audit Report</div>
         <div class="card-body">
