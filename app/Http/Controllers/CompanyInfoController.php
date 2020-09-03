@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Auditreport;
 use App\CompanyInfo;
 use App\Documentreport;
 use App\Http\Requests\companyrequest;
@@ -46,9 +47,17 @@ class CompanyInfoController extends Controller
         $request['added_by'] = Auth::user()->id;
         $status = CompanyInfo::create($request->all());
         $documentreport = array("status"=>"incomplete", "comments"=>"New company registed","company_id"=>"$status->id");
+       //for document report create
         Documentreport::create( $documentreport);
+        ///end document report end
+        ///renew report create
         $renew_report = array("company_id"=>"$status->id","renewreport_reg_fiscal"=>"$request->fiscal_year","renewreport_comments"=>"New Created Account","renewreport_fiscal"=>"0000");
         Renewreport::create($renew_report);
+        ///////end document create
+        ///adit report create
+        $audit_report = array("company_id"=>"$status->id","auditreport_reg_fiscal"=>"$request->fiscal_year","auditreport_comments"=>"New Created Account","auditreport_fiscal"=>"0000");
+        Auditreport::create($audit_report);
+        ///audit report end
         if ($status) {
             $request->session()->flash('success', 'Register Successfully');
         } else {

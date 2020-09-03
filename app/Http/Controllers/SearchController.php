@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Auditreport;
 use App\CompanyInfo;
 use App\Documentreport;
 use App\Namechange;
@@ -62,6 +63,26 @@ class SearchController extends Controller
            
            }
           
+           }
+           public function audit(Request $request){
+            $data=Setdate::first();
+            if($data==null){
+                return view('setting.setdate');
+            }
+            if($request->status=="audited"){
+               $search = Auditreport::Join('company_infos','auditreports.company_id','=','company_infos.id')->select('company_infos.name','company_infos.contact_no','auditreports.*')->where('auditreport_fiscal', '=', "$data->fiscal")->where('auditreport_reg_fiscal', '!=', "$data->fiscal")->where('company_infos.name','like',"$request->name%")->paginate(10);
+               return view('report.audit')->with('audit',$search)->with('date',$data);
+            }
+            if($request->status=="not_audited"){
+                $search = Auditreport::Join('company_infos','auditreports.company_id','=','company_infos.id')->select('company_infos.name','company_infos.contact_no','auditreports.*')->where('auditreport_fiscal', '!=', "$data->fiscal")->where('auditreport_reg_fiscal', '!=', "$data->fiscal")->where('company_infos.name','like',"$request->name%")->paginate(10);
+                return view('report.audit')->with('audit',$search)->with('date',$data);
+          
+            }
+                //$search = DB::table('company_infos')->leftJoin('renews', 'company_infos.id', '=', 'renews.company_id')->get();
+                $search = Auditreport::Join('company_infos','auditreports.company_id','=','company_infos.id')->select('company_infos.name','company_infos.contact_no','auditreports.*')->where('auditreport_reg_fiscal', '!=', "$data->fiscal")->where('company_infos.name','like',"$request->name%")->paginate(10);
+                 //$search =CompanyInfo::with(['renew'])->where('fiscal_year','!=',"$data->fiscal")->where('name','like',"$request->name%")->paginate(10);
+                //$search=Renew::paginate(10);
+                return view('report.audit')->with('audit',$search)->with('date',$data);
            }
            public function renew(Request $request){
             $data=Setdate::first();

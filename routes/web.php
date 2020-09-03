@@ -46,7 +46,8 @@ Route::post('documetreport/edit/{id}','DocumentreportController@edit')->name('do
 Route::resource('setdate','SetdateController')->middleware('auth');
 Route::any('search/renew', 'SearchController@renew')->name('renew.search')->middleware('auth');
 
-
+Route::resource('audit','AuditController')->middleware('auth');
+Route::any('search/audit', 'SearchController@audit')->name('audit.search')->middleware('auth');
 
 
 Route::any('dash', 'SearchController@dash')->name('dash');

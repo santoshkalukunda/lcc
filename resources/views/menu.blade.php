@@ -51,7 +51,7 @@
             </a>
             <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
             <a class="dropdown-item menu" href="{{route('documentreport.index')}}">Document</a>
-                <a class="dropdown-item menu" href="">Audit</a>
+                <a class="dropdown-item menu" href="{{route('audit.index')}}">Audit</a>
             <a class="dropdown-item menu" href="{{route('renew.index')}}">Renew</a>
                 <a class="dropdown-item menu" href="{{route('namechange.index')}}">Name Change</a>
             </div>

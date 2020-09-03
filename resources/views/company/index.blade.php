@@ -46,7 +46,7 @@
                             <th scope="col">Cantact No.</th>
                             <th scope="col">Total Share</th>
 
-                            <th colspan="5" scope="col">Action</th>
+                            <th colspan="7" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,7 +54,7 @@
                             @foreach ($company_data as $item)
                                 <tr>
 
-                                    <td>{{ $item->name }}</td>
+                                    <td><a href="{{ route('company.show', $item->id) }}">{{ $item->name }}</a></td>
                                     <td>{{ $item->reg_no }}</td>
                                     <td>{{ $item->reg_date }}</td>
                                     <td>{{ $item->fiscal_year }}</td>
@@ -70,12 +70,18 @@
                                                 class="fa fa-file btn btn-info btn-sm" data-toggle="tooltip"
                                                 data-placement="bottom" title="Document"></i></a></td>
                                     <td><a href="{{ route('shareholder.show', $item->id) }}"><i
-                                                class="fa fa-users btn btn-success btn-sm" data-toggle="tooltip"
+                                                class="fa fa-users btn btn-warning btn-sm" data-toggle="tooltip"
                                                 data-placement="bottom" title="Shareholder"></i></a></td>
                                     <td><a href="{{ route('renew.show', $item->id) }}"><i
                                                 class="fa fa-redo btn btn-success btn-sm" data-toggle="tooltip"
                                                 data-placement="bottom" title="Renew"></i></a></td>
-                                    <td>
+                                        <td><a href="{{ route('audit.show', $item->id) }}"><i
+                                            class="fa fa-book btn btn-info btn-sm" data-toggle="tooltip"
+                                            data-placement="bottom" title="Audit"></i></a></td>
+                                    <td><a href="{{ route('namechange.show', $item->id) }}"><i
+                                        class="fa fa-address-card btn btn-secondary btn-sm" data-toggle="tooltip"
+                                        data-placement="bottom" title="Name Change"></i></a></td>
+                            <td>
                                         <form method="post" action="{{ route('company.destroy', $item->id) }}">
                                             @csrf
                                             @method('delete')

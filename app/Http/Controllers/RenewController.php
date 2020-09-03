@@ -104,9 +104,9 @@ class RenewController extends Controller
      */
     public function update(Request $request, $renewreport)
     {
-        $previouscomments = Renewreport::where('company_id', '=', $renewreport)->first();
+        $previouscomments = Renewreport::where('id', '=', $renewreport)->first();
         $data['renewreport_comments'] = $request->renew_comments . "</br> <b>" . '(' . Auth::user()->name . ')' . "</b></br>" . date("Y-m-d h:i:sa") . "<hr>" . $previouscomments->renewreport_comments;
-        Renewreport::where('company_id', '=', $renewreport)->update($data);
+        Renewreport::where('id', '=', $renewreport)->update($data);
         return redirect()->back();
     }
 
@@ -118,11 +118,14 @@ class RenewController extends Controller
      */
     public function destroy(Renew $renew)
     {
+         ////not delete for audit report relationshif with audit model 
         $count=Renewreport::where('renew_id', '=', $renew->id)->count();
         if($count>0){
             $renew_report = array("renewreport_fiscal" => "0000", "renew_id" => null);
             Renewreport::where('renew_id', '=', $renew->id)->update($renew_report);
         }
+        //end not delete for audit report relationshif with audit model 
+        
         $renew->delete();
         return redirect()->back()->with('success', 'Record Deleted');
     }

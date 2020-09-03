@@ -36,12 +36,20 @@ class CompanyInfo extends Model
     }
     public function renewreport()
     {
-        return $this->hasOne('App\Renewreport', 'company_id')->withDefault(
+        return $this->hasOne('App\Renewreport', 'company_id') /* ->withDefault(
             [
                 'renewreport_fiscal' => null,
                 'renewreport_comments' => null,
                 'renew_id' => null,
             ]
-        );
+        )*/;
+    }
+    public function audit()
+    {
+        return $this->hasMany('App\Audit', 'company_id');
+    }
+    public function auditreport()
+    {
+        return $this->hasOne('App\Auditreport', 'company_id');
     }
 }
