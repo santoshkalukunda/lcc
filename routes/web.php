@@ -55,5 +55,3 @@ Route::any('search/renew', 'SearchController@renew')->name('renew.search')->midd
 Route::resource('audit','AuditController')->middleware('auth');
 Route::any('search/audit', 'SearchController@audit')->name('audit.search')->middleware('auth');
 
-
-Route::any('dash', 'SearchController@dash')->name('dash');

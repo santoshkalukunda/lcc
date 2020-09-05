@@ -60,13 +60,11 @@ class CompanyInfoController extends Controller
         ///audit report end
         if ($status) {
             $request->session()->flash('success', 'Register Successfully');
-        } else {
-            $request->session()->flash('error', 'While Rigistering Company');
-        }
+        } 
         // $currentUser = Auth::user();
         // $currentUser->companies()->create($request->all());
 
-        return redirect()->back();
+        return redirect(route('company.show', $status->id));
     }
 
     /**

@@ -1,7 +1,9 @@
 @section('sidemenu')
 
 <li>
-  <a class="active" href="{{ route('company.show', $companyInfo) }}"><i class="sidebar-item-icon fa fa-university"></i><span class="nav-label">{{ $companyInfo->name }}</span></a>
+  <a class="active" href="{{ route('company.show', $companyInfo) }}"><i class="sidebar-item-icon fa fa-university"></i><span class="nav-label font-bold">@php
+      echo wordwrap($companyInfo->name,20,"<br>\n");
+  @endphp </span></a>
 </li>
 <li>
     <a href="{{ route('document.show', $companyInfo) }}"><i class="sidebar-item-icon fa fa-file"></i>

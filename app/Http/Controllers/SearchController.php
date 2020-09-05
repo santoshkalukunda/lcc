@@ -110,9 +110,7 @@ class SearchController extends Controller
            }
 
     
-     function dash(){
-         return view('dashboard');
-     }
+
      
   
 }
