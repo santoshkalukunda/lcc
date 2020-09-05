@@ -21,6 +21,12 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('home', 'HomeController@index')->name('home');
+Route::get('list','UserListController@index')->name('list.index');
+Route::post('destroy/{id}','UserListController@destroy')->name('user_destroy');
+Route::get('cahngepassword','UserListController@changepassword')->name('user_changepassword');
+Route::post('cahngepassword','UserListController@changepasswordupdate')->name('user_changepassword_update');
+
+
 Route::get('home/search', 'HomeController@search')->name('live_search.action');
 Route::resource('company', 'CompanyInfoController')->middleware('auth');
 Route::resource('document', 'DocumentController')->middleware('auth');

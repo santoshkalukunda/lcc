@@ -1,5 +1,8 @@
-@extends('layouts.app')
-
+@extends('dashboard')
+@include('sidemenu')
+@section('title')
+    Register User
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

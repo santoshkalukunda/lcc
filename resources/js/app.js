@@ -7,6 +7,9 @@ global.$ = global.jquery = require('jquery');
 require("../../node_modules/bootstrap/dist/js/bootstrap");
 require("../script/nepalidate");
 require("../script/script");
+require("../script/app.min.js");
+require("../script/metisMenu.min.js");
+require("../script/jquery.slimscroll.min.js");
 
 window.Vue = require('vue');
 

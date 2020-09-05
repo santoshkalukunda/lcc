@@ -100,6 +100,12 @@ __webpack_require__(/*! ../script/nepalidate */ "./resources/script/nepalidate.j
 
 __webpack_require__(/*! ../script/script */ "./resources/script/script.js");
 
+__webpack_require__(/*! ../script/app.min.js */ "./resources/script/app.min.js");
+
+__webpack_require__(/*! ../script/metisMenu.min.js */ "./resources/script/metisMenu.min.js");
+
+__webpack_require__(/*! ../script/jquery.slimscroll.min.js */ "./resources/script/jquery.slimscroll.min.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -226,6 +232,494 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/script/app.min.js":
+/*!*************************************!*\
+  !*** ./resources/script/app.min.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {var APP;
+(APP = new (APP = function APP() {
+  this.ASSETS_PATH = "./assets/", this.SERVER_PATH = this.ASSETS_PATH + "demo/server/", this.is_touch_device = function () {
+    return !!("ontouchstart" in window) || !!("onmsgesturechange" in window);
+  };
+})()).UI = {
+  scrollTop: 0
+}, $(window).on("load", function () {
+  setTimeout(function () {
+    $(".preloader-backdrop").fadeOut(200), $("body").addClass("has-animation");
+  }, 0);
+}), $(window).on("load resize scroll", function () {
+  $(this).width() < 992 && $("body").addClass("sidebar-mini");
+}), $(function () {
+  function e(o) {
+    27 == o.which && ($("body").removeClass("fullscreen-mode"), $(".ibox-fullscreen").removeClass("ibox-fullscreen"), $(window).off("keydown", e));
+  }
+
+  $(".metismenu").metisMenu(), $('[data-toggle="tooltip"]').tooltip(), $('[data-toggle="popover"]').popover(), $(".scroller").each(function () {
+    $(this).slimScroll({
+      height: $(this).attr("data-height"),
+      color: $(this).attr("data-color"),
+      railOpacity: "0.9"
+    });
+  }), $(".theme-config-toggle").on("click", function () {
+    $(this).parents(".theme-config").toggleClass("opened");
+  }), $(".js-sidebar-toggler").click(function () {
+    $("body").toggleClass("sidebar-mini");
+  }), $("#_fixedlayout").change(function () {
+    $(this).is(":checked") ? ($("body").addClass("fixed-layout"), $("#sidebar-collapse").slimScroll({
+      height: "100%",
+      railOpacity: "0.9"
+    })) : ($("#sidebar-collapse").slimScroll({
+      destroy: !0
+    }).css({
+      overflow: "visible",
+      height: "auto"
+    }), $("body").removeClass("fixed-layout"));
+  }), $("#_fixedNavbar").change(function () {
+    $(this).is(":checked") ? $("body").addClass("fixed-navbar") : $("body").removeClass("fixed-navbar");
+  }), $("[name='layout-style']").change(function () {
+    +$(this).val() ? $("body").addClass("boxed-layout") : $("body").removeClass("boxed-layout");
+  }), $(".color-skin-box input:radio").change(function () {
+    var e = $(this).val();
+    "default" != e ? $("#theme-style").length ? $("#theme-style").attr("href", "assets/css/themes/" + e + ".css") : $("head").append("<link href='assets/css/themes/" + e + ".css' rel='stylesheet' id='theme-style' >") : $("#theme-style").remove();
+  }), $(window).scroll(function () {
+    $(this).scrollTop() > APP.UI.scrollTop ? $(".to-top").fadeIn() : $(".to-top").fadeOut();
+  }), $(".to-top").click(function (e) {
+    $("html, body").animate({
+      scrollTop: 0
+    }, 500);
+  }), $(".ibox-collapse").click(function () {
+    $(this).closest("div.ibox").toggleClass("collapsed-mode").children(".ibox-body").slideToggle(200);
+  }), $(".ibox-remove").click(function () {
+    $(this).closest("div.ibox").remove();
+  }), $(".fullscreen-link").click(function () {
+    $("body").hasClass("fullscreen-mode") ? ($("body").removeClass("fullscreen-mode"), $(this).closest("div.ibox").removeClass("ibox-fullscreen"), $(window).off("keydown", e)) : ($("body").addClass("fullscreen-mode"), $(this).closest("div.ibox").addClass("ibox-fullscreen"), $(window).on("keydown", e));
+  }), $.fn.backdrop = function () {
+    return $(this).toggleClass("shined"), $("body").toggleClass("has-backdrop"), $(this);
+  }, $(".backdrop").click(function () {
+    $("body").removeClass("has-backdrop"), $(".shined").removeClass("shined");
+  });
+}), $(function () {
+  $.fn.timepicker && ($.fn.timepicker.defaults = $.extend(!0, {}, $.fn.timepicker.defaults, {
+    icons: {
+      up: "fa fa-angle-up",
+      down: "fa fa-angle-down"
+    }
+  }));
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./resources/script/jquery.slimscroll.min.js":
+/*!***************************************************!*\
+  !*** ./resources/script/jquery.slimscroll.min.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(jQuery) {/*! Copyright (c) 2011 Piotr Rochala (http://rocha.la)
+ * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
+ * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
+ *
+ * Version: 1.3.8
+ *
+ */
+(function (e) {
+  e.fn.extend({
+    slimScroll: function slimScroll(f) {
+      var a = e.extend({
+        width: "auto",
+        height: "250px",
+        size: "7px",
+        color: "#000",
+        position: "right",
+        distance: "1px",
+        start: "top",
+        opacity: .4,
+        alwaysVisible: !1,
+        disableFadeOut: !1,
+        railVisible: !1,
+        railColor: "#333",
+        railOpacity: .2,
+        railDraggable: !0,
+        railClass: "slimScrollRail",
+        barClass: "slimScrollBar",
+        wrapperClass: "slimScrollDiv",
+        allowPageScroll: !1,
+        wheelStep: 20,
+        touchScrollStep: 200,
+        borderRadius: "7px",
+        railBorderRadius: "7px"
+      }, f);
+      this.each(function () {
+        function v(d) {
+          if (r) {
+            d = d || window.event;
+            var c = 0;
+            d.wheelDelta && (c = -d.wheelDelta / 120);
+            d.detail && (c = d.detail / 3);
+            e(d.target || d.srcTarget || d.srcElement).closest("." + a.wrapperClass).is(b.parent()) && n(c, !0);
+            d.preventDefault && !k && d.preventDefault();
+            k || (d.returnValue = !1);
+          }
+        }
+
+        function n(d, g, e) {
+          k = !1;
+          var f = b.outerHeight() - c.outerHeight();
+          g && (g = parseInt(c.css("top")) + d * parseInt(a.wheelStep) / 100 * c.outerHeight(), g = Math.min(Math.max(g, 0), f), g = 0 < d ? Math.ceil(g) : Math.floor(g), c.css({
+            top: g + "px"
+          }));
+          l = parseInt(c.css("top")) / (b.outerHeight() - c.outerHeight());
+          g = l * (b[0].scrollHeight - b.outerHeight());
+          e && (g = d, d = g / b[0].scrollHeight * b.outerHeight(), d = Math.min(Math.max(d, 0), f), c.css({
+            top: d + "px"
+          }));
+          b.scrollTop(g);
+          b.trigger("slimscrolling", ~~g);
+          w();
+          p();
+        }
+
+        function x() {
+          u = Math.max(b.outerHeight() / b[0].scrollHeight * b.outerHeight(), 30);
+          c.css({
+            height: u + "px"
+          });
+          var a = u == b.outerHeight() ? "none" : "block";
+          c.css({
+            display: a
+          });
+        }
+
+        function w() {
+          x();
+          clearTimeout(B);
+          l == ~~l ? (k = a.allowPageScroll, C != l && b.trigger("slimscroll", 0 == ~~l ? "top" : "bottom")) : k = !1;
+          C = l;
+          u >= b.outerHeight() ? k = !0 : (c.stop(!0, !0).fadeIn("fast"), a.railVisible && m.stop(!0, !0).fadeIn("fast"));
+        }
+
+        function p() {
+          a.alwaysVisible || (B = setTimeout(function () {
+            a.disableFadeOut && r || y || z || (c.fadeOut("slow"), m.fadeOut("slow"));
+          }, 1E3));
+        }
+
+        var r,
+            y,
+            z,
+            B,
+            A,
+            u,
+            l,
+            C,
+            k = !1,
+            b = e(this);
+
+        if (b.parent().hasClass(a.wrapperClass)) {
+          var q = b.scrollTop(),
+              c = b.siblings("." + a.barClass),
+              m = b.siblings("." + a.railClass);
+          x();
+
+          if (e.isPlainObject(f)) {
+            if ("height" in f && "auto" == f.height) {
+              b.parent().css("height", "auto");
+              b.css("height", "auto");
+              var h = b.parent().parent().height();
+              b.parent().css("height", h);
+              b.css("height", h);
+            } else "height" in f && (h = f.height, b.parent().css("height", h), b.css("height", h));
+
+            if ("scrollTo" in f) q = parseInt(a.scrollTo);else if ("scrollBy" in f) q += parseInt(a.scrollBy);else if ("destroy" in f) {
+              c.remove();
+              m.remove();
+              b.unwrap();
+              return;
+            }
+            n(q, !1, !0);
+          }
+        } else if (!(e.isPlainObject(f) && "destroy" in f)) {
+          a.height = "auto" == a.height ? b.parent().height() : a.height;
+          q = e("<div></div>").addClass(a.wrapperClass).css({
+            position: "relative",
+            overflow: "hidden",
+            width: a.width,
+            height: a.height
+          });
+          b.css({
+            overflow: "hidden",
+            width: a.width,
+            height: a.height
+          });
+          var m = e("<div></div>").addClass(a.railClass).css({
+            width: a.size,
+            height: "100%",
+            position: "absolute",
+            top: 0,
+            display: a.alwaysVisible && a.railVisible ? "block" : "none",
+            "border-radius": a.railBorderRadius,
+            background: a.railColor,
+            opacity: a.railOpacity,
+            zIndex: 90
+          }),
+              c = e("<div></div>").addClass(a.barClass).css({
+            background: a.color,
+            width: a.size,
+            position: "absolute",
+            top: 0,
+            opacity: a.opacity,
+            display: a.alwaysVisible ? "block" : "none",
+            "border-radius": a.borderRadius,
+            BorderRadius: a.borderRadius,
+            MozBorderRadius: a.borderRadius,
+            WebkitBorderRadius: a.borderRadius,
+            zIndex: 99
+          }),
+              h = "right" == a.position ? {
+            right: a.distance
+          } : {
+            left: a.distance
+          };
+          m.css(h);
+          c.css(h);
+          b.wrap(q);
+          b.parent().append(c);
+          b.parent().append(m);
+          a.railDraggable && c.bind("mousedown", function (a) {
+            var b = e(document);
+            z = !0;
+            t = parseFloat(c.css("top"));
+            pageY = a.pageY;
+            b.bind("mousemove.slimscroll", function (a) {
+              currTop = t + a.pageY - pageY;
+              c.css("top", currTop);
+              n(0, c.position().top, !1);
+            });
+            b.bind("mouseup.slimscroll", function (a) {
+              z = !1;
+              p();
+              b.unbind(".slimscroll");
+            });
+            return !1;
+          }).bind("selectstart.slimscroll", function (a) {
+            a.stopPropagation();
+            a.preventDefault();
+            return !1;
+          });
+          m.hover(function () {
+            w();
+          }, function () {
+            p();
+          });
+          c.hover(function () {
+            y = !0;
+          }, function () {
+            y = !1;
+          });
+          b.hover(function () {
+            r = !0;
+            w();
+            p();
+          }, function () {
+            r = !1;
+            p();
+          });
+          b.bind("touchstart", function (a, b) {
+            a.originalEvent.touches.length && (A = a.originalEvent.touches[0].pageY);
+          });
+          b.bind("touchmove", function (b) {
+            k || b.originalEvent.preventDefault();
+            b.originalEvent.touches.length && (n((A - b.originalEvent.touches[0].pageY) / a.touchScrollStep, !0), A = b.originalEvent.touches[0].pageY);
+          });
+          x();
+          "bottom" === a.start ? (c.css({
+            top: b.outerHeight() - c.outerHeight()
+          }), n(0, !0)) : "top" !== a.start && (n(e(a.start).position().top, null, !0), a.alwaysVisible || c.hide());
+          window.addEventListener ? (this.addEventListener("DOMMouseScroll", v, !1), this.addEventListener("mousewheel", v, !1)) : document.attachEvent("onmousewheel", v);
+        }
+      });
+      return this;
+    }
+  });
+  e.fn.extend({
+    slimscroll: e.fn.slimScroll
+  });
+})(jQuery);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./resources/script/metisMenu.min.js":
+/*!*******************************************!*\
+  !*** ./resources/script/metisMenu.min.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(jQuery) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/*
+ * metismenu - v2.7.2
+ * A jQuery menu plugin
+ * https://github.com/onokumus/metismenu#readme
+ *
+ * Made by Osman Nuri Okumus <onokumus@gmail.com> (https://github.com/onokumus)
+ * Under MIT License
+ */
+!function (n, i) {
+  if (true) !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (i),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));else {}
+}(this, function (n) {
+  "use strict";
+
+  var i;
+  i = n, i && i.__esModule;
+  var t = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (n) {
+    return _typeof(n);
+  } : function (n) {
+    return n && "function" == typeof Symbol && n.constructor === Symbol && n !== Symbol.prototype ? "symbol" : _typeof(n);
+  };
+
+  var e = function (n) {
+    var i = !1;
+
+    function t(i) {
+      var t = this,
+          s = !1;
+      return n(this).one(e.TRANSITION_END, function () {
+        s = !0;
+      }), setTimeout(function () {
+        s || e.triggerTransitionEnd(t);
+      }, i), this;
+    }
+
+    var e = {
+      TRANSITION_END: "mmTransitionEnd",
+      triggerTransitionEnd: function triggerTransitionEnd(t) {
+        n(t).trigger(i.end);
+      },
+      supportsTransitionEnd: function supportsTransitionEnd() {
+        return Boolean(i);
+      }
+    };
+    return i = !window.QUnit && {
+      end: "transitionend"
+    }, n.fn.mmEmulateTransitionEnd = t, e.supportsTransitionEnd() && (n.event.special[e.TRANSITION_END] = {
+      bindType: i.end,
+      delegateType: i.end,
+      handle: function handle(i) {
+        if (n(i.target).is(this)) return i.handleObj.handler.apply(this, arguments);
+      }
+    }), e;
+  }(jQuery);
+
+  !function (n) {
+    var i = "metisMenu",
+        s = "metisMenu",
+        o = "." + s,
+        a = n.fn[i],
+        r = {
+      toggle: !0,
+      preventDefault: !0,
+      activeClass: "active",
+      collapseClass: "collapse",
+      collapseInClass: "in",
+      collapsingClass: "collapsing",
+      triggerElement: "a",
+      parentTrigger: "li",
+      subMenu: "ul"
+    },
+        l = {
+      SHOW: "show" + o,
+      SHOWN: "shown" + o,
+      HIDE: "hide" + o,
+      HIDDEN: "hidden" + o,
+      CLICK_DATA_API: "click" + o + ".data-api"
+    },
+        c = function () {
+      function i(n, t) {
+        !function (n, i) {
+          if (!(n instanceof i)) throw new TypeError("Cannot call a class as a function");
+        }(this, i), this._element = n, this._config = this._getConfig(t), this._transitioning = null, this.init();
+      }
+
+      return i.prototype.init = function () {
+        var i = this;
+        n(this._element).find(this._config.parentTrigger + "." + this._config.activeClass).has(this._config.subMenu).children(this._config.subMenu).attr("aria-expanded", !0).addClass(this._config.collapseClass + " " + this._config.collapseInClass), n(this._element).find(this._config.parentTrigger).not("." + this._config.activeClass).has(this._config.subMenu).children(this._config.subMenu).attr("aria-expanded", !1).addClass(this._config.collapseClass), n(this._element).find(this._config.parentTrigger).has(this._config.subMenu).children(this._config.triggerElement).on(l.CLICK_DATA_API, function (t) {
+          var e = n(this),
+              s = e.parent(i._config.parentTrigger),
+              o = s.siblings(i._config.parentTrigger).children(i._config.triggerElement),
+              a = s.children(i._config.subMenu);
+          i._config.preventDefault && t.preventDefault(), "true" !== e.attr("aria-disabled") && (s.hasClass(i._config.activeClass) ? (e.attr("aria-expanded", !1), i._hide(a)) : (i._show(a), e.attr("aria-expanded", !0), i._config.toggle && o.attr("aria-expanded", !1)), i._config.onTransitionStart && i._config.onTransitionStart(t));
+        });
+      }, i.prototype._show = function (i) {
+        if (!this._transitioning && !n(i).hasClass(this._config.collapsingClass)) {
+          var t = this,
+              s = n(i),
+              o = n.Event(l.SHOW);
+
+          if (s.trigger(o), !o.isDefaultPrevented()) {
+            s.parent(this._config.parentTrigger).addClass(this._config.activeClass), this._config.toggle && this._hide(s.parent(this._config.parentTrigger).siblings().children(this._config.subMenu + "." + this._config.collapseInClass).attr("aria-expanded", !1)), s.removeClass(this._config.collapseClass).addClass(this._config.collapsingClass).height(0), this.setTransitioning(!0);
+
+            var a = function a() {
+              t._config && t._element && (s.removeClass(t._config.collapsingClass).addClass(t._config.collapseClass + " " + t._config.collapseInClass).height("").attr("aria-expanded", !0), t.setTransitioning(!1), s.trigger(l.SHOWN));
+            };
+
+            e.supportsTransitionEnd() ? s.height(s[0].scrollHeight).one(e.TRANSITION_END, a).mmEmulateTransitionEnd(350) : a();
+          }
+        }
+      }, i.prototype._hide = function (i) {
+        if (!this._transitioning && n(i).hasClass(this._config.collapseInClass)) {
+          var t = this,
+              s = n(i),
+              o = n.Event(l.HIDE);
+
+          if (s.trigger(o), !o.isDefaultPrevented()) {
+            s.parent(this._config.parentTrigger).removeClass(this._config.activeClass), s.height(s.height())[0].offsetHeight, s.addClass(this._config.collapsingClass).removeClass(this._config.collapseClass).removeClass(this._config.collapseInClass), this.setTransitioning(!0);
+
+            var a = function a() {
+              t._config && t._element && (t._transitioning && t._config.onTransitionEnd && t._config.onTransitionEnd(), t.setTransitioning(!1), s.trigger(l.HIDDEN), s.removeClass(t._config.collapsingClass).addClass(t._config.collapseClass).attr("aria-expanded", !1));
+            };
+
+            e.supportsTransitionEnd() ? 0 == s.height() || "none" == s.css("display") ? a() : s.height(0).one(e.TRANSITION_END, a).mmEmulateTransitionEnd(350) : a();
+          }
+        }
+      }, i.prototype.setTransitioning = function (n) {
+        this._transitioning = n;
+      }, i.prototype.dispose = function () {
+        n.removeData(this._element, s), n(this._element).find(this._config.parentTrigger).has(this._config.subMenu).children(this._config.triggerElement).off("click"), this._transitioning = null, this._config = null, this._element = null;
+      }, i.prototype._getConfig = function (i) {
+        return i = n.extend({}, r, i);
+      }, i._jQueryInterface = function (e) {
+        return this.each(function () {
+          var o = n(this),
+              a = o.data(s),
+              l = n.extend({}, r, o.data(), "object" === (void 0 === e ? "undefined" : t(e)) && e);
+
+          if (!a && /dispose/.test(e) && this.dispose(), a || (a = new i(this, l), o.data(s, a)), "string" == typeof e) {
+            if (void 0 === a[e]) throw new Error('No method named "' + e + '"');
+            a[e]();
+          }
+        });
+      }, i;
+    }();
+
+    n.fn[i] = c._jQueryInterface, n.fn[i].Constructor = c, n.fn[i].noConflict = function () {
+      return n.fn[i] = a, c._jQueryInterface;
+    };
+  }(jQuery);
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 

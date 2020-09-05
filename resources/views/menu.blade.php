@@ -32,16 +32,7 @@
                 <a class="dropdown-item menu" href="{{ route('company.create') }}">Register</a>
                 <a class="dropdown-item menu" href="{{ route('company.index') }}">List</a>
                 <a class="dropdown-item menu" href="{{ route('company.report') }}">Advance Search </a>
-            </div>
-        </li>
-        <li class="nav-item dropdown menu">
-            <a class="nav-link dropdown-toggle text-white " href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Shareholder
-            </a>
-            <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item menu" href="{{ route('shareholder-search') }}">Search</a>
-
+                <a class="dropdown-item menu" href="{{ route('shareholder-search') }}">Shareholder Search</a>
             </div>
         </li>
         <li class="nav-item dropdown menu">
@@ -50,12 +41,12 @@
                 Report
             </a>
             <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item menu" href="{{route('documentreport.index')}}">Document</a>
-                <a class="dropdown-item menu" href="{{route('audit.index')}}">Audit</a>
-            <a class="dropdown-item menu" href="{{route('renew.index')}}">Renew</a>
-                <a class="dropdown-item menu" href="{{route('namechange.index')}}">Name Change</a>
+                <a class="dropdown-item menu" href="{{ route('documentreport.index') }}">Document</a>
+                <a class="dropdown-item menu" href="{{ route('audit.index') }}">Audit</a>
+                <a class="dropdown-item menu" href="{{ route('renew.index') }}">Renew</a>
+                <a class="dropdown-item menu" href="{{ route('namechange.index') }}">Name Change</a>
             </div>
-            
+
         </li>
         <li class="nav-item dropdown menu">
             <a class="nav-link dropdown-toggle text-white " href="#" id="navbarDropdown" role="button"
@@ -63,10 +54,22 @@
                 Setting
             </a>
             <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item menu" href="{{route('setdate.index')}}">Set Date</a>
-             
+                <a class="dropdown-item menu" href="{{ route('setdate.index') }}">Set Date</a>
+
             </div>
         </li>
-        
+        <li class="nav-item dropdown menu">
+            <a class="nav-link dropdown-toggle text-white " href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Users
+            </a>
+            <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item menu" href="{{ route('register') }}">Register</a>
+                <a class="dropdown-item menu" href="{{ route('list.index') }}">List</a>
+
+            </div>
+        </li>
+
     </ul>
+
 </h6>

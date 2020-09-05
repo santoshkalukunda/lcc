@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('dashboard')
+@include('sidemenu')
 @section('title')
     Document Report Dashboard
 @endsection
@@ -20,7 +21,7 @@
 
                         <div class="col-md-3 form-group">
                             <input name="current_date" type="text" id="nepali-datepicker-1" class="nepali-datepicker"
-                                placeholder="Select Nepali Date" hidden />
+                                placeholder="Select Nepali Date" hidden/>
                             Name<input type="text" class="form-control" name="name" id="name" placeholder="Company Name">
                         </div>
 
@@ -67,14 +68,15 @@
                                     <td><a href="{{ route('document.show', $item->company_id) }}">{{ $item->name }}</a></td>
                                     <td>{{ $item->contact_no }}</td>
                                     <td>
-
-                                        <?php if ($current_date != null) {
+                                        @php
+                                        
+                                        if ($current_date != null) {
                                         $date1 = date_create($item->reg_date);
                                         $date2 = date_create($current_date);
                                         $diff = date_diff($date1, $date2);
-                                        $d = $diff->format('%a days');
-                                        echo $d;
-                                        } ?>
+                                        echo $diff->format('%a days');
+                                        } 
+                                        @endphp
                                     </td>
                                     <td>{{ $item->status }}</td>
                                     <td>
@@ -98,7 +100,7 @@
                                             </div>
                                             <textarea name="comments" class="form-control" rows="3" cols="35"
                                                 placeholder="Comments Here.." required>
-                                                          </textarea>
+                                                                  </textarea>
                                             <input type="submit" class="btn btn-success mt-1">
                                         </form>
                 </div>
@@ -112,11 +114,11 @@
         @endisset
         </tbody>
         </table>
-     @isset($documentreport)
-     {{$documentreport->links() }}
-     @endisset
-        
-        
+        @isset($documentreport)
+            {{ $documentreport->links() }}
+        @endisset
+
+
     </div>
     </div>
     </div>

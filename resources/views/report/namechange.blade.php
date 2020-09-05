@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('dashboard')
+@include('sidemenu')
 @section('title')
     Company Name Change Report
 @endsection

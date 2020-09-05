@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('dashboard')
+@include('sidemenu')
 @section('title')
     Add Commpany
 @endsection
 @section('content')
-  
+<div class="row">
 <div class="col-md-10">
         <div class="card">
             @if (Session::has('success'))
@@ -146,5 +147,5 @@
             </div>
         </div>
     </div>
-
+</div>
 @endsection

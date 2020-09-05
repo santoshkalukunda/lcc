@@ -1,14 +1,12 @@
-@extends('layouts.app')
+@extends('dashboard')
 @section('title')
     Sharehoder Register
 @endsection
 @section('content')
+<x-company-sidebar :id="$companyInfo->id"></x-company-sidebar>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
-                <x-company-sidebar :id="$companyInfo->id"></x-company-sidebar>
-            </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     @if (Session::has('success'))
                         <div class="bg-success text-white p-2">

@@ -1,15 +1,12 @@
-@extends('layouts.app')
+@extends('dashboard')
 @section('title')
     Company Document
 @endsection
 @section('content')
-
+<x-company-sidebar :id="$company_id"></x-company-sidebar>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
-                <x-company-sidebar :id="$company_id"></x-company-sidebar>
-            </div>
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Document </div>
                     <div class="card-body">

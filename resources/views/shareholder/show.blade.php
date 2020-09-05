@@ -1,16 +1,12 @@
-@extends('layouts.app')
+@extends('dashboard')
 @section('title')
     Sharholder List
 @endsection
 @section('content')
-
+<x-company-sidebar :id="$company_id"></x-company-sidebar>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
-                <x-company-sidebar :id="$company_id"></x-company-sidebar>
-            </div>
-
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Shareholder </div>
                     <div class="card-body">
@@ -30,7 +26,7 @@
                         <div class="row mt-2">
                             @isset($shareholder)
                                 @foreach ($shareholder as $item)
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <a href="{{ route('shareholder.edit', $item->id) }}"
                                             class="text-decoration-none text-dark">
                                             <div class="card-slip">

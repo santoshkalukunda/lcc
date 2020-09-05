@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('dashboard')
+@include('sidemenu')
 @section('title')
     Set Date
 @endsection
 @section('content')
-    <div class="col-md-10">
+    <div class="col-md-12">
         <div class="card">
             @if (Session::has('success'))
                 <div class="bg-success text-white p-2">
