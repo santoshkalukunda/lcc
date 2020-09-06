@@ -51,22 +51,21 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <form action="{{ route('namechange.update', $item->id) }}" method="POST">
+                                                <form action="{{ route('namechange.update', $item->id)=>'ajax' }}" method="POST">
                                                     @csrf
                                                     @method('put')
                                                     <div class="row">
                                                         <label for="" class="ml-2 mr-2">Status</label> 
                                                         
-                                                            <select name="status" >
+                                                            <select name="status" id="status">
                                                                 <option value="incomplete">Incomplete</option>
                                                                 <option value="complete">Complete</option>
                                                             </select>
                                                        
                                                     </div>
-                                                    <textarea name="comments" class="form-control" rows="3" cols="35"
-                                                        placeholder="Comments Here.." required>
+                                                    <textarea name="comments" id="comments" class="form-control" rows="3" cols="35"  required>
                                                                   </textarea>
-                                                    <input type="submit" class="btn btn-success mt-1">
+                                                    <input type="submit" class="btn btn-success mt-1" id="update_data">
                                                 </form>
                                             </td>
 

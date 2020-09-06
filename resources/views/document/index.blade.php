@@ -7,6 +7,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                @if (Session::has('success'))
+                <div class="bg-success text-white p-2">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
                 <div class="card">
                     <div class="card-header">Document </div>
                     <div class="card-body">

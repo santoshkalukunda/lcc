@@ -19,6 +19,10 @@
                                             class="fa fa-plus btn btn-primary"> Add</i> </a>--}}
                                     <input type="submit" class="btn btn-primary badge-pill" value="New Shareholder">
                                 </form>
+
+                            </div>
+                            <div class="col-md-2">
+                            <a href="{{ route('document.show', $company_id) }}" class="btn btn-info badge-pill">Next</a>
                             </div>
                             <div class="col-md-9 text-right"><b>Total : {{ $count }}</b></div>
                         </div>

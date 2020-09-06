@@ -39,8 +39,11 @@ class ShareholderController extends Controller
      */
     public function store(ShareholderRequest $request)
     {
-        Shareholder::create($request->all());
-        return redirect()->back()->with('success',"Shareholder Registed");
+        Shareholder::create($request->all()); 
+        //return redirect()->back()->with('success',"Shareholder Registed");
+        $shareholder=Shareholder::where('company_id','=',"$request->company_id")->latest()->paginate(6);
+        $count=Shareholder::where('company_id','=',"$request->company_id")->count();
+        return view('shareholder.show')->with('company_id', $request->company_id)->with('shareholder',$shareholder)->with('count',$count);
     }
 
     /**

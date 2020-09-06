@@ -5,14 +5,15 @@
       echo wordwrap($companyInfo->name,20,"<br>\n");
   @endphp </span></a>
 </li>
-<li>
-    <a href="{{ route('document.show', $companyInfo) }}"><i class="sidebar-item-icon fa fa-file"></i>
-        <span class="nav-label">Document</span>
-    </a>
-</li>
+
 <li>
     <a href="{{ route('shareholder.show', $companyInfo) }}"><i class="sidebar-item-icon fa fa-users"></i>
         <span class="nav-label">Shareholder</span>
+    </a>
+</li>
+<li>
+    <a href="{{ route('document.show', $companyInfo) }}"><i class="sidebar-item-icon fa fa-file"></i>
+        <span class="nav-label">Document</span>
     </a>
 </li>
 <li>

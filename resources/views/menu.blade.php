@@ -24,7 +24,7 @@
             <a class="nav-link text-white menu" href="{{ route('home') }}">Home</a>
         </li>
         <li class="nav-item dropdown menu">
-            <a class="nav-link dropdown-toggle text-white " href="#" id="navbarDropdown" role="button"
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Company
             </a>
@@ -35,19 +35,7 @@
                 <a class="dropdown-item menu" href="{{ route('shareholder-search') }}">Shareholder Search</a>
             </div>
         </li>
-        <li class="nav-item dropdown menu">
-            <a class="nav-link dropdown-toggle text-white " href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Report
-            </a>
-            <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item menu" href="{{ route('documentreport.index') }}">Document</a>
-                <a class="dropdown-item menu" href="{{ route('audit.index') }}">Audit</a>
-                <a class="dropdown-item menu" href="{{ route('renew.index') }}">Renew</a>
-                <a class="dropdown-item menu" href="{{ route('namechange.index') }}">Name Change</a>
-            </div>
-
-        </li>
+     
         <li class="nav-item dropdown menu">
             <a class="nav-link dropdown-toggle text-white " href="#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,7 +43,7 @@
             </a>
             <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item menu" href="{{ route('setdate.index') }}">Set Date</a>
-
+            <a class="dropdown-item menu" href="{{route('profile.index')}}">Company Profile</a>
             </div>
         </li>
         <li class="nav-item dropdown menu">

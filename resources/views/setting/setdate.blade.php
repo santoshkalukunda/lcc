@@ -20,14 +20,15 @@
                             Fiscal Year
                         </div>
                         <div class="col-md-8">
-                        <input type="text" class="form-control" value="" name="fiscal" id="fiscal" placeholder="YYYY">
+                            <input type="text" class="form-control" value="" name="fiscal" id="fiscal" placeholder="YYYY"
+                                required>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-2">Audit Date</div>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="nepali-datepicker-1" name="audit_date"
-                                placeholder="YYYY-MM-DD">
+                                placeholder="YYYY-MM-DD" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -36,7 +37,7 @@
                         </div>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="nepali-datepicker" name="renew_date"
-                                placeholder="YYYY-MM-DD">
+                                placeholder="YYYY-MM-DD" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -45,7 +46,7 @@
                         </div>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="nepali-datepicker-2" name="report_date"
-                                placeholder="YYYY-MM-DD">
+                                placeholder="YYYY-MM-DD" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -71,21 +72,21 @@
                                     <td>{{ $item->renew_date }}</td>
                                     <td>{{ $item->report_date }}</td>
                                     <td>
-                                    <a href="{{route('setdate.edit',$item->id)}}">
-                                        <button type="button" class="btn btn-primary" data-toggle="collapse"
-                                            data-target="#comments">Edit</button></a>
+                                        <a href="{{ route('setdate.edit', $item->id) }}">
+                                            <button type="button" class="btn btn-primary" data-toggle="collapse"
+                                                data-target="#comments">Edit</button></a>
 
-                </div>
-                </td>
 
-                </tr>
+                                    </td>
 
-                @endforeach
+                                </tr>
 
-            @endisset
-            </tbody>
-            </table>
+                            @endforeach
+
+                        @endisset
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     </div>
 @endsection

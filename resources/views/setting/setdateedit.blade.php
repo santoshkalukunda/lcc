@@ -21,14 +21,14 @@
                             Fiscal Year
                         </div>
                         <div class="col-md-8">
-                        <input type="text" class="form-control" value="{{$setdate->fiscal}}" name="fiscal" id="fiscal" placeholder="YYYY">
+                        <input type="text" class="form-control" value="{{$setdate->fiscal}}" name="fiscal" id="fiscal" placeholder="YYYY" required>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-2">Audit Date</div>
                         <div class="col-md-8">
                             <input type="text" class="form-control" value="{{$setdate->audit_date}}" id="nepali-datepicker-1" name="audit_date"
-                                placeholder="YYYY-MM-DD">
+                                placeholder="YYYY-MM-DD" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-md-8">
                             <input type="text" class="form-control" value="{{$setdate->renew_date}}" id="nepali-datepicker" name="renew_date"
-                                placeholder="YYYY-MM-DD">
+                                placeholder="YYYY-MM-DD" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-md-8">
                             <input type="text" class="form-control" value="{{$setdate->report_date}}" id="nepali-datepicker-2" name="report_date"
-                                placeholder="YYYY-MM-DD">
+                                placeholder="YYYY-MM-DD" required>
                         </div>
                     </div>
                     <div class="row form-group">

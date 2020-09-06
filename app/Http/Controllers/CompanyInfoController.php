@@ -64,7 +64,7 @@ class CompanyInfoController extends Controller
         // $currentUser = Auth::user();
         // $currentUser->companies()->create($request->all());
 
-        return redirect(route('company.show', $status->id));
+        return redirect(route('shareholder.show', $status->id));
     }
 
     /**

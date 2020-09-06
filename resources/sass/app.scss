@@ -6,6 +6,14 @@
 @import "~Bootstrap/dist/css/bootstrap.css";
 @import "~@fortawesome/fontawesome-free/css/all.css";
 @import "../css/style.css";
-@import "http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/css/nepali.datepicker.v3.2.min.css";
+@import "../css/nepali.datepicker.v3.2.min.css";
 @import "../css/main.min.css";
 @import "../../public/themify-icons/css/themify-icons.css";
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
