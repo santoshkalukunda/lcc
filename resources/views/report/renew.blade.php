@@ -14,6 +14,7 @@
                 @endif
                 <div class="card">
                     <div class="card-header">Renew</div>
+                    <div class="col-md-12 text-md-right"><b>Total Result: {{$count}}</b> </div>
                     <div class="card-body">
                     <form action="{{route('renew.search')}}" method="post">
                             @csrf
@@ -46,7 +47,6 @@
                                     <th scope="col">Company name</th>
                                     <th scope="col">Contact</th>
                                     <th scope="col">Last Renew Date</th>
-                                    <th scope="col">Fiscal Year</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Comment</th>
                                     <th scope="col">Action</th>
@@ -55,12 +55,11 @@
                             <tbody>
                                 @isset($renew)
                                     @foreach ($renew as $item)
-
-                                        <tr>
+                                   <tr class="{{$date->fiscal != $item->renewreport_fiscal ? 'table-danger' : 'default' }}">
                                             <td><a href="{{ route('renew.show', $item->company_id) }}">{{ $item->name }}</a></td>
                                             <td>{{$item->contact_no}}</td>
                                             <td>{{ $date->renew_date }}</td>
-                                            <td>{{ $date->fiscal }}</td>
+                                            
                                             <td>
                                                 {{ $date->fiscal == $item->renewreport_fiscal ? '' : 'Not'}} Renewed
                                             </td>
@@ -70,17 +69,22 @@
                                                 </div>
                                             </td>
                                             <td>
+                                                <button type="button" class="btn btn-primary" data-toggle="collapse"
+                                                data-target="#{{ 'comments' . "$item->id" }}">Comments</button>
+    
+                                            <div id="{{ 'comments' . "$item->id" }}" class="collapse">
                                                 <form action="{{route('renew.update',$item->id)}}" method="POST">
                                                     @method('put')
                                                     @csrf
                                              
-                                              <textarea name="renew_comments" class="form-control" rows="3" cols="35" placeholder="Comments here.." required>
+                                              <textarea name="renew_comments" class="form-control" rows="3" cols="25" placeholder="Comments here.." required>
                                               </textarea>
                                               <input type="submit" class="btn btn-success mt-1">
                                               </form>
+                                            </div>
+                                                
                                             </td>
                                         </tr>
-
                                     @endforeach
 
                                 @endisset

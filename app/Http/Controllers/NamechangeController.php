@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CompanyInfo;
 use App\Namechange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,10 @@ class NamechangeController extends Controller
      */
     public function index()
     {
-        $namechange=Namechange::with('company')->paginate(10);
-        return view('report.namechange')->with('namechange',$namechange);
+        $currentdate=nepalicurrenntdate();
+        $search =Namechange::Where('status', '=', "incomplete")->orderBy('change_date')->paginate(10);
+        $count =Namechange::Where('status', '=', "incomplete")->count();
+        return view('report.namechange')->with('namechange',$search)->with('currentdate',$currentdate)->with('count',$count);
     }
 
     /**
@@ -37,7 +40,12 @@ class NamechangeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $company_name=CompanyInfo::where('id','=',$request->company_id)->first();
+            $change = array("change_date"=>$request->change_date, "old_name"=>"$company_name->name", "new_name"=>"$request->new_name","status"=>"incomplete","company_id"=>"$request->company_id");
+            Namechange::create($change);
+            $data['name'] = $request->new_name;
+            CompanyInfo::where('id', '=', $request->company_id)->update($data);
+            return redirect()->back()->with('success', "Company  Name Changed");
     }
 
     /**
@@ -87,6 +95,7 @@ class NamechangeController extends Controller
      */
     public function destroy(Namechange $namechange)
     {
-        //
+        $namechange->delete();
+        return redirect()->back()->with('success', 'Record Deleted');
     }
 }

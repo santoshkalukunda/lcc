@@ -28,7 +28,7 @@
 
                                     <input value="{{ $companyInfo->name }}" type="text" id="company-name" name="name"
                                         required placeholder="Comapany Name"
-                                        class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                                        class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" readonly>
                                     @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}

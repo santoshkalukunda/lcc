@@ -7,21 +7,17 @@
 @section('content')
 
     <div class="col-md-12">
-        @include('report.currentdate')
+     
         <div class="card">
             <div class="card-header">Document Report</div>
+            <div class="col-md-12 text-md-right"><b>Total Result: {{$count}}</b> </div>
             <div class="card-body">
-                <script type="text/javascript">
-                    console.log(NepaliFunctions.GetCurrentBsDate());
-
-                </script>
+               
                 <form action="{{ route('documentreport.search') }}" method="POST">
                     @csrf
                     <div class="row form-group">
 
                         <div class="col-md-3 form-group">
-                            <input name="current_date" type="text" id="nepali-datepicker-1" class="nepali-datepicker"
-                                placeholder="Select Nepali Date" hidden/>
                             Name<input type="text" class="form-control" name="name" id="name" placeholder="Company Name">
                         </div>
 
@@ -34,11 +30,11 @@
                         </div>
 
                         <div class="col-md-2 form-group">
-                            Days<select name="operation" id="" class="form-control">
+                           Remaining Days<select name="operation" id="" class="form-control">
                                 <option value="">All</option>
                                 <option value="=">Equal</option>
-                                <option value="<">Greater</option>
-                                <option value=">">Less</option>
+                                <option value=">">Greater</option>
+                                <option value="<">Less</option>
                             </select>
                         </div>
                         <div class="col-md-2 mt-4">
@@ -50,12 +46,12 @@
                     </div>
                 </form>
 
-                <table class="table table-responsive table-hover mt-3">
+                <table class="table table-responsive table-hover mt-3" style="width:100%">
                     <thead>
                         <tr>
                             <th scope="col">Company name</th>
                             <th scope="col">Contact</th>
-                            <th scope="col">Days</th>
+                            <th scope="col">Remaining Days</th>
                             <th scope="col">Status</th>
                             <th scope="col">Comment</th>
                             <th scope="col">Action</th>
@@ -64,19 +60,45 @@
                     <tbody>
                         @isset($documentreport)
                             @foreach ($documentreport as $item)
-                                <tr>
+                            @php
+                                 $color="default";
+                            @endphp
+                           
+                            @isset($current_date)
+                            @php
+                            $date1 = date_create($item->reg_date);
+                            $date2 = date_create($current_date);
+                            $diff = date_diff($date1, $date2);
+                            $day =$diff->format('%a'); 
+                            $lastday=90;
+                            $remain=$lastday-$day;
+                            if ($day>=0 && $item->status=="incomplete" ) {
+                                            $color="table-secondary";
+                                        }
+                                        if ($day>10 && $item->status=="incomplete" ) {
+                                            $color="table-info";
+                                        }
+                                        if ($day>20 && $item->status=="incomplete" ) {
+                                            $color="table-warning";
+                                        }
+                                      
+                                        if ($day>25 && $item->status=="incomplete" ) {
+                                            $color="table-danger";
+                                        }
+                                       
+                                        
+                            @endphp
+                            @endisset
+                                <tr class="{{$color}}">
                                     <td><a href="{{ route('document.show', $item->company_id) }}">{{ $item->name }}</a></td>
                                     <td>{{ $item->contact_no }}</td>
                                     <td>
-                                        @php
-                                        
-                                        if ($current_date != null) {
-                                        $date1 = date_create($item->reg_date);
-                                        $date2 = date_create($current_date);
-                                        $diff = date_diff($date1, $date2);
-                                        echo $diff->format('%a days');
-                                        } 
-                                        @endphp
+                                        @if ($remain>=0)
+                                        {{$remain}} 
+                                        @else
+                                        {{abs($remain)." Late"}}  
+                                        @endif
+                                    
                                     </td>
                                     <td>{{ $item->status }}</td>
                                     <td>
@@ -86,7 +108,10 @@
                                         </div>
                                     </td>
                                     <td>
+                                        <button type="button" class="btn btn-primary" data-toggle="collapse"
+                                        data-target="#{{ 'comments' . "$item->id" }}">Comments</button>
 
+                                    <div id="{{ 'comments' . "$item->id" }}" class="collapse">
                                         <form action="{{ route('documentreport.edit', $item->id) }}" method="POST">
                                             @csrf
                                             <div class="row">
@@ -98,11 +123,13 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <textarea name="comments" class="form-control" rows="3" cols="35"
+                                            <textarea name="comments" class="form-control" rows="3" cols="25"
                                                 placeholder="Comments Here.." required>
                                                                   </textarea>
                                             <input type="submit" class="btn btn-success mt-1">
                                         </form>
+                                    </div>
+                                       
                 </div>
             </div>
             </td>
@@ -122,4 +149,7 @@
     </div>
     </div>
     </div>
+
+
+    
 @endsection

@@ -15,7 +15,7 @@
         <div class="card-header">Company Profile</div>
 
         <div class="card-body">
-          <div class="col-md-2 mt-3 mb-3"><a href="{{route('profile.create')}}"><button class="btn btn-info"><i class="fa fa-plus"> Add Profile</i> </button></a></div>
+          <div class="col-md-2  mb-3"><a href="{{route('profile.create')}}"><button class="btn btn-info"><i class="fa fa-plus"> Add Profile</i> </button></a></div>
 
             @isset($profile)
 

@@ -22,8 +22,9 @@ class CompanyInfoController extends Controller
     public function index()
     {
         $companies = CompanyInfo::latest()->Paginate(10);
+        $count = CompanyInfo::latest()->count();
         // $companies = Auth::user()->companies()->latest()->paginate(5);
-        return view('company.index')->with('company_data', $companies);
+        return view('company.index')->with('company_data', $companies)->with('count',$count);
     }
 
     /**
@@ -105,13 +106,6 @@ class CompanyInfoController extends Controller
         $company_data = CompanyInfo::findOrFail($companyInfo);
         $data = $request->all();
         $data['added_by'] = $request->user()->id;
-        if($request->name!=$company_data->name)
-        {
-            
-            $change = array("change_date"=>date('yy-m-d'), "old_name"=>"$company_data->name", "new_name"=>"$request->name","status"=>"incomplete","company_id"=>"$company_data->id");
-            $status = Namechange::create($change);
-        }
-    
         $company_data->fill($data);
         $status = $company_data->save();
         if ($status) {

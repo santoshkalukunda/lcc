@@ -14,6 +14,7 @@
                 @endif
                 <div class="card">
                     <div class="card-header">Audit Report</div>
+                    <div class="col-md-12 text-md-right"><b>Total Result: {{$count}}</b> </div>
                     <div class="card-body">
                     <form action="{{route('audit.search')}}" method="post">
                             @csrf
@@ -45,8 +46,7 @@
                                 <tr>
                                     <th scope="col">Company name</th>
                                     <th scope="col">Contact</th>
-                                    <th scope="col">Last Audit Date</th>
-                                    <th scope="col">Fiscal Year</th>
+                                    <th scope="col">Last Audit Date</th>  
                                     <th scope="col">Status</th>
                                     <th scope="col">Comment</th>
                                     <th scope="col">Action</th>
@@ -55,12 +55,12 @@
                             <tbody>
                                 @isset($audit)
                                     @foreach ($audit as $item)
-
-                                        <tr>
+                                   
+                                           <tr class="{{ $date->fiscal != $item->auditreport_fiscal ? 'table-danger' : 'default' }}">
                                             <td><a href="{{ route('audit.show', $item->company_id) }}">{{ $item->name }}</a></td>
                                             <td>{{$item->contact_no}}</td>
                                             <td>{{ $date->audit_date }}</td>
-                                            <td>{{ $date->fiscal }}</td>
+                                            
                                             <td>
                                                 {{ $date->fiscal == $item->auditreport_fiscal ? '' : 'Not'}} Audited
                                             </td>
@@ -70,14 +70,20 @@
                                                 </div>
                                             </td>
                                             <td>
+                                                <button type="button" class="btn btn-primary" data-toggle="collapse"
+                                                data-target="#{{ 'comments' . "$item->id" }}">Comments</button>
+    
+                                            <div id="{{ 'comments' . "$item->id" }}" class="collapse">
                                                 <form action="{{route('audit.update',$item->id)}}" method="POST">
                                                     @method('put')
                                                     @csrf
                                              
-                                              <textarea name="audit_comments" class="form-control" rows="3" cols="35" placeholder="Comments here.." required>
-                                              </textarea>
-                                              <input type="submit" class="btn btn-success mt-1">
+                                                    <textarea name="audit_comments" class="form-control" rows="3" cols="25" placeholder="Comments here.." required>
+                                                    </textarea>
+                                                    <input type="submit" class="btn btn-success mt-1">
                                               </form>
+                                            </div>
+                                               
                                             </td>
                                         </tr>
 

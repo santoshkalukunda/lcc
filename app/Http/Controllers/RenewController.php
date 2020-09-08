@@ -26,13 +26,14 @@ class RenewController extends Controller
             return view('setting.setdate');
         }
         //$search = DB::table('company_infos')->leftJoin('renews', 'company_infos.id', '=', 'renews.company_id')->get();
-        $search = Renewreport::Join('company_infos','renewreports.company_id','=','company_infos.id')->select('company_infos.name','company_infos.contact_no','renewreports.*')->where('renewreport_reg_fiscal', '!=', "$fiscal->fiscal")->paginate(10);
+        $search = Renewreport::Join('company_infos','renewreports.company_id','=','company_infos.id')->select('company_infos.name','company_infos.contact_no','renewreports.*')->where('renewreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('renewreport_fiscal', '!=', "$fiscal->fiscal")->paginate(10);
+        $count = Renewreport::Join('company_infos','renewreports.company_id','=','company_infos.id')->select('company_infos.name','company_infos.contact_no','renewreports.*')->where('renewreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('renewreport_fiscal', '!=', "$fiscal->fiscal")->count();
         //$search = CompanyInfo::with(['renewreport'])->where('fiscal_year', '!=', "$fiscal->fiscal")->paginate(10);
         //$search=Renew::paginate(10);
 
         // return $search;
 
-        return view('report.renew')->with('renew', $search)->with('date', $fiscal);
+        return view('report.renew')->with('renew', $search)->with('date', $fiscal)->with('count',$count);
     }
 
     /**

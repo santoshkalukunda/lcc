@@ -56,3 +56,6 @@ Route::resource('audit','AuditController')->middleware('auth');
 Route::any('search/audit', 'SearchController@audit')->name('audit.search')->middleware('auth');
 
 Route::resource('profile','ProfileController')->middleware('auth');
+Route::get('nepali',function(){
+return view('report.currentdate');
+});

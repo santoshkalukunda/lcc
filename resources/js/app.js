@@ -37,7 +37,6 @@ const app = new Vue({
 });
 
 var mainInput = document.getElementById("nepali-datepicker");
-
 /* Initialize Datepicker with options */
 mainInput.nepaliDatePicker({
     ndpYear: true,
@@ -45,14 +44,6 @@ mainInput.nepaliDatePicker({
     ndpYearCount: 200
 });
 var mainInput = document.getElementById("nepali-datepicker-1");
-
-/* Initialize Datepicker with options */
-mainInput.nepaliDatePicker({
-    ndpYear: true,
-    ndpMonth: true,
-    ndpYearCount: 200
-});
-var mainInput = document.getElementById("nepali-datepicker-2");
 
 /* Initialize Datepicker with options */
 mainInput.nepaliDatePicker({

@@ -14,6 +14,7 @@
             @endif
 
             <div class="card-header">Company List </div>
+            <b class="text-right mr-2">Total Result: {{$count}} </b>
             <div class="card-body">
                 <div class="col-md-8 mb-2">
                     <form action="{{ route('company-search-list') }}" method="post">
