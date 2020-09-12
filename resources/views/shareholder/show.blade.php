@@ -31,7 +31,7 @@
                                 <a href="{{ route('document.show', $company_id) }}" class="btn btn-info badge-pill">Next</a>
                             </div>
                             <div class="col-md-7">
-                                <form action="" method="post">
+                            <form action="{{route('shareholder.search.list')}}" method="post">
                                     @csrf
                                     <input type="text" name="company_id" value="{{ $company_id }}" hidden>
                                     <div class="input-group">

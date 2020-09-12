@@ -32,9 +32,10 @@ Route::resource('company', 'CompanyInfoController')->middleware('auth');
 Route::resource('document', 'DocumentController')->middleware('auth');
 
 // Must be before Shareholder Resource route
-Route::get('shareholder/view/{id}', 'ShareholderSearchController@view')->name('shareholder.view')->middleware('auth');;
 Route::get('shareholder/search', 'ShareholderSearchController@show')->name('shareholder-search')->middleware('auth');;
 Route::any('shareholder/search/result', 'ShareholderSearchController@search')->name('shareholder-search.result');
+Route::get('shareholder/search/result/{id}', 'ShareholderSearchController@view')->name('shareholder.view')->middleware('auth');;
+Route::any('shareholder/search/list', 'ShareholderSearchController@searchlist')->name('shareholder.search.list')->middleware('auth');;
 
 Route::resource('shareholder', 'ShareholderController')->middleware('auth');
 Route::any('search', 'SearchController@search')->name('company-search')->middleware('auth');
