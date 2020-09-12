@@ -23,12 +23,12 @@
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <div class="col-md-2 font-bold">Registrartion No.</div>
+                                    <div class="col-md-2 font-bold">Registration No.</div>
                                     <div class="col-md-4">{{ $companyInfo->reg_no }}</div>
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <div class="col-md-2 font-bold">Registrartion Date.</div>
+                                    <div class="col-md-2 font-bold">Registration Date</div>
                                     <div class="col-md-4">{{ $companyInfo->reg_date }}</div>
                                 </div>
                                 <hr>

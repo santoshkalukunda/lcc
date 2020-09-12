@@ -82,7 +82,11 @@
                     <li>
                         <i class="sidebar-item-icon fa fa-th-large"></i>
                             <span class="nav-label">.</span>
-                        
+                    </li>
+                    <li>
+                    <a  href="{{route('home')}}"><i class="sidebar-item-icon fa fa-th-large"></i>
+                            <span class="nav-label">Dashboard</span>
+                        </a>
                     </li>
                     <li class="heading">FEATURES</li>
                    @yield('sidemenu')
