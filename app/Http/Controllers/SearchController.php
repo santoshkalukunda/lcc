@@ -34,6 +34,28 @@ class SearchController extends Controller
             //return view('company.search')->with('search',$search);
         
     }
+    public function sherepurchasesele(){
+        $search=CompanyInfo::latest()->paginate(8);
+        $count=CompanyInfo::latest()->count();
+        return view('report.sharepurchasesale')->with('search',$search)->with('count',$count);
+    }
+    public function sherepurchaseselesearch(Request $request){
+        $data=$request->search;
+        $search=CompanyInfo::where('name','like',"$data%")->orWhere('address','like',"$data%")->orWhere('contact_no','like',"$data%")->orWhere('reg_no','like',"$data%")->orWhere('fiscal_year','like',"$data%")->orWhere('reg_date','like',"$data%")->orWhere('category','like',"$data%")->latest()->paginate(8);
+        $count=CompanyInfo::where('name','like',"$data%")->orWhere('address','like',"$data%")->orWhere('contact_no','like',"$data%")->orWhere('reg_no','like',"$data%")->orWhere('fiscal_year','like',"$data%")->orWhere('reg_date','like',"$data%")->orWhere('category','like',"$data%")->latest()->count();
+        return view('report.sharepurchasesale')->with('search',$search)->with('count',$count);
+    }
+    public function capitalincrease(){
+        $search=CompanyInfo::latest()->paginate(8);
+        $count=CompanyInfo::latest()->count();
+        return view('report.capitalincrease')->with('search',$search)->with('count',$count);
+    }
+    public function capitalincreasesearch(Request $request){
+        $data=$request->search;
+        $search=CompanyInfo::where('name','like',"$data%")->orWhere('address','like',"$data%")->orWhere('contact_no','like',"$data%")->orWhere('reg_no','like',"$data%")->orWhere('fiscal_year','like',"$data%")->orWhere('reg_date','like',"$data%")->orWhere('category','like',"$data%")->latest()->paginate(8);
+        $count=CompanyInfo::where('name','like',"$data%")->orWhere('address','like',"$data%")->orWhere('contact_no','like',"$data%")->orWhere('reg_no','like',"$data%")->orWhere('fiscal_year','like',"$data%")->orWhere('reg_date','like',"$data%")->orWhere('category','like',"$data%")->latest()->count();
+        return view('report.capitalincrease')->with('search',$search)->with('count',$count);
+    }
     
         public function changename(Request $request){
          $name=$request->name;

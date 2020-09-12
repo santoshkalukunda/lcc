@@ -79,10 +79,10 @@
                                                 data-placement="bottom" title="Shareholder"></i></a></td>
                                     <td><a href="{{ route('renew.show', $item->id) }}"><i
                                                 class="fa fa-redo btn btn-success btn-sm" data-toggle="tooltip"
-                                                data-placement="bottom" title="Renew"></i></a></td>
+                                                data-placement="bottom" title="Renew Report"></i></a></td>
                                         <td><a href="{{ route('audit.show', $item->id) }}"><i
                                             class="fa fa-book btn btn-info btn-sm" data-toggle="tooltip"
-                                            data-placement="bottom" title="Audit"></i></a></td>
+                                            data-placement="bottom" title="Audit Report"></i></a></td>
                                     <td><a href="{{ route('namechange.show', $item->id) }}"><i
                                         class="fa fa-address-card btn btn-secondary btn-sm" data-toggle="tooltip"
                                         data-placement="bottom" title="Name Change"></i></a></td>

@@ -33,7 +33,6 @@
                 <a class="dropdown-item menu" href="{{ route('company.index') }}">List</a>
                 <a class="dropdown-item menu" href="{{ route('company.report') }}">Advance Search </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item menu" href="{{ route('shareholder-search') }}">Shareholder Search</a>
             </div>
         </li>
      

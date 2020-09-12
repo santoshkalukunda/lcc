@@ -73,13 +73,13 @@
                                  <div class="col-md-4">
                                     <div class="card-slip">
                                         <div class="card mb-3" style="max-width: 27rem; background-color:{{ $color }}">
-                                            <a href="{{ route('document.show', $item->company_id) }}">
-                                                <div class="card-header font-bold text-decoration-none" style="color:black;">
+                                            <a href="{{ route('document.show', $item->company_id) }}" >
+                                                <div class="card-header font-bold text-decoration-none" style="color:black;">                                   
                                                     {{ $item->new_name }}</div>
                                             </a>
                                             <div class="card-body pt-0">
                                                 <p class="card-text font-bold pt-0">{{ $item->contact_no }}</p>
-                                                <p class="card-text font-bold text-capitalize pt-0">{{ $item->status }}</p>
+                                                <p class="card-text font-bold text-capitalize">{{ $item->status }}</p>
                                                 <p class="card-text font-bold font-20 ">
                                                     @if ($remain >= 0)
                                                         {{ $remain }}

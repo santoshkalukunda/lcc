@@ -15,28 +15,28 @@
     <div class="collapse navbar-collapse " id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item ">
-          <a class="nav-link text-white" href="{{ route('company.show', $companyInfo) }}">About </a>
+          <a class="nav-link text-white menu" href="{{ route('company.show', $companyInfo) }}">About </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link text-white" href="{{ route('capital.show', $companyInfo) }}">Capital</a>
+          <a class="nav-link text-white menu" href="{{ route('capital.show', $companyInfo) }}">Capital</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="{{ route('shareholder.show', $companyInfo) }}">Shareholder</a>
+          <a class="nav-link text-white menu" href="{{ route('shareholder.show', $companyInfo) }}">Shareholder</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="{{ route('document.show', $companyInfo) }}">Document</a>
+            <a class="nav-link text-white menu" href="{{ route('document.show', $companyInfo) }}">Document</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{{ route('audit.show', $companyInfo)}}">Audit Report</a>
+            <a class="nav-link text-white menu" href="{{ route('audit.show', $companyInfo)}}">Audit Report</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{{ route('renew.show', $companyInfo)}}">Renew Report</a>
+            <a class="nav-link text-white menu" href="{{ route('renew.show', $companyInfo)}}">Renew Report</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{{ route('namechange.show', $companyInfo)}}">Name Chnage</a>
+            <a class="nav-link text-white menu" href="{{ route('namechange.show', $companyInfo)}}">Name Chnage</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{{ route('custommail.show', $companyInfo)}}">Send Mail</a>
+            <a class="nav-link text-white menu" href="{{ route('custommail.show', $companyInfo)}}">Send Mail</a>
           </li>
           
       </ul>

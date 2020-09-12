@@ -32,7 +32,6 @@ Route::resource('company', 'CompanyInfoController')->middleware('auth');
 Route::resource('document', 'DocumentController')->middleware('auth');
 
 // Must be before Shareholder Resource route
-Route::get('shareholder/search', 'ShareholderSearchController@show')->name('shareholder-search')->middleware('auth');;
 Route::any('shareholder/search/result', 'ShareholderSearchController@search')->name('shareholder-search.result');
 Route::get('shareholder/search/result/{id}', 'ShareholderSearchController@view')->name('shareholder.view')->middleware('auth');;
 Route::any('shareholder/search/list', 'ShareholderSearchController@searchlist')->name('shareholder.search.list')->middleware('auth');;
@@ -62,6 +61,12 @@ Route::resource('capital','CapitalController')->middleware('auth');
 
 Route::resource('custommail','CustommailController')->middleware('auth');
 Route::post('sendmanualmail/{id}','ManualMailController@sendmanualmail')->name('send.manual.mail');
+
+Route::get('sherepurchasesele', 'SearchController@sherepurchasesele')->name('company-sherepurchasesele')->middleware('auth');
+Route::any('sherepurchasesele', 'SearchController@sherepurchaseselesearch')->name('company-sherepurchasesele-search')->middleware('auth');
+
+Route::get('capitalincrease', 'SearchController@capitalincrease')->name('company-capitalincrease')->middleware('auth');
+Route::any('capitalincrease', 'SearchController@capitalincreasesearch')->name('company-capitalincrease-search')->middleware('auth');
 
 
 Route::get('nepali',function(){

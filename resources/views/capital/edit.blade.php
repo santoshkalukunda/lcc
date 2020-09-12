@@ -32,7 +32,7 @@
                                 placeholder="Clearance Capital"></div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-md-1"> <input type="submit" class="form-control btn-success  badge-pill"
+                        <div class="col-md-2"> <input type="submit" class="form-control btn-success  badge-pill"
                                 value="Update"></div>
                     </div>
                 </form>
