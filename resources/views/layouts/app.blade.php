@@ -89,9 +89,7 @@
             @yield('content')
         </main>
     </div>
-    <nav class="navbar fixed-bottom navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-      </nav>
+   
 </body>
 {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">

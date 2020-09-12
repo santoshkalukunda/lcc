@@ -4,8 +4,8 @@
 @endsection
 @section('content')
 <x-company-sidebar :id="$companyInfo->id"></x-company-sidebar>
-    <div class="container-fluid">
-        <div class="row">
+    
+       
             <div class="col-md-12">
                 @if (Session::has('success'))
                     <div class="bg-success text-white p-2">
@@ -15,115 +15,44 @@
                 <div class="card info">
                     <div class="card-header">About</div>
                     <div class="card-body">
-                        <form action="#" method="post" class="form-group">
-                            @method('put')
-                            @csrf
-                            <div class="row form-group">
-                                <div class="col-md-3">
-                                    <label for="company-name" class="">Company Name :</label>
+                        <ul class="list-group list-group-flush font-17">
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-md-2 font-bold">User Name</div>
+                                    <div class="col-md-4 text-capitalize">{{ $companyInfo->user_name }}</div>
                                 </div>
-
-                                <div class="col-md-8">
-                                    <input value="{{ $companyInfo->name }}" type="text" id="company-name" name="name"
-                                        required placeholder="Comapany Name" class="form-control" disabled>
-
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-2 font-bold">Registrartion No.</div>
+                                    <div class="col-md-4">{{ $companyInfo->reg_no }}</div>
                                 </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-3">
-                                    <label for="reg_no">Reg. No:</label>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-2 font-bold">Registrartion Date.</div>
+                                    <div class="col-md-4">{{ $companyInfo->reg_date }}</div>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" value="{{ $companyInfo->reg_no }}" id="reg_no" required name="reg_no"
-                                        placeholder="Reg. no" class="form-control " disabled>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-2 font-bold">Fiscal Year</div>
+                                    <div class="col-md-4">{{ $companyInfo->fiscal_year }}</div>
                                 </div>
-                            </div>
-                            <div class="row form-group">
-
-                                <div class="col-md-3">
-                                    <label for="nepali-datepicker">Reg. Date:</label>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-2 font-bold">Category</div>
+                                    <div class="col-md-4 text-capitalize">{{ $companyInfo->category }}</div>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" value="{{ $companyInfo->reg_date }}" id="nepali-datepicker" name="reg_date"
-                                        required placeholder="Reg. Date" class="form-control" disabled>
-
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-2 font-bold">PA/VAT No.</div>
+                                    <div class="col-md-4 text-capitalize">{{ $companyInfo->pan_no }}</div>
                                 </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-3">
-                                    <label for="fiscal_year">Reg. Fiscal Year:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="number" value="{{ $companyInfo->fiscal_year }}" id="fiscal_year"
-                                        name="fiscal_year" value="{{ date('yyyy') }}" required
-                                        placeholder="Reg. Fiscal Year" class="form-control" disabled>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-3">
-                                    <label for="category">Category:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <select id="category" value="{{ $companyInfo->category }}" name="category"
-                                        class="form-control @error('category') is-invalid @enderror" disabled>
-                                        @error('category')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                        @if ($companyInfo->category == 'private')
-                                            <option value="private" selected>Private</option>
-                                            <option value="public">Public</option>
-                                            <option value="non-profitable">Non-Profitable</option>
-                                        @endif
-                                        @if ($companyInfo->category == 'public')
-                                            <option value="public" selected>public</option>
-                                            <option value="private">Private</option>
-                                            <option value="non-profitable">Non-Profitable</option>
-                                        @endif
-                                        @if ($companyInfo->category == 'non-profitable')
-                                            <option value="non-profitable" selected>Non-Profitable</option>
-                                            <option value="private">Private</option>
-                                            <option value="public">Public</option>
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-3">
-                                    <label for="address">Address:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" value="{{ $companyInfo->address }}" id="address" name="address"
-                                        required placeholder="Address" class="form-control " disabled>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-3">
-                                    <label for="contact_no">Office Contact No.:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="tel" value="{{ $companyInfo->contact_no }}" name="contact_no"
-                                        id="contact_no" required placeholder="Office Contact No." class="form-control"
-                                        disabled>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-3">
-                                    <label for="share">Total Share:</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="number" value="{{ $companyInfo->share }}" name="share" id="share" required
-                                        placeholder="Total Share" class="form-control" disabled>
-                                </div>
-                            </div>
-
+                                <hr>
+                            </li>
                             <div class="row">
                                 <div class="col-md-2"><a href="{{ route('company.edit', $companyInfo->id) }}"
                                         class="text-decoration-none text-white"><button class="btn btn-primary badge-pill"
-                                            type="button"><i class="fa fa-edit"> Edit</i></button></a></div>
-
-
+                                            type="button"><i class="fa fa-edit"> Edit</i></button></a>
+                                </div>
                                 <div class="col-md-2">
                                     <form method="post" action="{{ route('company.destroy', $companyInfo) }}">
                                         @csrf
@@ -135,18 +64,9 @@
                                     </form>
                                 </div>
                             </div>
-                        </form>
-
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <script src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v3.2.min.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            window.onload = function() {
-                var mainInput = document.getElementById("nepali-datepicker");
-                mainInput.nepaliDatePicker();
-            };
-        </script>
+      
 @endsection

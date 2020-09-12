@@ -52,11 +52,11 @@ class CompanyInfoController extends Controller
         Documentreport::create( $documentreport);
         ///end document report end
         ///renew report create
-        $renew_report = array("company_id"=>"$status->id","renewreport_reg_fiscal"=>"$request->fiscal_year","renewreport_comments"=>"New Created Account","renewreport_fiscal"=>"0000");
+        $renew_report = array("company_id"=>"$status->id","renewreport_reg_fiscal"=>"$request->fiscal_year","renewreport_comments"=>"New Created Account","renewreport_fiscal"=>"0000","renewreport_status"=>"incomplete");
         Renewreport::create($renew_report);
         ///////end document create
-        ///adit report create
-        $audit_report = array("company_id"=>"$status->id","auditreport_reg_fiscal"=>"$request->fiscal_year","auditreport_comments"=>"New Created Account","auditreport_fiscal"=>"0000");
+        ///audit report create
+        $audit_report = array("company_id"=>"$status->id","auditreport_reg_fiscal"=>"$request->fiscal_year","auditreport_comments"=>"New Created Account","auditreport_fiscal"=>"0000","auditreport_status"=>"incomplete");
         Auditreport::create($audit_report);
         ///audit report end
         if ($status) {
@@ -65,7 +65,7 @@ class CompanyInfoController extends Controller
         // $currentUser = Auth::user();
         // $currentUser->companies()->create($request->all());
 
-        return redirect(route('shareholder.show', $status->id));
+        return redirect(route('capital.show', $status->id));
     }
 
     /**

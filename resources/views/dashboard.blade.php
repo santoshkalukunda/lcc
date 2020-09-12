@@ -31,7 +31,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    
                  @include('menu')
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav nav nav-pill ml-auto">
@@ -94,11 +93,12 @@
         <div class="content-wrapper">
             <!-- START PAGE CONTENT-->
             <div class="page-content fade-in-up">
+                
               @yield('content')
             </div>
             <!-- END PAGE CONTENT-->
             <footer class="page-footer">
-                <div class="font-13">{{Date('yy')}} © <b>LCC</b> - All rights reserved.  Power By: <a href="https://mohrain.com/">Mohrain Websoft (P). Ltd.</a> </div>
+                <div class="font-13">{{Date('yy')}} © <b>LCC</b> - All rights reserved.  Powered by: <a href="https://mohrain.com/">Mohrain Websoft (P). Ltd.</a> </div>
                
                 <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
             </footer>

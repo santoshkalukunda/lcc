@@ -43,11 +43,12 @@
                             <th scope="col">Company Name</th>
                             <th scope="col">Reg. No.</th>
                             <th scope="col">Reg. date</th>
-                            <th scope="col">Fiscal Year</th>
                             <th scope="col">Category</th>
                             <th scope="col">Address</th>
                             <th scope="col">Cantact No.</th>
-                            <th scope="col">Total Share</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">PAN/VAT No.</th>
 
                             <th colspan="7" scope="col">Action</th>
                         </tr>
@@ -60,11 +61,12 @@
                                     <td><a href="{{ route('company.show', $item->id) }}">{{ $item->name }}</a></td>
                                     <td>{{ $item->reg_no }}</td>
                                     <td>{{ $item->reg_date }}</td>
-                                    <td>{{ $item->fiscal_year }}</td>
                                     <td>{{ $item->category }}</td>
                                     <td>{{ $item->address }}</td>
                                     <td>{{ $item->contact_no }}</td>
-                                    <td>{{ $item->share }}</td>
+                                    <td>{{ $item->email}}</td>
+                                    <td>{{ $item->user_name}}</td>
+                                    <td>{{ $item->pan_no}}</td>
 
                                     <td><a href="{{ route('company.edit', $item->id) }}"><i
                                                 class="fa fa-edit btn btn-primary btn-sm" data-toggle="tooltip"

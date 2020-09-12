@@ -4,6 +4,8 @@
     Set Date
 @endsection
 @section('content')
+
+
     <div class="col-md-12">
         <div class="card">
             @if (Session::has('success'))
@@ -13,6 +15,7 @@
             @endif
             <div class="card-header">Set Date</div>
             <div class="card-body">
+           
                 <form action="{{ route('setdate.store') }}" method="post">
                     @csrf
                     <div class="row form-group">

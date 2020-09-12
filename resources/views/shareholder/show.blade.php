@@ -3,13 +3,19 @@
     Sharholder List
 @endsection
 @section('content')
-<x-company-sidebar :id="$company_id"></x-company-sidebar>
+    <x-company-sidebar :id="$company_id"></x-company-sidebar>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                @if (Session::has('success'))
+                    <div class="bg-success text-white p-2">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">Shareholder </div>
                     <div class="card-body">
+
                         <div class="row">
                             <div class="col-md-2">
                                 <form action="{{ route('shareholder.create') }}" method="GET">
@@ -21,10 +27,26 @@
                                 </form>
 
                             </div>
-                            <div class="col-md-2">
-                            <a href="{{ route('document.show', $company_id) }}" class="btn btn-info badge-pill">Next</a>
+                            <div class="col-md-1">
+                                <a href="{{ route('document.show', $company_id) }}" class="btn btn-info badge-pill">Next</a>
                             </div>
-                            <div class="col-md-9 text-right"><b>Total : {{ $count }}</b></div>
+                            <div class="col-md-7">
+                                <form action="" method="post">
+                                    @csrf
+                                    <input type="text" name="company_id" value="{{ $company_id }}" hidden>
+                                    <div class="input-group">
+                                        <input type="text" id="shareholder-search-input" name="search"
+                                            class="form-control badge-pill" placeholder="Search Shareholder"
+                                            aria-label="Search Company" aria-describedby="search">
+                                        <div class="input-group-append">
+                                            <span id="search">
+                                                <button type="submit" class="btn btn-secondary"><i
+                                                        class="fa fa-search"></i></button></span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="text-right "><b>Total Result: {{ $count }}</b></div>
                         </div>
 
                         <div class="row mt-2">
@@ -35,12 +57,12 @@
                                             class="text-decoration-none text-dark">
                                             <div class="card-slip">
                                                 <div class="card border-hover mb-3" style="max-width: 20rem;">
-                                                    <div class="card-header">Name : {{ $item->shareholder_name }}</div>
+                                                    <div class="card-header font-bold">{{ $item->shareholder_name }}</div>
                                                     <div class="card-body ">
-                                                        <p class="card-text">Address: {{ $item->shareholder_address }} </p>
-                                                        <p class="card-text">Contact: {{ $item->shareholder_contact }} </p>
-                                                        <p class="card-text">Email: {{ $item->shareholder_email }} </p>
-                                                        <p class="card-text">No. of Share: {{ $item->shareholder_share }} </p>
+                                                        <p class="card-text">{{ $item->shareholder_address }} </p>
+                                                        <p class="card-text">{{ $item->shareholder_contact }} </p>
+                                                        <p class="card-text">{{ $item->shareholder_email }} </p>
+
                                                         <a href="" class="text-right">
                                                             <form method="post"
                                                                 action="{{ route('shareholder.destroy', $item->id) }}">
@@ -69,5 +91,5 @@
             </div>
         </div>
     </div>
-    
+
 @endsection

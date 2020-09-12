@@ -32,6 +32,7 @@
                 <a class="dropdown-item menu" href="{{ route('company.create') }}">Register</a>
                 <a class="dropdown-item menu" href="{{ route('company.index') }}">List</a>
                 <a class="dropdown-item menu" href="{{ route('company.report') }}">Advance Search </a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item menu" href="{{ route('shareholder-search') }}">Shareholder Search</a>
             </div>
         </li>
@@ -43,7 +44,8 @@
             </a>
             <div class="dropdown-menu" style="background-color: #3a76a0;" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item menu" href="{{ route('setdate.index') }}">Set Date</a>
-            <a class="dropdown-item menu" href="{{route('profile.index')}}">Company Profile</a>
+                <a class="dropdown-item menu" href="{{route('profile.index')}}">Company Profile</a>
+                <a class="dropdown-item menu" href="{{route('custommail.create')}}">Mail Send</a>
             </div>
         </li>
         <li class="nav-item dropdown menu">

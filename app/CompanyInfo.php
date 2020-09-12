@@ -52,4 +52,8 @@ class CompanyInfo extends Model
     {
         return $this->hasOne('App\Auditreport', 'company_id');
     }
+    public function capital()
+    {
+        return $this->hasOne('App\Capital', 'company_id');
+    }
 }

@@ -16,13 +16,10 @@
                                 <a href="{{ route('company.show', $item->id) }}" class="text-decoration-none text-dark">
                                     <div class="card-slip">
                                         <div class="card mb-3" style="max-width: 20rem;">
-                                            <div class="card-header">{{ $item->name }}</div>
+                                            <div class="card-header font-bold">{{ $item->name }}</div>
                                             <div class="card-body">
-                                                <p class="card-text">Address: {{ $item->address }}</p>
-                                                <p class="card-text">Contact: {{ $item->contact_no }}</p>
-                                                <p class="card-text">Reg. No.: {{ $item->reg_no }}</p>
-                                                <p class="card-text">Reg. No.: {{ $item->category }}</p>
-                                                <p class="card-text">Total share: {{ $item->share }}</p>
+                                                <p class="card-text">{{ $item->address }}</p>
+                                                <p class="card-text">{{ $item->contact_no }}</p>
                                             </div>
                                         </div>
                                     </div>

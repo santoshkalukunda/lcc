@@ -19,7 +19,7 @@ class CreateShareholdersTable extends Migration
             $table->string('shareholder_address');
             $table->string('shareholder_contact');
             $table->string('shareholder_email');
-            $table->unsignedBigInteger('shareholder_share');
+            $table->unsignedBigInteger('shareholder_share')->nullable();
             $table->foreignId('company_id')->constrained('company_infos')->onDelete('cascade');
             $table->timestamps();
         });

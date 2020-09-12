@@ -15,74 +15,48 @@
                 <div class="card">
                     <div class="card-header">Audit</div>
                     <div class="card-body">
-                        <form action="{{ route('audit.store') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="company_id" value="{{ $company_id }}">
-                            <div class="row form-group">
-                                <div class="col-md-5">
-                                    <input type="text" id="nepali-datepicker" name="audit_date" required
-                                placeholder="Audit Date (YYYY-MM-DD)" class="form-control @error('audit_date')is-invalid @enderror">
-                                   @error('audit')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="col-md-4 form-group">
-                                        
-                                        <input type="text" name="audit_fiscal" id="date" class="form-control @error('audit_fiscal') is-invalid @enderror" required placeholder=" Audit For Fiscal (YYYY)">
-                                        @error('audit_fiscal')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                </div>
-                             
-                                <div class="col-md-3 form-group">
-                                    <input class="btn btn-primary badge-pill" type="submit" value="Submit">
-                               
-                                    <input class="btn btn-danger badge-pill" type="reset" value="Reset">
+                        @isset($audit)
+                        @foreach ($audit as $item)
+                        <div class="row">
+                            <div class="col-md-12 font-bold text-center font-18 {{ $currentdate == $item->auditreport_fiscal ? '' : 'bg-danger'}} bg-info ">Status :  {{ $currentdate == $item->auditreport_fiscal ? '' : 'Not'}} Audited</div>
+                        </div>
+                        <div class="row mt-3 mb-3">
+                            Comments
+                            <div class="col-md-12">
+                                <div class="pl-2"
+                                    style="height:140px; border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                                    {!! $item->auditreport_comments !!}
                                 </div>
                             </div>
-                        </form>
-                        <table class="table table-responsive table-hover mt-3">
-                            <thead>
-                         
-                                <tr>
-                                    <th scope="col">Audit Date</th>
-                                    <th scope="col">Fiscal Year</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-
-
-                            </thead>
-                            <tbody>
-                                @isset($audit)
-                                @foreach ($audit as $item)
-                           
-                                            <tr>
-
-                                            <td>{{$item->audit_date}}</td>
-                                                 <td>{{$item->audit_fiscal}}</td>
-                                                <td>
-                                                   
-                                                    <form method="post" action="{{route('audit.destroy',$item->id)}}">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button class="btn btn-danger btn-sm" type="submit"
-                                                            onclick="return confirm('Are you sure to delete?')"><i
-                                                                class="fa fa-trash" data-toggle="tooltip"
-                                                                data-placement="bottom" title="Delete"></i></button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                          
-                                @endforeach
-                                    
-                                @endisset
-                            </tbody>
-                        </table>
-                        {{ $audit->links() }}
+                        </div>
+                      <hr>
+                            <form action="{{route('audit.update',$item->id)}}" method="POST">
+                                @method('put')
+                                @csrf
+                                <div class="row form-group">
+                                    <div class="col-md-1">Status</div>
+                                    <div class="col-md-3">
+                                        <select name="auditreport_status" class="form-control" id="">
+                                            <option value="notaudited">Not Audited</option>
+                                            <option value="Audited">Audited</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-12">
+                                        <textarea name="audit_comments" class="form-control" rows="5" required>
+                                  </textarea>
+                                    </div>
+                                </div>
+                              <div class="row">
+                                <input type="submit" class="btn btn-success mt-1" value="Comments">
+                              </div>
+                            </form>
+                            
+                        @endforeach
+                            
+                        @endisset
+                        
                     </div>
                 </div>
             </div>

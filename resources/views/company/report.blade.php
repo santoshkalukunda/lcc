@@ -53,27 +53,6 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-md-2">
-                            Total Share
-                        </div>
-                        <div class="col-md-3">
-                            By
-                            <select name="share" id="" class="form-control">
-                                <option value="=">Equal</option>
-                                <option value=">">Greater Than</option>
-                                <option value="<">Less Than</option>
-                                <option value="between">Between</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            From<input type="number" class="form-control" name="fshare" placeholder="share">
-                        </div>
-                        <div class="col-md-2">
-                            To<input type="number" class="form-control" name="lshare" placeholder="share">
-                        </div>
-                    </div>
-                  
-                    <div class="row form-group">
-                        <div class="col-md-2">
                             <input type="submit" class="form-control btn btn-info" value="Search">
                         </div>
                         <div class="col-md-2">

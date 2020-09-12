@@ -22,7 +22,10 @@ class CreateCompanyInfosTable extends Migration
             $table->enum('category',['private','public','non-profitable'])->default('private');
             $table->string('address');
             $table->string('contact_no');
-            $table->unsignedBigInteger('share');
+            $table->string('email');
+            $table->string('pan_no')->nullable();
+            $table->string('user_name')->nullable();
+            $table->unsignedBigInteger('share')->nullable();
             $table->unsignedBigInteger('added_by')->nullable();
             $table->foreign('added_by')->references('id')->on('users')->onDelete('SET NULL')->onUpdate('CASCADe');
             $table->timestamps();

@@ -56,6 +56,13 @@ Route::resource('audit','AuditController')->middleware('auth');
 Route::any('search/audit', 'SearchController@audit')->name('audit.search')->middleware('auth');
 
 Route::resource('profile','ProfileController')->middleware('auth');
+
+Route::resource('capital','CapitalController')->middleware('auth');
+
+Route::resource('custommail','CustommailController')->middleware('auth');
+Route::post('sendmanualmail/{id}','ManualMailController@sendmanualmail')->name('send.manual.mail');
+
+
 Route::get('nepali',function(){
 return view('report.currentdate');
 });

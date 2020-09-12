@@ -3,91 +3,67 @@
     Company Renew
 @endsection
 @section('content')
-<x-company-sidebar :id="$company_id"></x-company-sidebar>
+    <x-company-sidebar :id="$company_id"></x-company-sidebar>
     <div class="container-fluid">
-        <div class="row"> 
+        <div class="row">
             <div class="col-md-12">
                 @if (Session::has('success'))
-                <div class="bg-success text-white p-2">
-                    {{ Session::get('success') }}
-                </div>
-            @endif
+                    <div class="bg-success text-white p-2">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">Renew</div>
                     <div class="card-body">
-                        <form action="{{ route('renew.store') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="company_id" value="{{ $company_id }}">
-                            <div class="row form-group">
-                                <div class="col-md-5">
-                                    <input type="text" id="nepali-datepicker" name="renew_date" required
-                                placeholder="Renew Date (YYYY-MM-DD)" class="form-control @error('renew_date')is-invalid @enderror">
-                                   @error('renew')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-                                <div class="col-md-4 form-group">
-                                        
-                                        <input type="text" name="renew_fiscal" id="date" class="form-control @error('renew_fiscal') is-invalid @enderror" required placeholder=" Renew For Fiscal (YYYY)">
-                                        @error('renew_fiscal')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                </div>
-                             
-                                <div class="col-md-3 form-group">
-                                    <input class="btn btn-primary badge-pill" type="submit" value="Renew">
-                               
-                                    <input class="btn btn-danger badge-pill" type="reset" value="Reset">
+                        @isset($renew)
+                        @foreach ($renew as $item)
+                        <div class="row">
+                            <div class="col-md-12 font-bold text-center font-18 {{ $currentdate == $item->renewreport_fiscal ? '' : 'bg-danger'}} bg-info ">Status :  {{ $currentdate == $item->renewreport_fiscal ? '' : 'Not'}} Renewed</div>
+                        </div>
+                        <div class="row mt-3 mb-3">
+                            Comments
+                            <div class="col-md-12">
+                                <div class="pl-2"
+                                    style="height:140px; border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                                    {!! $item->renewreport_comments !!}
                                 </div>
                             </div>
-                        </form>
-                        <table class="table table-responsive table-hover mt-3">
-                            <thead>
-                         
-                                <tr>
-                                    <th scope="col">Renew Date</th>
-                                    <th scope="col">Fiscal Year</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-
-
-                            </thead>
-                            <tbody>
-                                @isset($renew)
-                                @foreach ($renew as $item)
-                           
-                                            <tr>
-
-                                            <td>{{$item->renew_date}}</td>
-                                                 <td>{{$item->renew_fiscal}}</td>
-                                                <td>
-                                                   
-                                                    <form method="post" action="{{route('renew.destroy',$item->id)}}">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button class="btn btn-danger btn-sm" type="submit"
-                                                            onclick="return confirm('Are you sure to delete?')"><i
-                                                                class="fa fa-trash" data-toggle="tooltip"
-                                                                data-placement="bottom" title="Delete"></i></button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                          
-                                @endforeach
-                                    
-                                @endisset
-                            </tbody>
-                        </table>
-                        {{ $renew->links() }}
+                        </div>
+                      <hr>
+                            <form action="{{route('renew.update',$item->id)}}" method="POST">
+                                @method('put')
+                                @csrf
+                                <div class="row form-group">
+                                    <div class="col-md-1">Status</div>
+                                    <div class="col-md-3">
+                                        <select name="renewreport_status" class="form-control" id="">
+                                            <option value="notrenewed">Not Renewed</option>
+                                            <option value="Renewed">Renewed</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-12">
+                                        <textarea name="renew_comments" class="form-control" rows="5" required>
+                                  </textarea>
+                                    </div>
+                                </div>
+                              <div class="row">
+                                <input type="submit" class="btn btn-success mt-1" value="Comments">
+                              </div>
+                            </form>
+                            
+                        @endforeach
+                            
+                        @endisset
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-   
-    
+
+
 @endsection

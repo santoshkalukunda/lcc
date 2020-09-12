@@ -31,7 +31,7 @@ class companyrequest extends FormRequest
             'category'=>'required|in:private,public,non-profitable',
             'address'=>'required',
             'contact_no'=>'required',
-            'share'=> 'required|numeric'
+            'email'=>'email|required',
         ];
 
     }

@@ -82,8 +82,8 @@ class ShareholderController extends Controller
        
       $shareholder->fill($request->all());
       $shareholder->save();
-      return redirect()->back()->with("success","Shareholder Record Updated");
-       //return view('shareholder.show')->with("success","Shareholder Record Updated")->with('company_id',$shareholder->company_id);
+      return redirect(route('shareholder.show', $shareholder->company_id))->with('success', 'Shareholder Record Updated');
+      //return view('shareholder.show')->with("success","Shareholder Record Updated")->with('company_id',$shareholder->company_id);
     }
 
     /**
@@ -94,7 +94,8 @@ class ShareholderController extends Controller
      */
     public function destroy(Shareholder $shareholder)
     {
+        $company_id=Shareholder::first();
         $shareholder->delete();
-        return redirect()->back()->with('success', 'Record Deleted');
+        return redirect(route('shareholder.show', $company_id->company_id))->with('success', 'Record Deleted');
     }
 }

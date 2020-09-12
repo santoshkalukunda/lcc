@@ -11,6 +11,8 @@ require("../script/app.min.js");
 require("../script/metisMenu.min.js");
 require("../script/jquery.slimscroll.min.js");
 
+
+
 window.Vue = require('vue');
 
 /**
@@ -31,7 +33,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
 const app = new Vue({
     el: '#app',
 });
@@ -44,6 +45,14 @@ mainInput.nepaliDatePicker({
     ndpYearCount: 200
 });
 var mainInput = document.getElementById("nepali-datepicker-1");
+
+/* Initialize Datepicker with options */
+mainInput.nepaliDatePicker({
+    ndpYear: true,
+    ndpMonth: true,
+    ndpYearCount: 200
+});
+var mainInput = document.getElementById("nepali-datepicker-2");
 
 /* Initialize Datepicker with options */
 mainInput.nepaliDatePicker({

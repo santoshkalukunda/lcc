@@ -41,57 +41,79 @@
                             </div>
                         </form>
 
-                        <table class="table table-responsive table-hover mt-3">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Company name</th>
-                                    <th scope="col">Contact</th>
-                                    <th scope="col">Last Audit Date</th>  
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Comment</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @isset($audit)
-                                    @foreach ($audit as $item)
-                                   
-                                           <tr class="{{ $date->fiscal != $item->auditreport_fiscal ? 'table-danger' : 'default' }}">
-                                            <td><a href="{{ route('audit.show', $item->company_id) }}">{{ $item->name }}</a></td>
-                                            <td>{{$item->contact_no}}</td>
-                                            <td>{{ $date->audit_date }}</td>
-                                            
-                                            <td>
-                                                {{ $date->fiscal == $item->auditreport_fiscal ? '' : 'Not'}} Audited
-                                            </td>
-                                            <td>
-                                                <div style="height:120px;width:250px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
-                                                    {!! $item->auditreport_comments !!}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary" data-toggle="collapse"
-                                                data-target="#{{ 'comments' . "$item->id" }}">Comments</button>
-    
-                                            <div id="{{ 'comments' . "$item->id" }}" class="collapse">
-                                                <form action="{{route('audit.update',$item->id)}}" method="POST">
-                                                    @method('put')
-                                                    @csrf
-                                             
-                                                    <textarea name="audit_comments" class="form-control" rows="3" cols="25" placeholder="Comments here.." required>
-                                                    </textarea>
-                                                    <input type="submit" class="btn btn-success mt-1">
-                                              </form>
+                        <div class="row">
+                            @isset($audit)
+                            @foreach ($audit as $item)
+
+                            <div class="col-md-4">
+                                <div class="card-slip">
+                                    <div class="card mb-3" style="max-width: 27rem; background-color:{{ $date->fiscal != $item->auditreport_fiscal ? '#da8f8f' : 'default' }}">
+                                        <a href="{{ route('audit.show', $item->company_id) }}">
+                                            <div class="card-header font-bold text-decoration-none"
+                                                style="color:black;">
+                                                {{ $item->name }}</div>
+                                        </a>
+                                        <div class="card-body pt-0">
+                                            <p class="card-text font-bold pt-0">{{ $item->contact_no }}</p>
+                                            <p class="card-text font-bold text-capitalize pt-0">
+                                                {{ $date->fiscal == $item->auditreport_fiscal ? '' : 'Not' }} Audited
+                                            </p>
+                                            <p class="card-text text-capitalize">
+                                            <div
+                                                style="height:150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                                                {!! $item->auditreport_comments !!}
                                             </div>
-                                               
-                                            </td>
-                                        </tr>
+                                            </p>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary fa fa-comment"
+                                                data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                                Comments
+                                            </button>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
+                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Change Status
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
 
-                                    @endforeach
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{route('audit.update',$item->id)}}" method="POST">
+                                                                @method('put')
+                                                                @csrf
+                                                                <div class="row form-group">
+                                                                    <div class="col-md-4">Status</div>
+                                                                    <div class="col-md-8">
+                                                                        <select name="auditreport_status" class="form-control" id="">
+                                                                            <option value="notaudited">Not Audited</option>
+                                                                            <option value="audited">Audited</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                Comments
+                                                                <textarea name="audit_comments" class="form-control" rows="3" cols="25" required>
+                                                                </textarea>
+                                                             
+                                                                <input type="submit" class="btn btn-success mt-1">
+                                                          </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endisset
 
-                                @endisset
-                            </tbody>
-                        </table>
+                        </div>
                         {{$audit->links() }}
                     </div>
                 </div>

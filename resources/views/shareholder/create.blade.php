@@ -47,13 +47,7 @@
                                     <input type="email" class="form-control" name="shareholder_email" id="email"
                                         placeholder="Shareholder Email" required>
                                 </div>
-                                <div class="col-md-3 form-group">
-                                    <label for="share">No. of Share</label>
-                                </div>
-                                <div class="col-md-8 form-group">
-                                    <input type="number" class="form-control" name="shareholder_share" id="share" placeholder="No. of Share"
-                                        required>
-                                </div>
+
                                 <div class="col-md-3 form-group">
 
                                 </div>

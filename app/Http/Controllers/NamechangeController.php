@@ -17,7 +17,7 @@ class NamechangeController extends Controller
     public function index()
     {
         $currentdate=nepalicurrenntdate();
-        $search =Namechange::Where('status', '=', "incomplete")->orderBy('change_date')->paginate(10);
+        $search =Namechange::Where('status', '=', "incomplete")->orderBy('change_date')->paginate(9);
         $count =Namechange::Where('status', '=', "incomplete")->count();
         return view('report.namechange')->with('namechange',$search)->with('currentdate',$currentdate)->with('count',$count);
     }
