@@ -43,7 +43,6 @@ class CustommailController extends Controller
        
         $data=$request->all();
         $data['user_id']=Auth::user()->id;
-     
         $mail=Custommail::create($data); 
            Mail::to($request->to)
            ->send(new MailCustomMail($mail));

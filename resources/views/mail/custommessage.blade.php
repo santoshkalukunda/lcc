@@ -7,6 +7,10 @@
     <title>LCC Mail</title>
 </head>
 <body>
+    Dear Sir,
     {!! $mail->message !!}
+Thanks <br>
+<b>LCC</b>  <br>
+Dhangadhi, Kailali, Nepal
 </body>
 </html>

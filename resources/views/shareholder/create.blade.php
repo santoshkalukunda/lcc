@@ -3,7 +3,7 @@
     Sharehoder Register
 @endsection
 @section('content')
-<x-company-sidebar :id="$companyInfo->id"></x-company-sidebar>
+    <x-company-sidebar :id="$companyInfo->id"></x-company-sidebar>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -15,45 +15,51 @@
                     @endif
                     <div class="card-header">Sharehoder Register</div>
                     <div class="card-body">
-                    <form action="{{route('shareholder.store')}}" method="post">
+                        <form action="{{ route('shareholder.store') }}" method="post">
                             @csrf
-                            <div class="row">
-                            <input type="text" name="company_id" value="{{$companyInfo->id}}" hidden>
-                                <div class="col-md-3 form-group">
+                            <div class="row form-group">
+                                <input type="text" name="company_id" value="{{ $companyInfo->id }}" hidden>
+                                <div class="col-md-2">
                                     <label for="name">Name</label>
                                 </div>
-                                <div class="col-md-8 form-group">
+                                <div class="col-md-8">
                                     <input type="text" class="form-control" name="shareholder_name" id="name"
                                         placeholder="Shareholder Name" required>
                                 </div>
-                                <div class="col-md-3 form-group">
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-2">
                                     <label for="address">Address</label>
                                 </div>
-                                <div class="col-md-8 form-group">
+                                <div class="col-md-8">
                                     <input type="text" class="form-control" name="shareholder_address" id="address"
                                         placeholder="Shareholder Address" required>
                                 </div>
-                                <div class="col-md-3 form-group">
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-2">
                                     <label for="contact">Cantact No.</label>
                                 </div>
-                                <div class="col-md-8 form-group">
+                                <div class="col-md-8">
                                     <input type="tel" class="form-control" name="shareholder_contact" id="contact"
                                         placeholder="Shareholder Contact No." required>
                                 </div>
-                                <div class="col-md-3 form-group">
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-2">
                                     <label for="email">Email</label>
                                 </div>
-                                <div class="col-md-8 form-group">
+                                <div class="col-md-8">
                                     <input type="email" class="form-control" name="shareholder_email" id="email"
                                         placeholder="Shareholder Email" required>
                                 </div>
-
-                                <div class="col-md-3 form-group">
-
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-2">
+                                    <input class="btn btn-success badge-pill form-control" type="submit" value="Submit">
                                 </div>
-                                <div class="col-md-8 form-group">
-                                    <input class="btn btn-success badge-pill" type="submit" value="Submit">
-                                    <input type="reset" class="btn btn-danger badge-pill" value="Reset">
+                                <div class="col-md-2 ">
+                                    <input type="reset" class="btn btn-danger badge-pill form-control" value="Reset">
                                 </div>
                             </div>
                         </form>

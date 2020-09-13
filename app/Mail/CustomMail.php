@@ -30,6 +30,7 @@ class CustomMail extends Mailable
     {
         return $this->view('mail.custommessage')
         ->subject($this->custom_mail->subject)
+        ->to($this->custom_mail->to)
         ->with('mail',$this->custom_mail);
     }
 }

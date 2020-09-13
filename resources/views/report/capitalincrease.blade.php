@@ -34,7 +34,7 @@ Capital Increase
                     @isset($search)
                         @foreach ($search as $item)
                             <div class="col-md-3">
-                                <a href="{{ route('shareholder.show', $item->id) }}" class="text-decoration-none text-dark">
+                                <a href="{{ route('capital.edit', $item->id) }}" class="text-decoration-none text-dark">
                                     <div class="card-slip">
                                         <div class="card mb-3" style="max-width: 20rem;">
                                             <div class="card-header font-bold">{{ $item->name }}</div>
