@@ -74,7 +74,7 @@
                                     <div class="card-slip">
                                         <div class="card mb-3" style="max-width: 27rem; background-color:{{ $color }}">
                                             <a href="{{ route('document.show', $item->company_id) }}" >
-                                                <div class="card-header font-bold text-decoration-none" style="color:black;">                                   
+                                                <div class="card-header font-bold text-decoration-none" style="color:black;"onMouseOver="this.style.backgroundColor='#b5f5cc'"   onMouseOut="this.style.backgroundColor='{{ $color }}'">                                   
                                                     {{ $item->new_name }}</div>
                                             </a>
                                             <div class="card-body pt-0">

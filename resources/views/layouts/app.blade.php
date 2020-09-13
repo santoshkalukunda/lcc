@@ -26,10 +26,12 @@
         <div class="container-fuild">
 
             <nav class="navbar navbar-expand-md fixed-top navbar-dark  shadow-sm" style="background-color: #3a76a0;" >
-
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                   LCC
-                </a>
+            
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                        LCC
+                     </a>
+               
+               
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -54,7 +56,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white text-capitalize" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>

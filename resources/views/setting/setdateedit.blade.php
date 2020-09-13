@@ -13,48 +13,29 @@
             @endif
             <div class="card-header">Set Date Edit</div>
             <div class="card-body">
-                <form action="{{ route('setdate.update',$setdate->id)}}" method="post">
+                <form action="{{ route('setdate.update', $setdate->id) }}" method="post">
                     @method('put')
                     @csrf
                     <div class="row form-group">
                         <div class="col-md-2">
                             Fiscal Year
                         </div>
-                        <div class="col-md-8">
-                        <input type="text" class="form-control" value="{{$setdate->fiscal}}" name="fiscal" id="fiscal" placeholder="YYYY" required>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-md-2">Audit Date</div>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" value="{{$setdate->audit_date}}" id="nepali-datepicker-1" name="audit_date"
-                                placeholder="YYYY-MM-DD" required>
-                        </div>
-                    </div>
-                    <div class="row form-group">
                         <div class="col-md-2">
-                            Renew Date
+                            <select name="fiscal" id="fiscal" id="" class="form-control" required>
+                               <option value="{{$setdate->fiscal}}">{{$setdate->fiscal}}</option>
+                                @for ( $i =98; $i >10; $i--)
+                                @php
+                                   $j=$i;
+                                @endphp
+                                <option>20{{$i}}/0{{++$j}}</option>
+                                    @endfor
+                            </select>
                         </div>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" value="{{$setdate->renew_date}}" id="nepali-datepicker" name="renew_date"
-                                placeholder="YYYY-MM-DD" required>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-md-2">
-                            Report Date
-                        </div>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" value="{{$setdate->report_date}}" id="nepali-datepicker-2" name="report_date"
-                                placeholder="YYYY-MM-DD" required>
-                        </div>
-                    </div>
-                    <div class="row form-group">
                         <div class="col-md-2"><input type="submit" class="btn btn-success" value="Set"></div>
                     </div>
                 </form>
-        
+
+            </div>
         </div>
-    </div>
     </div>
 @endsection

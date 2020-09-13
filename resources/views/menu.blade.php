@@ -1,4 +1,4 @@
-<div class="col-md-5">
+<div class="col-md-6  ml-md-5">
     <form action="{{ route('company-search') }}" method="post">
         @csrf
         <div class="row">
@@ -18,6 +18,7 @@
         </div>
     </form>
 </div>
+<!--
 <h6>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -62,3 +63,4 @@
     </ul>
 
 </h6>
+-->

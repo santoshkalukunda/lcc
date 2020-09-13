@@ -21,11 +21,11 @@ class AuditController extends Controller
         ///for current set date and fiscal year first
         $fiscal = Setdate::first();
         if ($fiscal == null) {
-            return view('setting.setdate');
+           return view('setting.setdate')->with('setdate',$fiscal);
         }
         ///////////////end///////////
         $search = Auditreport::Join('company_infos', 'auditreports.company_id', '=', 'company_infos.id')->select('company_infos.name', 'company_infos.contact_no', 'auditreports.*')->where('auditreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('auditreport_fiscal', '!=', "$fiscal->fiscal")->paginate(9);
-        $count = Auditreport::Join('company_infos', 'auditreports.company_id', '=', 'company_infos.id')->select('company_infos.name', 'company_infos.contact_no', 'auditreports.*')->where('auditreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('auditreport_fiscal', '!=', "$fiscal->fiscal")->count();
+        $count = $search->total();
         return view('report.audit')->with('audit', $search)->with('date', $fiscal)->with('count',$count);
     }
 
@@ -60,7 +60,7 @@ class AuditController extends Controller
     {
         $fiscal = Setdate::first();
         if ($fiscal == null) {
-            return view('setting.setdate');
+            return view('setting.setdate')->with('setdate',$fiscal);
         }
         $data = Auditreport::where('auditreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('company_id', '=', "$audit")->get();
         return view('company.audit')->with('company_id', $audit)->with('audit', $data)->with('currentdate',$fiscal->fiscal);

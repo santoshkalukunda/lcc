@@ -15,10 +15,7 @@ class CreateSetdatesTable extends Migration
     {
         Schema::create('setdates', function (Blueprint $table) {
             $table->id();
-            $table->string('fiscal');
-            $table->string('audit_date');
-            $table->string('renew_date');
-            $table->string('report_date');
+            $table->string('fiscal')->nullable();
             $table->timestamps();
         });
     }

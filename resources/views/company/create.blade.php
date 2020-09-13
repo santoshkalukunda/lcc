@@ -78,48 +78,6 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-md-2">
-                            <label for="reg_no">Reg. No:</label>
-                        </div>
-                        <div class="col-md-3">
-                            <input type="text" id="reg_no" value="{{ old('reg_no') }}" required name="reg_no"
-                                placeholder="Reg. no" class="form-control @error('reg_no')is-invalid @enderror">
-                            @error('reg_no')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="col-md-2">
-                            <label for="nepali-datepicker">Reg. Date:</label>
-                        </div>
-                        <div class="col-md-3">
-                            <input type="text" id="nepali-datepicker" value="{{ old('reg_date') }}" name="reg_date" required
-                                placeholder="Reg. Date YYYY-MMM-DD" class="form-control @error('reg_date')is-invalid @enderror">
-                            @error('reg_date')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-
-
-                    </div>
-                 
-                    <div class="row form-group">
-                        <div class="col-md-2">
-                            <label for="fiscal_year">Reg. Fiscal Year:</label>
-                        </div>
-                        <div class="col-md-3">
-                            <input type="text" id="fiscal_year" value="{{ old('fiscal_year') }}" name="fiscal_year"
-                                value="{{ date('yyyy') }}" required placeholder="Reg. Fiscal Year (YYYY)"
-                                class="form-control @error('fiscal_year') is-invalid @enderror">
-                            @error('fiscal_year')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="col-md-2">
                             <label for="category">Category:</label>
                         </div>
                         <div class="col-md-3">
@@ -135,6 +93,55 @@
                             <option value="non-profitable">Non-Profitable</option>
                             </select>
                         </div>
+                        <div class="col-md-2">
+                            <label for="reg_no">Reg. No:</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" id="reg_no" value="{{ old('reg_no') }}" required name="reg_no"
+                                placeholder="Reg. no" class="form-control @error('reg_no')is-invalid @enderror">
+                            @error('reg_no')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                 
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            <label for="nepali-datepicker">Reg. Date:</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" id="nepali-datepicker" value="{{ old('reg_date') }}" name="reg_date" required
+                                placeholder="Reg. Date YYYY-MMM-DD" class="form-control @error('reg_date')is-invalid @enderror">
+                            @error('reg_date')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="col-md-2">
+                            <label for="fiscal_year">Reg. Fiscal Year:</label>
+                        </div>
+                        <div class="col-md-3">
+                            <select name="fiscal_year" id="fiscal_year" value="{{ old('fiscal_year') }}" class="form-control @error('fiscal_year') is-invalid @enderror" required>
+                                <option value="">Select Fiscal Year</option>
+                                @for ( $i =98; $i >10; $i--)
+                                @php
+                                   $j=$i;
+                                @endphp
+                                <option>20{{$i}}/0{{++$j}}</option>
+                                    @endfor
+                            </select>
+                            @error('fiscal_year')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        
+
+
 
                     </div>
                    

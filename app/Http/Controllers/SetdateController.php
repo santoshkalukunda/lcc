@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SetfiscalRequest;
 use App\Setdate;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class SetdateController extends Controller
      */
     public function index()
     {
-        $setdate=Setdate::get();
+        $setdate=Setdate::first();
         return view('setting.setdate')->with('setdate',$setdate);
     }
 
@@ -34,7 +35,7 @@ class SetdateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SetfiscalRequest $request)
     {
              $setdate=Setdate::count();
             

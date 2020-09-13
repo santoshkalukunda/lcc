@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Auditreport;
 use App\CompanyInfo;
+use App\Documentreport;
+use App\Namechange;
+use App\Renewreport;
+use App\Setdate;
+use Faker\Provider\ar_JO\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,8 +31,30 @@ class HomeController extends Controller
      */
     public function index()
     {
-    
-        return view('home');
+        $fiscal = Setdate::first();
+        if ($fiscal == null) {
+            return view('setting.setdate')->with('setdate',$fiscal);
+        }
+        $company=CompanyInfo::count();
+        $documentincomplete=Documentreport::Where('documentreports.status', 'like', "incomplete")->count();
+        $documentcomplete=Documentreport::Where('documentreports.status', 'like', "complete")->count();
+        $namechangeincomplete =Namechange::Where('status', '=', "incomplete")->count();
+        $namechangecomplete =Namechange::Where('status', '=', "complete")->count();
+        $notaudited = Auditreport::where('auditreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('auditreport_fiscal', '!=', "$fiscal->fiscal")->count();
+        $audited = Auditreport::where('auditreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('auditreport_fiscal', '=', "$fiscal->fiscal")->count();
+        $notrenewed = Renewreport::where('renewreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('renewreport_fiscal', '!=', "$fiscal->fiscal")->count();
+        $renewed = Renewreport::where('renewreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('renewreport_fiscal', '=', "$fiscal->fiscal")->count();
+
+        return view('home')
+        ->with('company', $company)
+        ->with('documentincomplete',$documentincomplete)
+        ->with('documentcomplete',$documentcomplete)
+        ->with('namechangeincomplete',$namechangeincomplete)
+        ->with('namechangecomplete',$namechangecomplete)
+        ->with('notaudited',$notaudited)
+        ->with('audited',$audited)
+        ->with('notrenewed',$notrenewed)
+        ->with('renewed',$renewed);
     }
     function search(Request $request)
     {

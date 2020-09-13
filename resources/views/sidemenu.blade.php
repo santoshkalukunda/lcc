@@ -15,7 +15,7 @@
     </ul>
 </li>
 <li>
-    <a href="{{ route('shareholder-search.result') }}"><i class="sidebar-item-icon fa fa-users"></i>
+    <a href="{{ route('shareholder-search.result') }}"><i class="sidebar-item-icon fa fa-sitemap"></i>
         <span class="nav-label">Shareholder Search</span>
     </a>
 </li>
@@ -30,7 +30,7 @@
     </a>
 </li>
 <li>
-    <a href="{{ route('renew.index') }}"><i class="sidebar-item-icon fa fa-redo"></i>
+    <a href="{{ route('renew.index') }}"><i class="sidebar-item-icon fa fa-retweet"></i>
         <span class="nav-label">वार्षिक अध्यावधिक</span>
     </a>
 </li>
@@ -50,8 +50,8 @@
     </a>
 </li>
 <li>
-    <a href="javascript:;"><i class="sidebar-item-icon fa fa-user"></i>
-        <span class="nav-label">User</span><i class="fa fa-angle-left arrow"></i></a>
+    <a href="javascript:;"><i class="sidebar-item-icon fa fa-users"></i>
+        <span class="nav-label">Users</span><i class="fa fa-angle-left arrow"></i></a>
     <ul class="nav-2-level collapse">
         <li>
             <a href="{{ route('register') }}">Register</a>
