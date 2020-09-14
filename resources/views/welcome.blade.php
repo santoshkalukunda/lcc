@@ -37,19 +37,19 @@
         </ul>
     </nav>
     <div class="row">
-        <div class="col-6">
-            <div class=" text-md-left font-bold ml-md-5" style="font-size: 50px">
+        <div class="col-md-6">
+            <div class="font-bold ml-5 justify-content-center" style="font-size: 40px;  margin-top: 25px;">
                 Welcome To LCC
             </div>
-            <div class=" text-md-left font-bold ml-md-5" style="font-size: 30px">
+            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
                 Dhangadhi, Kailali, Nepal
             </div>
-            <div class=" text-md-left font-bold ml-md-5" style="font-size: 30px">
+            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
                 091XXXXXXX
             </div>
         </div>
         <div class="col-md-6 pl-lg-5">
-            <div class=" text-md-center font-bold  mt-md-3 " style="font-size: 30px">
+            <div class=" text-center font-bold  mt-3 " style="font-size: 30px">
                 <u>Contact Us</u>
             </div>
             <div class="ibox mt-md-3 ml-md-5 mr-md-5 widget-stat shadow badge-pill" style="opacity: 0.97">
