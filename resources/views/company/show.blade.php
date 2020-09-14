@@ -48,16 +48,16 @@
                                 </div>
                                 <hr>
                             </li>
-                            <div class="row">
+                            <div class="row form-group">
                                 <div class="col-md-2"><a href="{{ route('company.edit', $companyInfo->id) }}"
-                                        class="text-decoration-none text-white"><button class="btn btn-primary badge-pill"
+                                        class="text-decoration-none text-white"><button class="btn btn-primary badge-pill form-control"
                                             type="button"><i class="fa fa-edit"> Edit</i></button></a>
                                 </div>
                                 <div class="col-md-2">
                                     <form method="post" action="{{ route('company.destroy', $companyInfo) }}">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger btn-md badge-pill" type="submit"
+                                        <button class="btn btn-danger btn-md badge-pill form-control" type="submit"
                                             onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"
                                                 data-toggle="tooltip" data-placement="bottom" title="Delete"> Delete
                                             </i></button>
