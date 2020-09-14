@@ -46,7 +46,7 @@ class CustommailController extends Controller
         $mail=Custommail::create($data); 
            Mail::to($request->to)
            ->send(new MailCustomMail($mail));
-           return redirect()->back();
+           return redirect()->back()->with('success',"Mail Sent");
     }
 
     /**

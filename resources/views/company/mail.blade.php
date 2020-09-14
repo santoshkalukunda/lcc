@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-header">Send Mail</div>
                     <div class="card-body">
-                        <form action="{{ route('send.manual.mail', $company_id->id) }}" method="post">
+                        <form action="{{ route('namechange.mail', $company_id->id) }}" method="post">
                             @csrf
                             <div class="row form-group">
                                 <div class="col-md-1"><label for="subject">Subject</label></div>

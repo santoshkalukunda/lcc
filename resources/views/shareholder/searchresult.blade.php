@@ -39,7 +39,7 @@
                                                 <p class="card-text">{{ $item->shareholder_contact }}</p>
                                                 <p class="card-text">{{ $item->shareholder_email }} </p>
                                                 <hr>
-                                                <p class="card-text text-center font-bold text-decoration">Compay Details</p>
+                                                <p class="card-text text-center font-bold text-decoration"><u>Company Details</u></p>
                                                 <p class="card-text font-bold">{{ $item->company->name }}</p>
                                                 <p class="card-text">{{ $item->company->address }}</p>
                                                 <p class="card-text">{{ $item->company->contact_no }}</p>

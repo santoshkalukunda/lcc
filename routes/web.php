@@ -60,7 +60,7 @@ Route::resource('profile','ProfileController')->middleware('auth');
 Route::resource('capital','CapitalController')->middleware('auth');
 
 Route::resource('custommail','CustommailController')->middleware('auth');
-Route::post('sendmanualmail/{id}','ManualMailController@sendmanualmail')->name('send.manual.mail');
+Route::post('sendmanualmail/{id}','ManualMailController@namechangemail')->name('namechange.mail');
 
 Route::get('sherepurchasesele', 'SearchController@sherepurchasesele')->name('company-sherepurchasesele')->middleware('auth');
 Route::any('sherepurchasesele', 'SearchController@sherepurchaseselesearch')->name('company-sherepurchasesele-search')->middleware('auth');
@@ -68,7 +68,8 @@ Route::any('sherepurchasesele', 'SearchController@sherepurchaseselesearch')->nam
 Route::get('capitalincrease', 'SearchController@capitalincrease')->name('company-capitalincrease')->middleware('auth');
 Route::any('capitalincrease', 'SearchController@capitalincreasesearch')->name('company-capitalincrease-search')->middleware('auth');
 
+Route::post('contactus','ContactUsController@store')->name('contactus.store');
+Route::get('contactus','ContactUsController@index')->name('contactus.index')->middleware('auth');
+Route::any('contactus/{id}','ContactUsController@destroy')->name('contactus.destroy')->middleware('auth');
 
-Route::get('nepali',function(){
-return view('report.currentdate');
-});
+

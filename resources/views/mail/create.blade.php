@@ -6,6 +6,11 @@
 @section('content')
     <script src="https://cdn.ckeditor.com/ckeditor5/22.0.0/classic/ckeditor.js"></script>
     <div class="col-md-8">
+        @if (Session::has('success'))
+            <div class="bg-success text-white p-2">
+                {{ Session::get('success') }}
+            </div>
+        @endif
         <div class="card">
             <div class="card-header">Custom Mail</div>
             <div class="card-body">
@@ -24,15 +29,14 @@
                     <div class="row form-group">
                         <div class="col-md-1"><label for="message">Message</label></div>
                         <div class="col-md-10">
-                            <textarea name="message" id="editor">
-                    </textarea>
+                            <textarea name="message" id="editor" class="form-control">
+                        </textarea>
                             <script>
                                 ClassicEditor
-                                    .create(document.querySelector('#editor'))
+                                    .create(document.querySelector('#editor'), )
                                     .catch(error => {
                                         console.error(error);
                                     });
-
                             </script>
                         </div>
                     </div>

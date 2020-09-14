@@ -51,7 +51,6 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -100,37 +99,6 @@
 <script src="{{asset('js/vendor.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 
-
-{{--<script>
-    $(function() {
-        $('#company-search-input').on('keyup', function() {
-            let keyword = $('#company-search-input').val();
-            console.log('sending AJAX request');
-            fetch('/suggestions/' + keyword)
-                .then((resp) => resp.json())
-                .then(function(data) {
-                    console.log(data);
-
-                    data.forEach(function(data) {
-                        console.log(data.name);
-                        $('#suggestions-data-list').append('<option>' + data.name +
-                            '</option>');
-                    });
-
-                });
-
-
-
-            // $.ajax({
-            //     url: "/suggestions/" + keyword,
-            //     // context: document.body
-            // }).done(function(response) {
-            //     alert(response.data);
-            // });
-        });
-    });
-
-</script>--}}
 <script>
     $(document).ready(function() {
 

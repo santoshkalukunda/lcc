@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NameChange extends Mailable
+class NameChangeMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,7 +18,7 @@ class NameChange extends Mailable
      */
     public function __construct($data)
     {
-        $this->custom_mail=$data;
+        $this->msg=$data;
         
     }
 
@@ -29,6 +29,9 @@ class NameChange extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.namechange')->with('mail',$this->custom_mail);
+        
+        return $this->view('mail.namechange')
+        ->subject("Company Name Change Notification")
+        ->with('mail',$this->msg);
     }
 }
