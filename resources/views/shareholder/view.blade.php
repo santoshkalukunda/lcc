@@ -37,18 +37,7 @@
                                                         <p class="card-text">{{ $item->shareholder_address }} </p>
                                                         <p class="card-text">{{ $item->shareholder_contact }} </p>
                                                         <p class="card-text">{{ $item->shareholder_email }} </p>
-                                                        <a href="" class="text-right">
-                                                            <form method="post"
-                                                                action="{{ route('shareholder.destroy', $item->id) }}">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button class="btn btn-danger btn-sm" type="submit"
-                                                                    onclick="return confirm('Are you sure to delete?')"><i
-                                                                        class="fa fa-trash" data-toggle="tooltip"
-                                                                        data-placement="bottom" title="Delete"></i></button>
-                                                            </form>
-        
-                                                        </a>
+                                                        
                                                         </a>
                                                     </div>
                                                 </div>

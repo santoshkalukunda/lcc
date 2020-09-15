@@ -94,8 +94,7 @@ class ShareholderController extends Controller
      */
     public function destroy(Shareholder $shareholder)
     {
-        $company_id=Shareholder::first();
         $shareholder->delete();
-        return redirect(route('shareholder.show', $company_id->company_id))->with('success', 'Record Deleted');
+        return redirect()->back()->with('success', 'Record Deleted');
     }
 }

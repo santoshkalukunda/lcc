@@ -9,15 +9,9 @@ use Illuminate\Support\Facades\DB;
 
 class ShareholderSearchController extends Controller
 {
-    public function show()
-    {
-        return view('shareholder.search');
-    }
     public function view($id){
         $shareholder=Shareholder::where('id','=',"$id")->get();
         return view('shareholder.view')->with('shareholder',$shareholder);
-        
-        
     }
     public function search(Request $request){
         $data=$request->search;
