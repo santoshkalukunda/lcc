@@ -26,7 +26,7 @@ class SetdateController extends Controller
      */
     public function create()
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -60,7 +60,7 @@ class SetdateController extends Controller
      */
     public function show(Setdate $setdate)
     {
-        //
+        return abort(404);
     }
 
     /**

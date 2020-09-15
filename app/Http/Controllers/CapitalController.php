@@ -15,7 +15,7 @@ class CapitalController extends Controller
      */
     public function index()
     {
-        
+        return abort(404);
     }
 
     /**
@@ -69,7 +69,8 @@ class CapitalController extends Controller
      */
     public function edit(Capital $capital)
     {
-        return view('capital.edit')->with(['capital'=>$capital]);
+            return view('capital.edit')->with(['capital'=>$capital]);
+    
     }
 
     /**

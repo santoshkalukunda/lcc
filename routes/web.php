@@ -32,9 +32,9 @@ Route::resource('company', 'CompanyInfoController')->middleware('auth');
 Route::resource('document', 'DocumentController')->middleware('auth');
 
 // Must be before Shareholder Resource route
-Route::any('shareholder/search/result', 'ShareholderSearchController@search')->name('shareholder-search.result');
-Route::get('shareholder/search/result/{id}', 'ShareholderSearchController@view')->name('shareholder.view')->middleware('auth');;
-Route::any('shareholder/search/list', 'ShareholderSearchController@searchlist')->name('shareholder.search.list')->middleware('auth');;
+Route::any('shareholder/search', 'ShareholderSearchController@search')->name('shareholder-search.result');
+Route::get('shareholder/search/{id}', 'ShareholderSearchController@view')->name('shareholder.view')->middleware('auth');;
+Route::post('shareholder/search/list', 'ShareholderSearchController@searchlist')->name('shareholder.search.list')->middleware('auth');;
 
 Route::resource('shareholder', 'ShareholderController')->middleware('auth');
 Route::any('search', 'SearchController@search')->name('company-search')->middleware('auth');
@@ -46,7 +46,7 @@ Route::resource('renew','RenewController')->middleware('auth');
 Route::resource('namechange','NamechangeController')->middleware('auth');
 
 
-Route::any('documentreport','DocumentreportController@index')->name('documentreport.index');
+Route::any('documentreport','DocumentreportController@index')->name('documentreport.index')->middleware('auth');
 Route::any('documentreport/search', 'SearchController@documentreport')->name('documentreport.search')->middleware('auth');
 Route::post('documetreport/edit/{id}','DocumentreportController@edit')->name('documentreport.edit')->middleware('auth');
 Route::resource('setdate','SetdateController')->middleware('auth');

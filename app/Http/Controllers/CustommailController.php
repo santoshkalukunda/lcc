@@ -69,7 +69,7 @@ class CustommailController extends Controller
      */
     public function edit(Custommail $custommail)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -81,7 +81,7 @@ class CustommailController extends Controller
      */
     public function update(Request $request, Custommail $custommail)
     {
-        //
+        return abort(404);
     }
 
     /**

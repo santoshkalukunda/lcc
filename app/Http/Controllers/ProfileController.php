@@ -59,7 +59,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        //
+        return abort(404);
     }
 
     /**

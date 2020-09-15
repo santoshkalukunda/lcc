@@ -36,7 +36,7 @@ class AuditController extends Controller
      */
     public function create()
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -74,7 +74,7 @@ class AuditController extends Controller
      */
     public function edit(Audit $audit)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -111,6 +111,6 @@ class AuditController extends Controller
      */
     public function destroy(Audit $audit)
     {
-        //
+        
     }
 }

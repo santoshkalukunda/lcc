@@ -18,6 +18,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
+        return abort(404);
     }
 
     /**
@@ -27,6 +28,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
+        return abort(404);
     }
 
     /**
@@ -92,7 +94,7 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        //
+        return abort(404);
     }
 
     /**

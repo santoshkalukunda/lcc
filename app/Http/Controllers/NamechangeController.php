@@ -29,7 +29,7 @@ class NamechangeController extends Controller
      */
     public function create()
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -68,7 +68,7 @@ class NamechangeController extends Controller
      */
     public function edit(Namechange $namechange)
     {
-        //
+        return abort(404);
     }
 
     /**

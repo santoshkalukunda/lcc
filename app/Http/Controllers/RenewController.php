@@ -38,7 +38,7 @@ class RenewController extends Controller
      */
     public function create()
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -76,7 +76,7 @@ class RenewController extends Controller
      */
     public function edit(Renew $renew)
     {
-        //
+        return abort(404);
     }
 
     /**
