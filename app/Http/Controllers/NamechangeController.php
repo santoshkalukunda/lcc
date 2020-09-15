@@ -56,8 +56,9 @@ class NamechangeController extends Controller
      */
     public function show($namechange)
     {
+        $currentdate=nepalicurrenntdate();
         $data=Namechange::where('company_id','=',"$namechange")->paginate(10);
-        return view('company.namechange')->with('company_id',$namechange)->with('namechange',$data);
+        return view('company.namechange')->with('company_id',$namechange)->with('namechange',$data)->with('currentdate',$currentdate);
     }
 
     /**
