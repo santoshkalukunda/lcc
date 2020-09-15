@@ -109,12 +109,7 @@
         </div>
     </div>
    
-    <!-- BEGIN PAGA BACKDROPS-->
-    <div class="sidenav-backdrop backdrop"></div>
-    <div class="preloader-backdrop">
-        <div class="page-preloader">Loading</div>
-    </div>
-    <!-- END PAGA BACKDROPS-->
+
     <!-- CORE PLUGINS-->
     <script src="{{asset('js/manifest.js')}}"></script>
 <script src="{{asset('js/vendor.js')}}"></script>
