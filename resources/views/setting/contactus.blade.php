@@ -40,6 +40,7 @@
                         @endforeach
                     @endisset
                 </table>
+                {{ $contactus->links() }}
             </div>
         </div>
     </div>

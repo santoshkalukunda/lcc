@@ -45,7 +45,10 @@
                 Dhangadhi, Kailali, Nepal
             </div>
             <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                091XXXXXXX
+                091-520000
+            </div>
+            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
+                info@lcc.com.np
             </div>
         </div>
         <div class="col-md-6 pl-lg-5">

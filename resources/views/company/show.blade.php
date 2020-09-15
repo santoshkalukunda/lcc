@@ -57,7 +57,7 @@
                                     <form method="post" action="{{ route('company.destroy', $companyInfo) }}">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger btn-md badge-pill form-control" type="submit"
+                                        <button class="btn btn-danger btn-md badge-pill form-control mb-1" type="submit"
                                             onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"
                                                 data-toggle="tooltip" data-placement="bottom" title="Delete"> Delete
                                             </i></button>
