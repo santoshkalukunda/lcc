@@ -48,7 +48,7 @@
                 091-520000
             </div>
             <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                info@lcc.com.np
+                <a href="mailto:info@lcc.com.np" class=" text-dark">info@lcc.com.np</a>
             </div>
         </div>
         <div class="col-md-6 pl-lg-5">
