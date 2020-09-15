@@ -76,13 +76,18 @@
                                             <td>{{ $item->change_date }}</td>
                                             <td>{{ $item->old_name }}</td>
                                             <td>{{ $item->new_name }}</td>
+
                                             <td>
-                                                @if ($remain >= 0)
-                                                    {{ $remain }}
-                                                @else
-                                                    {{ abs($remain) . ' Late' }}
+                                                @if ($item->status == 'incomplete')
+                                                    @if ($remain >= 0)
+                                                        {{ $remain }}
+                                                    @else
+                                                        {{ abs($remain) . ' Late' }}
+                                                    @endif
                                                 @endif
+
                                             </td>
+
                                             <td
                                                 class=" text-capitalize {{ $item->status == 'incomplete' ? 'bg-danger' : 'bg-info' }} ">
                                                 {{ $item->status }}
@@ -125,7 +130,7 @@
                                                                             Comments
                                                                             <textarea name="comments" class="form-control"
                                                                                 rows="5" required>
-                                                                                          </textarea>
+                                                                                                          </textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">

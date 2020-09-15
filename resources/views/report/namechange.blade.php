@@ -74,18 +74,20 @@
                                     <div class="card-slip">
                                         <div class="card mb-3" style="max-width: 27rem; background-color:{{ $color }}">
                                             <a href="{{ route('namechange.show', $item->company_id) }}" >
-                                                <div class="card-header font-bold text-decoration-none" style="color:black;"onMouseOver="this.style.backgroundColor='#b5f5cc'"   onMouseOut="this.style.backgroundColor='{{ $color }}'">                                   
+                                                <div class="card-header font-bold text-decoration-none" style="color:black;"onMouseOver="this.style.backgroundColor='#b5f5cc'"   onMouseOut="this.style.backgroundColor=''">                                   
                                                     {{ $item->new_name }}</div>
                                             </a>
                                             <div class="card-body pt-0">
                                                 <p class="card-text font-bold pt-0">{{ $item->contact_no }}</p>
                                                 <p class="card-text font-bold text-capitalize">{{ $item->status }}</p>
                                                 <p class="card-text font-bold font-20 ">
+                                                    @if ($item->status == "incomplete")
                                                     @if ($remain >= 0)
                                                         {{ $remain }}
                                                     @else
                                                         {{ abs($remain) . ' Late' }}
                                                     @endif
+                                                @endif
                                                 </p>
                                                 <p class="card-text text-capitalize">
                                                     <div style="height:150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
