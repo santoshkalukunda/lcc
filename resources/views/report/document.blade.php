@@ -85,11 +85,13 @@
                                             <p class="card-text font-bold">{{ $item->contact_no }}</p>
                                             <p class="card-text font-bold text-capitalize">{{ $item->status }}</p>
                                             <p class="card-text font-bold font-20">
+                                                @if ($item->status == 'incomplete')
                                                 @if ($remain >= 0)
                                                     {{ $remain }}
                                                 @else
                                                     {{ abs($remain) . ' Late' }}
                                                 @endif
+                                            @endif
                                             </p>
                                             <p class="card-text text-capitalize">
                                                     <div style="height:150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
