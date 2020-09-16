@@ -20,7 +20,7 @@
                     <div class="row form-group">
                         <div class="col-md-2">
                            
-                            <label for="company-name" class="">Company Name :</label>
+                            <label for="company-name" class="">Company Name <span class=" color-red">*</span></label>
                         </div>
                         <div class="col-md-8">
                             <input type="text" id="company-name" name="name" required placeholder="Comapany Name"
@@ -34,7 +34,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-md-2">
-                            <label for="address">Address:</label>
+                            <label for="address">Address <span class=" color-red">*</span></label>
                         </div>
                         <div class="col-md-8">
                             <input type="text" id="address" value="{{ old('address') }}" name="address" required
@@ -48,7 +48,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-md-2">
-                            <label for="contact_no">Contact No.:</label>
+                            <label for="contact_no">Contact No. <span class=" color-red">*</span></label>
                         </div>
                         <div class="col-md-8">
                             <input type="tel" value="{{ old('contact_no') }}" name="contact_no" id="contact_no" required
@@ -63,7 +63,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-md-2">
-                            <label for="email">Email:</label>
+                            <label for="email">Email <span class=" color-red">*</span></label>
                         </div>
                         <div class="col-md-8">
                             <input type="email" value="{{ old('email') }}" name="email" id="email" required
@@ -78,7 +78,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-md-2">
-                            <label for="category">Category:</label>
+                            <label for="category">Category <span class=" color-red">*</span></label>
                         </div>
                         <div class="col-md-3">
                             <select type="text" id="category" value="{{ old('category') }}" name="category"
@@ -94,7 +94,7 @@
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <label for="reg_no">Reg. No:</label>
+                            <label for="reg_no">Reg. No <span class=" color-red">*</span></label>
                         </div>
                         <div class="col-md-3">
                             <input type="text" id="reg_no" value="{{ old('reg_no') }}" required name="reg_no"
@@ -109,7 +109,7 @@
                  
                     <div class="row form-group">
                         <div class="col-md-2">
-                            <label for="nepali-datepicker">Reg. Date:</label>
+                            <label for="nepali-datepicker">Reg. Date <span class=" color-red">*</span></label>
                         </div>
                         <div class="col-md-3">
                             <input type="text" id="nepali-datepicker" value="{{ old('reg_date') }}" name="reg_date" required
@@ -121,7 +121,7 @@
                             @enderror
                         </div>
                         <div class="col-md-2">
-                            <label for="fiscal_year">Reg. Fiscal Year:</label>
+                            <label for="fiscal_year">Reg. Fiscal Year <span class=" color-red">*</span></label>
                         </div>
                         <div class="col-md-3">
                             <select name="fiscal_year" id="fiscal_year" value="{{ old('fiscal_year') }}" class="form-control @error('fiscal_year') is-invalid @enderror" required>
@@ -148,7 +148,7 @@
                    
                     <div class="row form-group">
                         <div class="col-md-2">
-                            <label for="pan_no">PAN No./VAT No :</label>
+                            <label for="pan_no">PAN/VAT No. </label>
                         </div>
                         <div class="col-md-3">
                             <input type="number" value="{{ old('pan_no') }}" name="pan_no" id="pan_no" 

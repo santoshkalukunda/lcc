@@ -22,7 +22,7 @@
                             @csrf
                             <div class="row form-group">
                                 <div class="col-md-2">
-                                    <label for="company-name" class="">Company Name :</label>
+                                    <label for="company-name" class="">Company Name<span class=" color-red">*</span></label>
                                 </div>
 
                                 <div class="col-md-8">
@@ -40,7 +40,7 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-2">
-                                    <label for="address">Address:</label>
+                                    <label for="address">Address<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" value="{{ $companyInfo->address }}" id="address"
@@ -55,7 +55,7 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-2">
-                                    <label for="contact_no">Contact No.:</label>
+                                    <label for="contact_no">Contact No.<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="tel" value="{{ $companyInfo->contact_no }}" value="{{ old('contact_no') }}"
@@ -71,7 +71,7 @@
 
                             <div class="row form-group">
                                 <div class="col-md-2">
-                                    <label for="email">Email:</label>
+                                    <label for="email">Email<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="email" value="{{ $companyInfo->email }}" name="email" id="email" required
@@ -85,7 +85,7 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-2">
-                                    <label for="category">Category:</label>
+                                    <label for="category">Category<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-3">
                                     <select id="category" value="{{ $companyInfo->category }}" name="category"
@@ -113,7 +113,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="reg_no">Reg. No:</label>
+                                    <label for="reg_no">Reg. No<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="text" value="{{ $companyInfo->reg_no }}" id="reg_no"
@@ -129,7 +129,7 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-2">
-                                    <label for="nepali-datepicker">Reg. Date:</label>
+                                    <label for="nepali-datepicker">Reg. Date<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="text" id="nepali-datepicker" name="reg_date"
@@ -142,7 +142,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="fiscal_year">Reg. Fiscal Year:</label>
+                                    <label for="fiscal_year">Reg. Fiscal Year<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-3">
                                     <select name="fiscal_year" id="fiscal_year" value="{{ old('fiscal_year') }}" class="form-control @error('fiscal_year') is-invalid @enderror" required>
@@ -164,7 +164,7 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-2">
-                                    <label for="pan_no">PAN No./VAT No :</label>
+                                    <label for="pan_no">PAN/VAT No.</label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="number" value="{{ $companyInfo->pan_no }}" name="pan_no" id="pan_no"

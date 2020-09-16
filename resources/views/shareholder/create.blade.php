@@ -20,7 +20,7 @@
                             <div class="row form-group">
                                 <input type="text" name="company_id" value="{{ $companyInfo->id }}" hidden>
                                 <div class="col-md-2">
-                                    <label for="name">Name</label>
+                                    <label for="name">Name<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="shareholder_name" id="name"
@@ -29,7 +29,7 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-2">
-                                    <label for="address">Address</label>
+                                    <label for="address">Address<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="shareholder_address" id="address"
@@ -38,7 +38,7 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-2">
-                                    <label for="contact">Cantact No.</label>
+                                    <label for="contact">Cantact No.<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="tel" class="form-control" name="shareholder_contact" id="contact"
@@ -47,7 +47,7 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-2">
-                                    <label for="email">Email</label>
+                                    <label for="email">Email<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="email" class="form-control" name="shareholder_email" id="email"

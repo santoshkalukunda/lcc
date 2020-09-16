@@ -20,7 +20,7 @@ class SearchController extends Controller
     function search(Request $request)
     {
         $data=$request->search;
-            $search=CompanyInfo::where('name','like',"$data%")->orWhere('address','like',"$data%")->orWhere('contact_no','like',"$data%")->orWhere('reg_no','like',"$data%")->orWhere('fiscal_year','like',"$data%")->orWhere('reg_date','like',"$data%")->orWhere('category','like',"$data%")->latest()->paginate(8);
+            $search=CompanyInfo::where('name','like',"$data%")->orWhere('address','like',"$data%")->orWhere('contact_no','like',"$data%")->orWhere('reg_no','like',"$data%")->orWhere('fiscal_year','like',"$data%")->orWhere('reg_date','like',"$data%")->orWhere('category','like',"$data%")->latest()->paginate(16);
             $count=$search->total();
             return view('company.search')->with('search',$search)->with('count',$count);
         
@@ -35,24 +35,24 @@ class SearchController extends Controller
         
     }
     public function sherepurchasesele(){
-        $search=CompanyInfo::latest()->paginate(8);
+        $search=CompanyInfo::latest()->paginate(16);
         $count=$search->total();
         return view('report.sharepurchasesale')->with('search',$search)->with('count',$count);
     }
     public function sherepurchaseselesearch(Request $request){
         $data=$request->search;
-        $search=CompanyInfo::where('name','like',"$data%")->orWhere('address','like',"$data%")->orWhere('contact_no','like',"$data%")->orWhere('reg_no','like',"$data%")->orWhere('fiscal_year','like',"$data%")->orWhere('reg_date','like',"$data%")->orWhere('category','like',"$data%")->latest()->paginate(8);
+        $search=CompanyInfo::where('name','like',"$data%")->orWhere('address','like',"$data%")->orWhere('contact_no','like',"$data%")->orWhere('reg_no','like',"$data%")->orWhere('fiscal_year','like',"$data%")->orWhere('reg_date','like',"$data%")->orWhere('category','like',"$data%")->latest()->paginate(16);
         $count=$search->total();
         return view('report.sharepurchasesale')->with('search',$search)->with('count',$count);
     }
     public function capitalincrease(){
-        $search=CompanyInfo::latest()->paginate(8);
+        $search=CompanyInfo::latest()->paginate(16);
         $count=$search->total();
         return view('report.capitalincrease')->with('search',$search)->with('count',$count);
     }
     public function capitalincreasesearch(Request $request){
         $data=$request->search;
-        $search=CompanyInfo::where('name','like',"$data%")->orWhere('address','like',"$data%")->orWhere('contact_no','like',"$data%")->orWhere('reg_no','like',"$data%")->orWhere('fiscal_year','like',"$data%")->orWhere('reg_date','like',"$data%")->orWhere('category','like',"$data%")->latest()->paginate(8);
+        $search=CompanyInfo::where('name','like',"$data%")->orWhere('address','like',"$data%")->orWhere('contact_no','like',"$data%")->orWhere('reg_no','like',"$data%")->orWhere('fiscal_year','like',"$data%")->orWhere('reg_date','like',"$data%")->orWhere('category','like',"$data%")->latest()->paginate(16);
         $count=$search->total();
         return view('report.capitalincrease')->with('search',$search)->with('count',$count);
     }

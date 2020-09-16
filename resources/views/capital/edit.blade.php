@@ -17,17 +17,17 @@
                 @method('put')
                     @csrf
                     <div class="row form-group">
-                        <div class="col-md-1"><label for="maximum">Maximum</label></div>
+                        <div class="col-md-1"><label for="maximum">Maximum<span class=" color-red">*</span></label></div>
                     <div class="col-md-5"><input type="number" value="{{$capital->maximum}}" class="form-control" name="maximum" id="maximum"
                                 placeholder="maximum Capital"></div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-md-1"><label for="release">Release</label></div>
+                        <div class="col-md-1"><label for="release">Release<span class=" color-red">*</span></label></div>
                         <div class="col-md-5"><input type="number" value="{{$capital->release}}" class="form-control" name="release" id="release"
                                 placeholder="Release Capital"></div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-md-1"><label for="clearance">Clearance</label></div>
+                        <div class="col-md-1"><label for="clearance">Clearance<span class=" color-red">*</span></label></div>
                         <div class="col-md-5"><input type="number"  value="{{$capital->clearance}}"class="form-control" name="clearance" id="clearance"
                                 placeholder="Clearance Capital"></div>
                     </div>

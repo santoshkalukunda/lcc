@@ -17,7 +17,7 @@ class ShareholderController extends Controller
      */
     public function index()
     {
-        return abort(404);
+        //return abort(404);
     }
 
     /**
@@ -41,7 +41,7 @@ class ShareholderController extends Controller
     {
         Shareholder::create($request->all()); 
         //return redirect()->back()->with('success',"Shareholder Registed");
-        $shareholder=Shareholder::where('company_id','=',"$request->company_id")->latest()->paginate(6);
+        $shareholder=Shareholder::where('company_id','=',"$request->company_id")->latest()->paginate(12);
         $count=Shareholder::where('company_id','=',"$request->company_id")->count();
         return view('shareholder.show')->with('company_id', $request->company_id)->with('shareholder',$shareholder)->with('count',$count);
     }
@@ -54,7 +54,7 @@ class ShareholderController extends Controller
      */
     public function show($company_id)
     {
-        $shareholder=Shareholder::where('company_id','=',"$company_id")->latest()->paginate(8);
+        $shareholder=Shareholder::where('company_id','=',"$company_id")->latest()->paginate(12);
         $count=Shareholder::where('company_id','=',"$company_id")->count();
         return view('shareholder.show')->with('company_id', $company_id)->with('shareholder',$shareholder)->with('count',$count);
     }
