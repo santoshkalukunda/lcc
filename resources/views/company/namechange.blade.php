@@ -56,7 +56,7 @@
                                     <th scope="col">New Name</th>
                                     <th scope="col">Remainig Days</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col" colspan="2">Action</th>
+                                    <th scope="col" colspan="3">Action</th>
                                 </tr>
 
 
@@ -92,9 +92,13 @@
                                                 class=" text-capitalize {{ $item->status == 'incomplete' ? 'bg-danger' : 'bg-info' }} ">
                                                 {{ $item->status }}
                                             </td>
+                                            <td><form action="{{ route('namechange.mail', $item->company_id) }}" method="post" {{ $item->status  != "complete" ? 'show' : 'hidden' }}>
+                                                @csrf
+                                               <input type="submit" class="form-control btn-info" value="Send E-mail">
+                                            </form></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary fa fa-comment" data-toggle="modal"
+                                                <button type="button" class="btn btn-primary form-control fa fa-comment" data-toggle="modal"
                                                     data-target="#exampleModal{{ $item->id }}">
                                                     Comments
                                                 </button>

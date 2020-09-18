@@ -14,12 +14,12 @@
         <div class="card">
             <div class="card-header">Custom Mail</div>
             <div class="card-body">
-                <form action="{{ route('custommail.store') }}" method="post">
+                <form action="{{ route('allshareholder.mail') }}" method="post">
                     @csrf
                     <div class="row form-group">
-                        <div class="col-md-1"><label for="to">To</label></div>
-                        <div class="col-md-10"><input type="email" name="to" class="form-control"
-                                placeholder="email@example.com" required></div>
+                        <div class="col-md-1"><label for="to">TO</label></div>
+                        <div class="col-md-10"><input type="text" name="to" class="form-control"
+                          value="All" readonly></div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-1"><label for="subject">Subject</label></div>

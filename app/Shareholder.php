@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Shareholder extends Model
 {
-    protected $guarded=['id'];
+    use Notifiable;
+    protected $guarded = ['id'];
 
     /**
      * Get the Company the shareholder belongs to
@@ -17,5 +19,4 @@ class Shareholder extends Model
     {
         return $this->belongsTo('App\CompanyInfo');
     }
-    
 }

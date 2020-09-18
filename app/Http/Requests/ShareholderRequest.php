@@ -27,7 +27,7 @@ class ShareholderRequest extends FormRequest
             'shareholder_name'=>'required',
             'shareholder_address'=>'required',
             'shareholder_contact'=>'required',
-            'shareholder_email'=>'required|email',
+            'email'=>'required|email',
         ];
     }
 }

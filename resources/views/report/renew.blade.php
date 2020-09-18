@@ -14,7 +14,15 @@
                 @endif
                 <div class="card">
                     <div class="card-header">Renew</div>
-                    <div class="col-md-12 text-md-right"><b>Total Result: {{ $count }}</b> </div>
+                    <div class="row mt-md-3 ml-md-3 mr-md-3">
+                        <div class="col-2">
+                        <form action="{{route('allrenewreport.mail')}}" method="post">
+                                @csrf
+                               <input type="submit" class="form-control btn-info badge-pill" value="Send Email">
+                            </form>
+                        </div>
+                        <div class="col-md-10 text-md-right"><b>Total Result: {{ $count }}</b> </div>
+                    </div> 
                     <div class="card-body">
                         <form action="{{ route('renew.search') }}" method="post">
                             @csrf
@@ -62,11 +70,25 @@
                                                         {!! $item->renewreport_comments !!}
                                                     </div>
                                                     </p>
-                                                    <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary fa fa-comment"
-                                                        data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
-                                                        Comments
-                                                    </button>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <form action="{{ route('renewreport.mail', $item->company_id) }}"
+                                                                method="post"
+                                                                {{$date->fiscal != $item->renewreport_fiscal ? 'show' : 'hidden' }}>
+                                                                @csrf
+                                                                <input type="submit" class="form-control btn-info"
+                                                                    value="Send Email">
+                                                            </form>
+                                                        </div>
+                                                        <!-- Button trigger modal -->
+                                                        <div class="col-md-6">
+                                                            <button type="button"
+                                                                class="form-control btn btn-primary fa fa-comment"
+                                                                data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                                                Comments
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                     <!-- Modal -->
                                                     <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

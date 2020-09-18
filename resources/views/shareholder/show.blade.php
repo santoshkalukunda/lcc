@@ -61,7 +61,7 @@
                                                     <div class="card-body ">
                                                         <p class="card-text">{{ $item->shareholder_address }} </p>
                                                         <p class="card-text">{{ $item->shareholder_contact }} </p>
-                                                        <p class="card-text">{{ $item->shareholder_email }} </p>
+                                                        <p class="card-text">{{ $item->email }} </p>
 
                                                         <a href="" class="text-right">
                                                             <form method="post"

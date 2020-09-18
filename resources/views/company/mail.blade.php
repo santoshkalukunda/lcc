@@ -17,27 +17,27 @@
                 <div class="card">
                     <div class="card-header">Send Mail</div>
                     <div class="card-body">
-                        <form action="{{ route('namechange.mail', $company_id->id) }}" method="post">
+                        <form action="{{ route('companyshareholder.mail', $company_id->id) }}" method="post">
                             @csrf
                             <div class="row form-group">
                                 <div class="col-md-1"><label for="subject">Subject</label></div>
-                                <div class="col-md-10"><input type="text" name="subject" class="form-control"
-                                        placeholder="Email Subject"></div>
+                                <div class="col-md-7"><input type="text" name="subject" class="form-control"
+                                        placeholder="Email Subject" required></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-1"><label for="message">Message</label></div>
-                                <div class="col-md-10">
-                                    <textarea name="message" id="editor">
-                                    
+                                <div class="col-md-7">
+                                <textarea name="message" id="editor" class="form-control">
                                 </textarea>
+                                </div>
                                     <script>
                                         ClassicEditor
-                                            .create(document.querySelector('#editor'))
+                                            .create(document.querySelector('#editor'), )
                                             .catch(error => {
                                                 console.error(error);
                                             });
-
                                     </script>
+                                 
                                 </div>
                             </div>
                             <div class="row form-group">

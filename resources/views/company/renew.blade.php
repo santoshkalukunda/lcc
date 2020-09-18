@@ -30,6 +30,16 @@
                             </div>
                         </div>
                       <hr>
+                      <div class="row mb-md-2">
+                        <div class="col-md-2">
+                          <form action="{{ route('renewreport.mail', $item->company_id) }}"
+                              method="post" {{ $currentdate == $item->renewreport_fiscal ? 'hidden' : 'show'}}>
+                              @csrf
+                              <input type="submit" class="btn btn-info"
+                                  value="Send Email">
+                          </form>
+                        </div>
+                    </div>
                             <form action="{{route('renew.update',$item->id)}}" method="POST">
                                 @method('put')
                                 @csrf

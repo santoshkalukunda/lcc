@@ -85,7 +85,7 @@ class SetdateController extends Controller
     {
         $setdate->fill($request->all());
         $setdate->save();
-        return redirect('setdate')->with("success","Set Date Updated");
+        return redirect('setdate')->with("success","fiscal Year Updated");
     }
 
     /**

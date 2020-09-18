@@ -51,7 +51,7 @@
                                     <label for="email">Email<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-8 ">
-                                <input type="email" class="form-control" name="shareholder_email" value="{{$shareholder->shareholder_email}}" id="email"
+                                <input type="email" class="form-control" name="email" value="{{$shareholder->email}}" id="email"
                                         placeholder="Shareholder Email" required>
                                 </div>
                             </div>

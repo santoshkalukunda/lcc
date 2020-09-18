@@ -69,6 +69,9 @@
                 <a href="{{ route('setdate.index') }}">Set Fiscal Year</a>
             </li>
             <li>
+                <a href="{{ route('thresholddate.index') }}">Set Threshold Date</a>
+            </li>
+            <li>
                 <a href="{{ route('profile.index') }}">Company Profile</a>
             </li>
             <li>

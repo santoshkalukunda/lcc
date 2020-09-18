@@ -15,7 +15,7 @@
                     @endif
                     <div class="card-header">Sharehoder Register</div>
                     <div class="card-body">
-                        <form action="{{ route('shareholder.store') }}" method="post">
+                        <form action="{{ route('shareholder.store')}}" method="post">
                             @csrf
                             <div class="row form-group">
                                 <input type="text" name="company_id" value="{{ $companyInfo->id }}" hidden>
@@ -50,7 +50,7 @@
                                     <label for="email">Email<span class=" color-red">*</span></label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="email" class="form-control" name="shareholder_email" id="email"
+                                    <input type="email" class="form-control" name="email" id="email"
                                         placeholder="Shareholder Email" required>
                                 </div>
                             </div>

@@ -15,7 +15,7 @@ class ShareholderSearchController extends Controller
     }
     public function search(Request $request){
         $data=$request->search;
-         $search =Shareholder::with(['company'])->where('shareholder_name', 'LIKE', '%'. $request->search .'%')->orwhere('shareholder_address', 'LIKE', $data .'%')->orwhere('shareholder_email', 'LIKE', $data .'%')->orwhere('shareholder_contact', '=', $data)->paginate(12);
+         $search =Shareholder::with(['company'])->where('shareholder_name', 'LIKE', '%'. $request->search .'%')->orwhere('shareholder_address', 'LIKE', $data .'%')->orwhere('email', 'LIKE', $data .'%')->orwhere('shareholder_contact', '=', $data)->paginate(12);
      return view('shareholder.searchresult')->with('search',$search);
     }
     public function searchlist(Request $request){

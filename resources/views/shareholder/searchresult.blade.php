@@ -24,6 +24,9 @@
                             </div>
                         </form>
                     </div>
+                    <div class="col-md-4 text-right">
+                        Total Result : {{$search->total()}}
+                    </div>
                 </div>
                 <div class="row mt-2">
                     @isset($search)
@@ -37,7 +40,7 @@
                                             <div class="card-body">
                                                 <p class="card-text">{{ $item->shareholder_address }}</p>
                                                 <p class="card-text">{{ $item->shareholder_contact }}</p>
-                                                <p class="card-text">{{ $item->shareholder_email }} </p>
+                                                <p class="card-text">{{ $item->email }} </p>
                                                 <hr>
                                                 <p class="card-text text-center font-bold text-decoration"><u>Company Details</u></p>
                                                 <p class="card-text font-bold">{{ $item->company->name }}</p>
