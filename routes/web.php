@@ -60,16 +60,16 @@ Route::resource('profile','ProfileController')->middleware('auth');
 Route::resource('capital','CapitalController')->middleware('auth');
 
 Route::resource('custommail','CustommailController')->middleware('auth');
-Route::post('namchangemail/{id}','ManualMailController@namechangemail')->name('namechange.mail');
-Route::post('allnamchangemail','ManualMailController@allnamechangemail')->name('allnamechange.mail');
-Route::post('documentmail/{id}','ManualMailController@documentreportmail')->name('documentreport.mail');
-Route::post('auditmail/{id}','ManualMailController@auditreportmail')->name('auditreport.mail');
-Route::post('renewmail/{id}','ManualMailController@renewreportmail')->name('renewreport.mail');
-Route::post('companyshareholder/{id}','ManualMailController@comapanyshareholdermail')->name('companyshareholder.mail');
-Route::post('allshareholder','ManualMailController@allshareholdermail')->name('allshareholder.mail');
-Route::post('alldocumentmail','ManualMailController@alldocumentreportmail')->name('alldocumentreport.mail');
-Route::post('allauditmail','ManualMailController@allauditreportmail')->name('allauditreport.mail');
-Route::post('allrenewmail','ManualMailController@allrenewreportmail')->name('allrenewreport.mail');
+Route::post('namchangemail/{id}','ManualMailController@namechangemail')->name('namechange.mail')->middleware('auth');
+Route::post('allnamchangemail','ManualMailController@allnamechangemail')->name('allnamechange.mail')->middleware('auth');
+Route::post('documentmail/{id}','ManualMailController@documentreportmail')->name('documentreport.mail')->middleware('auth');
+Route::post('auditmail/{id}','ManualMailController@auditreportmail')->name('auditreport.mail')->middleware('auth');
+Route::post('renewmail/{id}','ManualMailController@renewreportmail')->name('renewreport.mail')->middleware('auth');
+Route::post('companyshareholder/{id}','ManualMailController@comapanyshareholdermail')->name('companyshareholder.mail')->middleware('auth');
+Route::post('allshareholder','ManualMailController@allshareholdermail')->name('allshareholder.mail')->middleware('auth');
+Route::post('alldocumentmail','ManualMailController@alldocumentreportmail')->name('alldocumentreport.mail')->middleware('auth');
+Route::post('allauditmail','ManualMailController@allauditreportmail')->name('allauditreport.mail')->middleware('auth');
+Route::post('allrenewmail','ManualMailController@allrenewreportmail')->name('allrenewreport.mail')->middleware('auth');
 
 
 Route::get('sherepurchasesele', 'SearchController@sherepurchasesele')->name('company-sherepurchasesele')->middleware('auth');
