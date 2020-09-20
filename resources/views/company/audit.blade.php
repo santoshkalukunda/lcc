@@ -30,12 +30,12 @@
                             </div>
                         </div>
                       <hr>
-                      <div class="row mb-md-2">
+                      <div class="row mb-md-2 form-group">
                           <div class="col-md-2">
                             <form action="{{ route('auditreport.mail', $item->company_id) }}"
                                 method="post" {{ $currentdate == $item->auditreport_fiscal ? 'hidden' : 'show'}}>
                                 @csrf
-                                <input type="submit" class="btn btn-info badge-pill"
+                                <input type="submit" class="btn btn-info badge-pill form-control"
                                     value="Send Email">
                             </form>
                           </div>
@@ -59,9 +59,9 @@
                                         <textarea name="audit_comments" class="form-control" rows="5" placeholder="Comment here..." required></textarea>
                                     </div>
                                 </div>
-                              <div class="row">
+                              <div class="row form-group">
                                   <div class="col-md-2">
-                                    <input type="submit" class="btn btn-success badge-pill">
+                                    <input type="submit" class="btn btn-success form-control badge-pill">
                                   </div>
                                 
                               </div>

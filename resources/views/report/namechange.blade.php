@@ -1,7 +1,7 @@
 @extends('dashboard')
 @include('sidemenu')
 @section('title')
-नाम परिवर्तन विवरण
+    नाम परिवर्तन विवरण
 @endsection
 @section('content')
 
@@ -10,60 +10,62 @@
             <div class="card-header">नाम परिवर्तन विवरण </div>
             <div class="row mt-md-3 ml-md-3 mr-md-3">
                 <div class="col-md-2">
-                <form action="{{route('allnamechange.mail')}}" method="post">
+                    <form action="{{ route('allnamechange.mail') }}" method="post">
                         @csrf
-                       <input type="submit" class="form-control btn-info badge-pill" data-toggle="tooltip"
-                       data-placement="bottom" title="Send mail to status incomplete all shareholders" value="Send Email">
+                        <input type="submit" class="form-control btn-info badge-pill" data-toggle="tooltip"
+                            data-placement="bottom" title="Send mail to status incomplete all shareholders"
+                            value="Send Email">
                     </form>
                 </div>
                 <div class="col-md-10 text-md-right"><b>Total Results: {{ $count }}</b> </div>
             </div>
-            
+
             <div class="card-body">
-            
-                        <form action="{{ route('namechange.search') }}" method="POST">
-                            @csrf
-                            <div class="row form-group">
-        
-                                <div class="col-md-3">
-                                    Name<input type="text" class="form-control" name="name" id="name" placeholder="Company Name" autofocus>
-                                </div>
-        
-                                <div class="col-md-2">
-                                    Status
-                                    <select name=" status" id="" class="form-control">
-                                        <option value="">All</option>
-                                        <option value="incomplete">Incomplete</option>
-                                        <option value="complete">Complete</option>
-        
-                                    </select>
-                                </div>
-        
-                                <div class="col-md-2 form-group">
-                                    Days
-                                    <select name="operation" id="" class="form-control">
-                                        <option value="">All</option>
-                                        <option value="=">Equal</option>
-                                        <option value=">">Greater</option>
-                                        <option value="<">Less</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2 mt-4">
-                                    <input type="number" class="form-control" name="days" placeholder="Enter Days">
-                                </div>
-                                <div class="col-md-2 mt-4">
-                                    <input type="submit" class="btn btn-primary" value="Search">
-                                </div>
-        
-                            </div>
-                        </form>
-                  
-               
-               <hr>
+
+                <form action="{{ route('namechange.search') }}" method="POST">
+                    @csrf
+                    <div class="row form-group">
+
+                        <div class="col-md-3">
+                            Name<input type="text" class="form-control" name="name" id="name" placeholder="Company Name"
+                                autofocus>
+                        </div>
+
+                        <div class="col-md-2">
+                            Status
+                            <select name=" status" id="" class="form-control">
+                                <option value="">All</option>
+                                <option value="incomplete">Incomplete</option>
+                                <option value="complete">Complete</option>
+
+                            </select>
+                        </div>
+
+                        <div class="col-md-2 form-group">
+                            Days
+                            <select name="operation" id="" class="form-control">
+                                <option value="">All</option>
+                                <option value="=">Equal</option>
+                                <option value=">">Greater</option>
+                                <option value="<">Less</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 mt-4">
+                            <input type="number" class="form-control" name="days" placeholder="Enter Days">
+                        </div>
+                        <div class="col-md-2 mt-4">
+                            <input type="submit" class="btn btn-primary form-control badge-pill" value="Search">
+                        </div>
+
+                    </div>
+                </form>
+
+
+                <hr>
                 <div class="row">
                     @if ($count == null)
-                               <div class=" ml-md-3 text-danger">{{ "Result not found." }}</div> 
-                            @endif
+                        <div class=" ml-md-3 text-danger">{{ 'Result not found.' }}</div>
+                    @endif
                     @isset($namechange)
                         @foreach ($namechange as $item)
                             @php
@@ -116,20 +118,22 @@
                                             </p>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <form action="{{ route('namechange.mail', $item->company_id) }}" method="post" {{ $item->status  != "complete" ? 'show' : 'hidden' }}>
+                                                    <form action="{{ route('namechange.mail', $item->company_id) }}"
+                                                        method="post" {{ $item->status != 'complete' ? 'show' : 'hidden' }}>
                                                         @csrf
-                                                       <input type="submit" class="form-control btn-info badge-pill" value="Send Email">
+                                                        <input type="submit" class="form-control btn-info badge-pill"
+                                                            value="Send Email">
                                                     </form>
                                                 </div>
-                                                
-                                                 <!-- Button trigger modal -->
-                                                 <div class="col-md-6">
+
+                                                <!-- Button trigger modal -->
+                                                <div class="col-md-6">
                                                     <button type="button" class="form-control btn btn-primary badge-pill"
                                                         data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                                         Status Change
                                                     </button>
-                                                 </div>
-                                                    
+                                                </div>
+
                                             </div>
 
 
@@ -163,8 +167,9 @@
                                                                 </div>
                                                                 Comments
                                                                 <textarea name="comments" class="form-control" rows="3"
-                                                                    cols="35" placeholder="Comments hare..." required></textarea>
-                                                                                                                                                              </textarea>
+                                                                    cols="35" placeholder="Comments hare..."
+                                                                    required></textarea>
+                                                                </textarea>
                                                                 <input type="submit" class="btn btn-success mt-md-1">
                                                             </form>
 

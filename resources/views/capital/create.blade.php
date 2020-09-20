@@ -36,44 +36,45 @@
                                 value="Save"></div>
                     </div>
                 </form>
-                <table class="table table-responsive table-hover mt-3" {{$capital->count()>0 ?"show":"hidden"}}>
-                    <thead>
-                        <tr>
-                            <th scope="col">Maximun</th>
-                            <th scope="col">Release</th>
-                            <th scope="col">Clearance</th>
-                            <th scope="col" colspan="2">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if ($capital)
-                            @foreach ($capital as $item)
-                               
-                                    <tr>
-                                        <td>{{$item->maximum }}</td>
-                                        <td>{{$item->release }}</td>
-                                        <td>{{$item->clearance}}</td>
-                                        <td>
-                                           <a href="{{ route('capital.edit', $item->id) }}"><i class="fa fa-edit btn btn-info data-toggle="tooltip"
-                                            data-placement="bottom" title="Edit"></i></a>
-                                        </td>
-                                        <td>
-                                            <form method="post" action="{{ route('capital.destroy', $item->id) }}">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-danger btn-sm" type="submit"
-                                                    onclick="return confirm('Are you sure to delete?')"><i
-                                                        class="fa fa-trash" data-toggle="tooltip"
-                                                        data-placement="bottom" title="Delete"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                               
-                            @endforeach
-                        @endif
-                    </tbody>
-                </table>
-
+                @isset($capital)
+                @foreach ($capital as $item)
+                <ul class="list-group list-group-flush font-17">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-2 font-bold">Maximum</div>
+                            <div class="col-md-4 text-capitalize">{{$item->maximum }}</div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2 font-bold">Release</div>
+                            <div class="col-md-4">{{$item->release }}</div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2 font-bold">Clearance</div>
+                            <div class="col-md-4">{{$item->clearance}}</div>
+                        </div>
+                        <hr>
+                    </li>
+                    <div class="row form-group">
+                        <div class="col-md-2 mt-2">
+                            <a href="{{ route('capital.edit', $item->id) }}"><button class="btn btn-info badge-pill form-control"><i class="fa fa-edit" data-toggle="tooltip"
+                                data-placement="bottom" title="Edit"> Edit</i></button></a>
+                        </div>
+                        <div class="col-md-2 mt-2">
+                            <form method="post" action="{{ route('capital.destroy', $item->id) }}">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger badge-pill form-control" type="submit"
+                                    onclick="return confirm('Are you sure to delete?')"><i
+                                        class="fa fa-trash" data-toggle="tooltip"
+                                        data-placement="bottom" title="Delete"> Delete</i></button>
+                            </form>
+                        </div>
+                    </div>
+                </ul>
+                @endforeach
+                @endisset
             </div>
         </div>
     </div>

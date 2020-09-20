@@ -47,7 +47,7 @@
                             <input type="number" class="form-control" name="days" placeholder="Enter Days">
                         </div>
                         <div class="col-md-2 mt-4">
-                            <input type="submit" class="btn btn-primary" value="Search">
+                            <input type="submit" class="btn btn-primary badge-pill form-control" value="Search">
                         </div>
                     </div>
                 </form>

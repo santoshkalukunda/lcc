@@ -39,15 +39,15 @@
                                 <div class="col-md-1">
                                     Status
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2 form-group">
                                     <select name="status" class="form-control" id="">
                                         <option value="">All</option>
                                         <option value="audited">Audited</option>
                                         <option value="not_audited">Not Audited</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2">
-                                    <input type="submit" class="btn btn-info" value="Search">
+                                <div class="col-md-2 form-group">
+                                    <input type="submit" class="btn btn-info form-control badge-pill" value="Search">
                                 </div>
                             </div>
                         </form>

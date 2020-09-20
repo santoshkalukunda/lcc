@@ -37,7 +37,7 @@
                                         <form action="{{ route('renewreport.mail', $item->company_id) }}" method="post"
                                             {{ $currentdate == $item->renewreport_fiscal ? 'hidden' : 'show' }}>
                                             @csrf
-                                            <input type="submit" class="btn btn-info badge-pill" value="Send Email">
+                                            <input type="submit" class="btn btn-info form-control badge-pill" value="Send Email">
                                         </form>
                                     </div>
                                 </div>
@@ -59,9 +59,9 @@
                                             <textarea name="renew_comments" class="form-control" rows="5" placeholder="Comments here.." required></textarea>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row form-group">
                                         <div class="col-md-2">
-                                            <input type="submit" class="btn btn-success  badge-pill">
+                                            <input type="submit" class="btn btn-success form-control  badge-pill">
                                         </div>
                                         
                                     </div>

@@ -49,11 +49,11 @@
                                 <hr>
                             </li>
                             <div class="row form-group">
-                                <div class="col-md-2"><a href="{{ route('company.edit', $companyInfo->id) }}"
+                                <div class="col-md-2 mt-2"><a href="{{ route('company.edit', $companyInfo->id) }}"
                                         class="text-decoration-none text-white"><button class="btn btn-primary badge-pill form-control"
                                             type="button"><i class="fa fa-edit"> Edit</i></button></a>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2 mt-2">
                                     <form method="post" action="{{ route('company.destroy', $companyInfo) }}">
                                         @csrf
                                         @method('delete')

@@ -53,10 +53,10 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-md-2"> </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 mt-2">
                             <input type="submit" class="form-control btn btn-info badge-pill"  value="Search">
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 mt-2">
                             <input type="reset" class="form-control btn btn-danger badge-pill" value="reset">
                         </div>
                     </div>

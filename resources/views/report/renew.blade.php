@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-header">वार्षिक अध्यावधिक</div>
                     <div class="row mt-md-3 ml-md-3 mr-md-3">
-                        <div class="col-2">
+                        <div class="col-md-2">
                         <form action="{{route('allrenewreport.mail')}}" method="post">
                                 @csrf
                                <input type="submit" class="form-control btn-info badge-pill" data-toggle="tooltip"
@@ -37,15 +37,15 @@
                                 <div class="col-md-1">
                                     Status
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2 form-group">
                                     <select name="status" class="form-control" id="">
                                         <option value="">All</option>
                                         <option value="renewed">Renewed</option>
                                         <option value="not_renew">Not Renew</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2">
-                                    <input type="submit" class="btn btn-info" value="Search">
+                                <div class="col-md-2 form-group">
+                                    <input type="submit" class="btn btn-info form-control badge-pill" value="Search">
                                 </div>
                             </div>
                         </form>

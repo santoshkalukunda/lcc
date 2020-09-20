@@ -23,12 +23,12 @@
                                     {{--<a
                                         href="{{ route('shareholder.create', $company_id) }}"><i
                                             class="fa fa-plus btn btn-primary"> Add</i> </a>--}}
-                                    <input type="submit" class="btn btn-primary badge-pill" value="New Shareholder">
+                                    <input type="submit" class="btn btn-primary form-control badge-pill mb-2" value="New Shareholder">
                                 </form>
 
                             </div>
                             <div class="col-md-1">
-                                <a href="{{ route('document.show', $company_id) }}" class="btn btn-info badge-pill">Next</a>
+                                <a href="{{ route('document.show', $company_id) }}" class="btn btn-info form-control mb-2 badge-pill">Next</a>
                             </div>
                             <div class="col-md-7">
                                 <form action="{{ route('shareholder.search.list') }}" method="post">
@@ -49,7 +49,7 @@
                          
                             <div class=" col-md-2 text-right"><b>Total Results: {{ $count }}</b></div>
                         </div>
-
+                        <hr>
                         <div class="row mt-2">
                             @isset($shareholder)
                                 @foreach ($shareholder as $item)
