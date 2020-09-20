@@ -10,6 +10,9 @@
             <b class="text-right mr-2">Total Result: {{$count}} </b>
             <div class="card-body">
                 <div class="row">
+                    @if ($count == null)
+                               <div class=" ml-md-3 text-danger">{{ "Result not found." }}</div> 
+                            @endif
                     @if ($search)
                         @foreach ($search as $item)
                             <div class="col-md-3">

@@ -31,13 +31,13 @@
                                 <a href="{{ route('document.show', $company_id) }}" class="btn btn-info badge-pill">Next</a>
                             </div>
                             <div class="col-md-7">
-                            <form action="{{route('shareholder.search.list')}}" method="post">
+                                <form action="{{ route('shareholder.search.list') }}" method="post">
                                     @csrf
                                     <input type="text" name="company_id" value="{{ $company_id }}" hidden>
                                     <div class="input-group">
                                         <input type="text" id="shareholder-search-input" name="search"
                                             class="form-control badge-pill" placeholder="Search Shareholder"
-                                            aria-label="Search Company" aria-describedby="search">
+                                            aria-label="Search Company" aria-describedby="search" autofocus>
                                         <div class="input-group-append">
                                             <span id="search">
                                                 <button type="submit" class="btn btn-secondary"><i
@@ -46,7 +46,8 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="text-right "><b>Total Result: {{ $count }}</b></div>
+                         
+                            <div class=" col-md-2 text-right"><b>Total Results: {{ $count }}</b></div>
                         </div>
 
                         <div class="row mt-2">

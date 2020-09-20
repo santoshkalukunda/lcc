@@ -12,7 +12,7 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
-            <div class="card-header">Register Company</div>
+            <div class="card-header">Company Registration Form</div>
 
             <div class="card-body">
                 <form action="{{ route('company.store') }}" method="post" class="form-group">
@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-8">
                             <input type="text" id="company-name" name="name" required placeholder="Comapany Name"
-                                class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                                class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus>
                             @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -151,7 +151,7 @@
                             <label for="pan_no">PAN/VAT No. </label>
                         </div>
                         <div class="col-md-3">
-                            <input type="number" value="{{ old('pan_no') }}" name="pan_no" id="pan_no" 
+                            <input type="text" value="{{ old('pan_no') }}" name="pan_no" id="pan_no" 
                                 placeholder="PANNo. / VAT No."
                                 class="form-control @error('pan_no')is-invalid @enderror">
                             @error('pan_no')
@@ -161,7 +161,7 @@
                             @enderror
                         </div>
                         <div class="col-md-2">
-                            <label for="user_name">Usser Name:</label>
+                            <label for="user_name">User Name:</label>
                         </div>
                         <div class="col-md-3">
                             <input type="text" value="{{ old('user_name') }}" name="user_name" id="user_name" 
@@ -175,8 +175,9 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <input class="btn btn-success badge-pill ml-5" type="submit">
-                        <input class="btn btn-danger badge-pill ml-3" type="reset">
+                        <div class="col-md-2"> </div>
+                        <input class=" col-md-1 form-control btn btn-success badge-pill mr-md-2 ml-md-3" type="submit">
+                        <input class=" col-md-1 form-control btn btn-danger badge-pill" type="reset">
                     </div>
                     </form>
             </div>

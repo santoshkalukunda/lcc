@@ -19,7 +19,7 @@
                     <div class="row form-group">
                         <div class="col-md-1"><label for="name">Name</label></div>
                         <div class="col-md-8"><input type="text" class="form-control" name="name" id="name"
-                                placeholder="Comapny Name" required></div>
+                                placeholder="Comapny Name" required autofocus></div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-1"><label for="address">Address</label></div>

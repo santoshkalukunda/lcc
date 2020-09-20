@@ -10,12 +10,12 @@
             <div class="card-header">Shareholder Search</div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-8">
                         <form action="{{ route('shareholder-search.result') }}" method="post">
                             @csrf
                             <div class="input-group">
                                 <input type="text" id="shareholder-search-input" name="search" class="form-control badge-pill"
-                                    placeholder="Search Shareholder" aria-label="Search Company" aria-describedby="search">
+                                    placeholder="Search Shareholder" aria-label="Search Company" aria-describedby="search" autofocus>
                                 <div class="input-group-append">
                                     <span id="search">
                                         <button type="submit" class="btn btn-secondary"><i
@@ -24,11 +24,15 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-4 text-right">
+                    <div class="col-md-4 text-right font-bold">
                         Total Result : {{$search->total()}}
                     </div>
                 </div>
+                <hr>
                 <div class="row mt-2">
+                    @if ($search->total()== null)
+                               <div class=" ml-md-3 text-danger">{{ "Result not found." }}</div> 
+                            @endif
                     @isset($search)
                         @foreach ($search as $item)
 

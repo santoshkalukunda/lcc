@@ -177,7 +177,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="user_name">Usser Name:</label>
+                                    <label for="user_name">User Name:</label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="text" value="{{ $companyInfo->user_name }}" name="user_name" id="user_name"
@@ -191,7 +191,7 @@
                                 </div>
                             </div>
                             <div class="row form-group">
-
+                                <div class="col-md-2"> </div>
                                 <div class="col-md-2"><input class="btn btn-success badge-pill form-control" type="submit"
                                         value="Update">
                                 </div>

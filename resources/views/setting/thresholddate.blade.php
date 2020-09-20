@@ -35,7 +35,7 @@
                                 placeholder="Renew Date YYYY-MMM-DD" class="form-control">
 
                         </div>
-                        <div class="col-md-2"><input type="submit" class="btn btn-success" value="Set"></div>
+                        <div class="col-md-2"><input type="submit" class="btn btn-success form-control" value="Set"></div>
                     </div>
                 </form>
                 @isset($thresholddate)

@@ -1,20 +1,18 @@
 @extends('dashboard')
 @include('sidemenu')
 @section('title')
-    Document Report Dashboard
+सुरु विवरण
 @endsection
-
 @section('content')
-
     <div class="col-md-12">
-
         <div class="card">
-            <div class="card-header">Document Report</div>
+            <div class="card-header">सुरु विवरण</div>
             <div class="row mt-md-3 ml-md-3 mr-md-3">
-                <div class="col-2">
+                <div class="col-md-2">
                 <form action="{{route('alldocumentreport.mail')}}" method="post">
                         @csrf
-                       <input type="submit" class="form-control btn-info badge-pill" value="Send Email">
+                       <input type="submit" class="form-control btn-info badge-pill" data-toggle="tooltip"
+                       data-placement="bottom" title="Send mail to status Incomplete all shareholders" value="Send Email">
                     </form>
                 </div>
                 <div class="col-md-10 text-md-right"><b>Total Result: {{ $count }}</b> </div>
@@ -26,7 +24,7 @@
                     <div class="row form-group">
 
                         <div class="col-md-3 form-group">
-                            Name<input type="text" class="form-control" name="name" id="name" placeholder="Company Name">
+                            Name<input type="text" class="form-control" name="name" id="name" placeholder="Company Name" autofocus>
                         </div>
 
                         <div class="col-md-2 form-group">
@@ -53,7 +51,12 @@
                         </div>
                     </div>
                 </form>
+                <hr>
                 <div class="row">
+                   
+                        @if ($count == null)
+                           <div class=" ml-md-3 text-danger">{{ "Result not found." }}</div> 
+                        @endif
                     @isset($documentreport)
                         @foreach ($documentreport as $item)
                             @php
@@ -102,7 +105,7 @@
                                             @endif
                                             </p>
                                             <p class="card-text text-capitalize">
-                                                    <div style="height:150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                                                    <div class=" pl-md-2" style="height:150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
                                                 
                                                 {!! $item->comments !!}
                                             </div>
@@ -111,15 +114,15 @@
                                                 <div class="col-md-6">
                                                     <form action="{{ route('documentreport.mail', $item->company_id) }}" method="post" {{ $item->status  != "complete" ? 'show' : 'hidden' }}>
                                                         @csrf
-                                                       <input type="submit" class="form-control btn-info" value="Send Email">
+                                                       <input type="submit" class="form-control btn-info badge-pill" value="Send Email">
                                                     </form>
                                                 </div>
                                                 
                                                  <!-- Button trigger modal -->
                                                  <div class="col-md-6">
-                                                    <button type="button" class="form-control btn btn-primary fa fa-comment"
+                                                    <button type="button" class="form-control btn btn-primary badge-pill"
                                                         data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
-                                                        Comments
+                                                        Status Change
                                                     </button>
                                                  </div>
                                                     
@@ -131,7 +134,7 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Change Status
+                                                            <h5 class="modal-title" id="exampleModalLabel">Status Change
                                                             </h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -153,8 +156,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <textarea name="comments" class="form-control" rows="5"
-                                                                    cols="25" placeholder="Comments Here.." required>
-                                                                                              </textarea>
+                                                                    cols="25" placeholder="Comments here.." required></textarea>
                                                                 <input type="submit" class="btn btn-success mt-1">
                                                             </form>
 

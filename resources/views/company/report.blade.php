@@ -15,7 +15,7 @@
                             <label for="">Name</label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="name" placeholder="Name">
+                            <input type="text" class="form-control" name="name" placeholder="Name" autofocus>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -52,6 +52,7 @@
                         </div>
                     </div>
                     <div class="row form-group">
+                        <div class="col-md-2"> </div>
                         <div class="col-md-2">
                             <input type="submit" class="form-control btn btn-info badge-pill"  value="Search">
                         </div>

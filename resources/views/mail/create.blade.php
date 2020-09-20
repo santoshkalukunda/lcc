@@ -17,14 +17,14 @@
                 <form action="{{ route('allshareholder.mail') }}" method="post">
                     @csrf
                     <div class="row form-group">
-                        <div class="col-md-1"><label for="to">TO</label></div>
+                        <div class="col-md-1"><label for="to">To</label></div>
                         <div class="col-md-10"><input type="text" name="to" class="form-control"
-                          value="All" readonly></div>
+                          value="All Shareholder" readonly></div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-1"><label for="subject">Subject</label></div>
                         <div class="col-md-10"><input type="text" name="subject" class="form-control"
-                                placeholder="Email Subject"></div>
+                                placeholder="Email Subject" autofocus></div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-1"><label for="message">Message</label></div>

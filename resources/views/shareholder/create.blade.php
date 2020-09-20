@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="shareholder_name" id="name"
-                                        placeholder="Shareholder Name" required>
+                                        placeholder="Shareholder Name" required autofocus>
                                 </div>
                             </div>
                             <div class="row form-group">

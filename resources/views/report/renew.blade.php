@@ -1,7 +1,7 @@
 @extends('dashboard')
 @include('sidemenu')
 @section('title')
-    Company Renew
+वार्षिक अध्यावधिक
 @endsection
 @section('content')
     <div class="container-fluid">
@@ -13,15 +13,16 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">Renew</div>
+                    <div class="card-header">वार्षिक अध्यावधिक</div>
                     <div class="row mt-md-3 ml-md-3 mr-md-3">
                         <div class="col-2">
                         <form action="{{route('allrenewreport.mail')}}" method="post">
                                 @csrf
-                               <input type="submit" class="form-control btn-info badge-pill" value="Send Email">
+                               <input type="submit" class="form-control btn-info badge-pill" data-toggle="tooltip"
+                               data-placement="bottom" title="Send mail to not renewed all shareholders" value="Send Email">
                             </form>
                         </div>
-                        <div class="col-md-10 text-md-right"><b>Total Result: {{ $count }}</b> </div>
+                        <div class="col-md-10 text-md-right"><b>Total Results: {{ $count }}</b> </div>
                     </div> 
                     <div class="card-body">
                         <form action="{{ route('renew.search') }}" method="post">
@@ -31,7 +32,7 @@
                                     Company Name
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" name="name" class="form-control" placeholder="Company Name">
+                                    <input type="text" name="name" class="form-control" placeholder="Company Name" autofocus>
                                 </div>
                                 <div class="col-md-1">
                                     Status
@@ -48,7 +49,11 @@
                                 </div>
                             </div>
                         </form>
+                        <hr>
                         <div class="row">
+                            @if ($count == null)
+                               <div class=" ml-md-3 text-danger">{{ "Result not found." }}</div> 
+                            @endif
                             @isset($renew)
                                 @foreach ($renew as $item)
                                     <div class="col-md-4">
@@ -65,7 +70,7 @@
                                                         {{ $date->fiscal == $item->renewreport_fiscal ? '' : 'Not' }} Renewed
                                                     </p>
                                                     <p class="card-text text-capitalize">
-                                                    <div
+                                                    <div class=" pl-md-2"
                                                         style="height:150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
                                                         {!! $item->renewreport_comments !!}
                                                     </div>
@@ -76,16 +81,16 @@
                                                                 method="post"
                                                                 {{$date->fiscal != $item->renewreport_fiscal ? 'show' : 'hidden' }}>
                                                                 @csrf
-                                                                <input type="submit" class="form-control btn-info"
+                                                                <input type="submit" class="form-control btn-info badge-pill"
                                                                     value="Send Email">
                                                             </form>
                                                         </div>
                                                         <!-- Button trigger modal -->
                                                         <div class="col-md-6">
                                                             <button type="button"
-                                                                class="form-control btn btn-primary fa fa-comment"
+                                                                class="form-control btn btn-primary badge-pill"
                                                                 data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
-                                                                Comments
+                                                                Status Change
                                                             </button>
                                                         </div>
                                                     </div>
@@ -95,7 +100,7 @@
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Change Status
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Status Change
                                                                     </h5>
                                                                     <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
@@ -118,8 +123,7 @@
                                                                         </div>
                                                                         Comments
                                                                         <textarea name="renew_comments" class="form-control" rows="3" cols="25"
-                                                                            placeholder="Comments here.." required>
-                                                                      </textarea>
+                                                                            placeholder="Comments here.." required></textarea>
                                                                         <input type="submit" class="btn btn-success mt-1">
                                                                     </form>
                                                                 </div>

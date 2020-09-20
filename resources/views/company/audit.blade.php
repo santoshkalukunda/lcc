@@ -1,6 +1,6 @@
 @extends('dashboard')
 @section('title')
-    Company Audit
+    Company Audit Report
 @endsection
 @section('content')
 <x-company-sidebar :id="$company_id"></x-company-sidebar>
@@ -13,7 +13,7 @@
                 </div>
             @endif
                 <div class="card">
-                    <div class="card-header">Audit</div>
+                    <div class="card-header">Audit Report</div>
                     <div class="card-body">
                         @isset($audit)
                         @foreach ($audit as $item)
@@ -21,10 +21,10 @@
                             <div class="col-md-12 font-bold text-center font-18 {{ $currentdate == $item->auditreport_fiscal ? '' : 'bg-danger'}} bg-info ">Status :  {{ $currentdate == $item->auditreport_fiscal ? '' : 'Not'}} Audited</div>
                         </div>
                         <div class="row mt-3 mb-3">
-                            Comments
+                            <div class="col-md-2">Comments</div>
                             <div class="col-md-12">
-                                <div class="pl-2"
-                                    style="height:140px; border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                                <div class="pl-md-2"
+                                    style="height:180px; border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
                                     {!! $item->auditreport_comments !!}
                                 </div>
                             </div>
@@ -35,12 +35,12 @@
                             <form action="{{ route('auditreport.mail', $item->company_id) }}"
                                 method="post" {{ $currentdate == $item->auditreport_fiscal ? 'hidden' : 'show'}}>
                                 @csrf
-                                <input type="submit" class="btn btn-info"
+                                <input type="submit" class="btn btn-info badge-pill"
                                     value="Send Email">
                             </form>
                           </div>
                       </div>
-                    
+                    <hr>
                             <form action="{{route('audit.update',$item->id)}}" method="POST">
                                 @method('put')
                                 @csrf
@@ -54,13 +54,16 @@
                                     </div>
                                 </div>
                                 <div class="row form-group">
+                                    <div class="col-md-2">Comments</div>
                                     <div class="col-md-12">
-                                        <textarea name="audit_comments" class="form-control" rows="5" required>
-                                  </textarea>
+                                        <textarea name="audit_comments" class="form-control" rows="5" placeholder="Comment here..." required></textarea>
                                     </div>
                                 </div>
                               <div class="row">
-                                <input type="submit" class="btn btn-success mt-1" value="Comments">
+                                  <div class="col-md-2">
+                                    <input type="submit" class="btn btn-success badge-pill">
+                                  </div>
+                                
                               </div>
                             </form>
                             

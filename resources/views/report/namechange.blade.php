@@ -1,21 +1,22 @@
 @extends('dashboard')
 @include('sidemenu')
 @section('title')
-    Company Name Change Report
+नाम परिवर्तन विवरण
 @endsection
 @section('content')
 
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">Company Name change Report </div>
+            <div class="card-header">नाम परिवर्तन विवरण </div>
             <div class="row mt-md-3 ml-md-3 mr-md-3">
                 <div class="col-2">
                 <form action="{{route('allnamechange.mail')}}" method="post">
                         @csrf
-                       <input type="submit" class="form-control btn-info badge-pill" value="Send Email">
+                       <input type="submit" class="form-control btn-info badge-pill" data-toggle="tooltip"
+                       data-placement="bottom" title="Send mail to status incomplete all shareholders" value="Send Email">
                     </form>
                 </div>
-                <div class="col-md-10 text-md-right"><b>Total Result: {{ $count }}</b> </div>
+                <div class="col-md-10 text-md-right"><b>Total Results: {{ $count }}</b> </div>
             </div>
             
             <div class="card-body">
@@ -25,7 +26,7 @@
                             <div class="row form-group">
         
                                 <div class="col-md-3">
-                                    Name<input type="text" class="form-control" name="name" id="name" placeholder="Company Name">
+                                    Name<input type="text" class="form-control" name="name" id="name" placeholder="Company Name" autofocus>
                                 </div>
         
                                 <div class="col-md-2">
@@ -58,8 +59,11 @@
                         </form>
                   
                
-               
+               <hr>
                 <div class="row">
+                    @if ($count == null)
+                               <div class=" ml-md-3 text-danger">{{ "Result not found." }}</div> 
+                            @endif
                     @isset($namechange)
                         @foreach ($namechange as $item)
                             @php
@@ -105,7 +109,7 @@
                                                 @endif
                                             </p>
                                             <p class="card-text text-capitalize">
-                                            <div
+                                            <div class=" pl-md-2"
                                                 style="height:150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
                                                 {!! $item->comments !!}
                                             </div>
@@ -114,15 +118,15 @@
                                                 <div class="col-md-6">
                                                     <form action="{{ route('namechange.mail', $item->company_id) }}" method="post" {{ $item->status  != "complete" ? 'show' : 'hidden' }}>
                                                         @csrf
-                                                       <input type="submit" class="form-control btn-info" value="Send Email">
+                                                       <input type="submit" class="form-control btn-info badge-pill" value="Send Email">
                                                     </form>
                                                 </div>
                                                 
                                                  <!-- Button trigger modal -->
                                                  <div class="col-md-6">
-                                                    <button type="button" class="form-control btn btn-primary fa fa-comment"
+                                                    <button type="button" class="form-control btn btn-primary badge-pill"
                                                         data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
-                                                        Comments
+                                                        Status Change
                                                     </button>
                                                  </div>
                                                     
@@ -135,7 +139,7 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Change Status
+                                                            <h5 class="modal-title" id="exampleModalLabel">Status Change
                                                             </h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -159,9 +163,9 @@
                                                                 </div>
                                                                 Comments
                                                                 <textarea name="comments" class="form-control" rows="3"
-                                                                    cols="35" required>
+                                                                    cols="35" placeholder="Comments hare..." required></textarea>
                                                                                                                                                               </textarea>
-                                                                <input type="submit" class="btn btn-success mt-1">
+                                                                <input type="submit" class="btn btn-success mt-md-1">
                                                             </form>
 
                                                         </div>

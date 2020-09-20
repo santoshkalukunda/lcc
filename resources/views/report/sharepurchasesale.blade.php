@@ -1,36 +1,43 @@
 @extends('dashboard')
 @include('sidemenu')
 @section('title')
-Shere Purchase Sale
+शेयर खरिद बिक्री
 @endsection
 @section('content')
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">Shere Purchase Sale</div>
-            <b class="text-right mr-2">Total Result: {{$count}} </b>
+            <div class="card-header">शेयर खरिद बिक्री</div>
+
             <div class="card-body">
-                <div class="col-md-8 mb-2">
-                    <form action="{{ route('company-sherepurchasesele-search') }}" method="post">
-                        @csrf
-                        <div class="row">
-                            <div class="input-group col-md-12">
-                                <input type="text" id="company-search-input" name="search" class="form-control badge-pill "
-                                    list="suggestions-data-list" placeholder="Search" aria-label="Search Company"
-                                    aria-describedby="search">
-                                <datalist id="suggestions-data-list">
-                                </datalist>
-                                <div class="input-group-append">
-
-                                    <span id="search">
-                                        <button type="submit" class="btn btn-secondary"><i
-                                                class="fa fa-search"></i></button></span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </form>
-                </div>
                 <div class="row">
+                    <div class="col-md-8 mb-2">
+                        <form action="{{ route('company-sherepurchasesele-search') }}" method="post">
+                            @csrf
+                            <div class="row">
+                                <div class="input-group col-md-12">
+                                    <input type="text" id="company-search-input" name="search"
+                                        class="form-control badge-pill " list="suggestions-data-list" placeholder="Search"
+                                        aria-label="Search Company" aria-describedby="search" autofocus>
+                                    <datalist id="suggestions-data-list">
+                                    </datalist>
+                                    <div class="input-group-append">
+
+                                        <span id="search">
+                                            <button type="submit" class="btn btn-secondary"><i
+                                                    class="fa fa-search"></i></button></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <b class="col-md-4 text-right">Total Results: {{ $count }} </b>
+                </div>
+                <hr>
+                <div class="row">
+                    @if ($count == null)
+                               <div class=" ml-md-3 text-danger">{{ "Result not found." }}</div> 
+                            @endif
                     @isset($search)
                         @foreach ($search as $item)
                             <div class="col-md-3">
@@ -49,7 +56,7 @@ Shere Purchase Sale
                         @endforeach
                     @endisset
                 </div>
-                
+
             </div>
         </div>
 
