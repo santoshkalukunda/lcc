@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-header">नाम परिवर्तन विवरण </div>
             <div class="row mt-md-3 ml-md-3 mr-md-3">
-                <div class="col-2">
+                <div class="col-md-2">
                 <form action="{{route('allnamechange.mail')}}" method="post">
                         @csrf
                        <input type="submit" class="form-control btn-info badge-pill" data-toggle="tooltip"
