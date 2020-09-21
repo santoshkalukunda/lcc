@@ -67,19 +67,19 @@
                                             <div class="card-body font-bold ">
                                                 <p class="card-text">Change date: {{ $item->change_date }}</p>
                                                 <p class="card-text">Old name: {{ $item->old_name }}</p>
-                                                <p class="card-text">Remainig Days:
+                                                <p class="card-text">Days:
                                                     @if ($item->status == 'incomplete')
                                                         @if ($remain >= 0)
-                                                            {{ $remain }}
+                                                            {{ $remain . " Days Remaining" }}
                                                         @else
-                                                            {{ abs($remain) . ' Late' }}
+                                                            {{ abs($remain) . ' Days Late' }}
                                                         @endif
                                                     @endif
                                                 </p>
-                                                <p class="card-text">Status: <button
-                                                        class=" text-capitalize badge-pill font-bold {{ $item->status == 'incomplete' ? 'btn btn-danger' : 'btn btn-info' }}" aria-readonly>
+                                                <p class="card-text">Status: <span
+                                                        class=" text-capitalize badge-pill text-white font-18 font-bold {{ $item->status == 'incomplete' ? 'bg-danger' : 'bg-info' }}" aria-readonly>
                                                         {{ $item->status }}
-                                                    </button>
+                                                </span>
                                                 </p>
                                                 
                                                 <p class="card-text col-md-12">

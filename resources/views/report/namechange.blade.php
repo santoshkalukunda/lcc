@@ -17,7 +17,6 @@
                             value="Send Email">
                     </form>
                 </div>
-                <div class="col-md-10 text-md-right"><b>Total Results: {{ $count }}</b> </div>
             </div>
 
             <div class="card-body">
@@ -59,7 +58,12 @@
 
                     </div>
                 </form>
-
+                <b class="badge-pill bg-blue-light text-white font-18">Total Results: {{ $count }}</b>
+                <b class=" float-right" style="color: #da8f8f"> *Lass than 5 </b>
+                <b class=" float-right" style="color: #e0d888"> *10-5 &nbsp </b>
+                <b class=" float-right" style="color: #81a6f1"> *20-10 &nbsp </b>
+                <b class=" float-right" style="color: #ccd8f1"> *30-20 &nbsp </b>
+                <b class=" float-right" >Remaining dyas &nbsp</b>
 
                 <hr>
                 <div class="row">
@@ -104,9 +108,9 @@
                                             <p class="card-text font-bold font-20 ">
                                                 @if ($item->status == 'incomplete')
                                                     @if ($remain >= 0)
-                                                        {{ $remain }}
+                                                        {{ $remain . " Days Remaiming" }}
                                                     @else
-                                                        {{ abs($remain) . ' Late' }}
+                                                        {{ abs($remain) . ' Days Late' }}
                                                     @endif
                                                 @endif
                                             </p>

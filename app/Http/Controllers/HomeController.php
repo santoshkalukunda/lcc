@@ -35,26 +35,32 @@ class HomeController extends Controller
         if ($fiscal == null) {
             return view('setting.setdate')->with('setdate',$fiscal);
         }
-        $company=CompanyInfo::count();
-        $documentincomplete=Documentreport::Where('documentreports.status', 'like', "incomplete")->count();
-        $documentcomplete=Documentreport::Where('documentreports.status', 'like', "complete")->count();
-        $namechangeincomplete =Namechange::Where('status', '=', "incomplete")->count();
-        $namechangecomplete =Namechange::Where('status', '=', "complete")->count();
-        $notaudited = Auditreport::where('auditreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('auditreport_fiscal', '!=', "$fiscal->fiscal")->count();
+        $company=CompanyInfo::latest()->paginate(5);
+        $currentdate=nepalicurrenntdate();
+        $documentincomplete=DB::table('documentreports')->join('company_infos','documentreports.company_id','=','company_infos.id')->select('documentreports.*','company_infos.name','company_infos.contact_no','company_infos.reg_date')->Where('documentreports.status', 'like', "incomplete")->orderBy('company_infos.reg_date')->paginate(5);
+         $documentcomplete=Documentreport::Where('documentreports.status', 'like', "complete")->count();
+        
+         $namechangeincomplete =Namechange::Where('status', '=', "incomplete")->orderBy('change_date')->paginate(9);
+          $namechangecomplete =Namechange::Where('status', '=', "complete")->count();
+
+        $notaudited = Auditreport::Join('company_infos', 'auditreports.company_id', '=', 'company_infos.id')->select('company_infos.name', 'company_infos.contact_no', 'auditreports.*')->where('auditreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('auditreport_fiscal', '!=', "$fiscal->fiscal")->paginate(5);
         $audited = Auditreport::where('auditreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('auditreport_fiscal', '=', "$fiscal->fiscal")->count();
-        $notrenewed = Renewreport::where('renewreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('renewreport_fiscal', '!=', "$fiscal->fiscal")->count();
+       
+        $notrenewed = Renewreport::Join('company_infos','renewreports.company_id','=','company_infos.id')->select('company_infos.name','company_infos.contact_no','renewreports.*')->where('renewreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('renewreport_fiscal', '!=', "$fiscal->fiscal")->paginate(9);
         $renewed = Renewreport::where('renewreport_reg_fiscal', '!=', "$fiscal->fiscal")->where('renewreport_fiscal', '=', "$fiscal->fiscal")->count();
 
         return view('home')
-        ->with('company', $company)
-        ->with('documentincomplete',$documentincomplete)
-        ->with('documentcomplete',$documentcomplete)
-        ->with('namechangeincomplete',$namechangeincomplete)
-        ->with('namechangecomplete',$namechangecomplete)
-        ->with('notaudited',$notaudited)
-        ->with('audited',$audited)
-        ->with('notrenewed',$notrenewed)
-        ->with('renewed',$renewed);
+        ->with(['company'=>$company,
+        'documentincomplete'=>$documentincomplete,
+        'documentcomplete'=>$documentcomplete,
+        'namechangeincomplete'=>$namechangeincomplete,
+        'namechangecomplete'=>$namechangecomplete,
+        'notaudited'=>$notaudited,
+        'audited'=>$audited,
+        'notrenewed'=>$notrenewed,
+        'renewed'=>$renewed,
+        'currentdate'=>$currentdate
+        ]);
     }
     function search(Request $request)
     {

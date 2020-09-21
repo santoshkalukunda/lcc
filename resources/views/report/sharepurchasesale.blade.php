@@ -31,8 +31,9 @@
                             </div>
                         </form>
                     </div>
-                    <b class="col-md-4 text-right">Total Results: {{ $count }} </b>
                 </div>
+                <b class="badge-pill bg-blue-light text-white font-18">Total Results: {{ $count }}</b>
+
                 <hr>
                 <div class="row">
                     @if ($count == null)

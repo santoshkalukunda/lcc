@@ -23,7 +23,6 @@
                                     value="Send Email">
                             </form>
                         </div>
-                        <div class="col-md-10 text-md-right"><b>Total Results: {{ $count }}</b> </div>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('audit.search') }}" method="post">
@@ -51,10 +50,12 @@
                                 </div>
                             </div>
                         </form>
+                        <b class="badge-pill bg-blue-light text-white font-18">Total Results: {{ $count }}</b>
+                        <b class=" float-right" style="color: #da8f8f"> *Not Audited </b>
                         <hr>
                         <div class="row">
                             @if ($count == null)
-                               <div class=" ml-md-3 text-danger">{{ "Result not found." }}</div> 
+                               <div class=" ml-md-3 text-danger">{{ "result not found " }}</div> 
                             @endif
                             @isset($audit)
                                 @foreach ($audit as $item)

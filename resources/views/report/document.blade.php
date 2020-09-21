@@ -15,7 +15,6 @@
                        data-placement="bottom" title="Send mail to status Incomplete all shareholders" value="Send Email">
                     </form>
                 </div>
-                <div class="col-md-10 text-md-right"><b>Total Result: {{ $count }}</b> </div>
             </div>
             <div class="card-body">
 
@@ -51,6 +50,12 @@
                         </div>
                     </div>
                 </form>
+                <b class="badge-pill bg-blue-light text-white font-18">Total Results: {{ $count }}</b>
+                <b class=" float-right" style="color: #da8f8f"> *Lass Than 20 </b>
+                <b class=" float-right" style="color: #e0d888"> *50-30 &nbsp </b>
+                <b class=" float-right" style="color: #81a6f1"> *80-50 &nbsp </b>
+                <b class=" float-right" style="color: #ccd8f1"> *90-80 &nbsp </b>
+                <b class=" float-right" >Remaining dyas &nbsp</b>
                 <hr>
                 <div class="row">
                    
@@ -71,16 +76,16 @@
                                 $day =$diff->format('%a');
                                 $lastday=90;
                                 $remain=$lastday-$day;
-                                if ($day>=0 && $item->status=="incomplete" ) {
+                                if ($day>=10 && $item->status=="incomplete" ) {
                                 $color="#ccd8f1";
                                 }
-                                if ($day>10 && $item->status=="incomplete" ) {
+                                if ($day>30 && $item->status=="incomplete" ) {
                                 $color="#81a6f1";
                                 }
-                                if ($day>20 && $item->status=="incomplete" ) {
+                                if ($day>30 && $item->status=="incomplete" ) {
                                 $color="#e0d888";
                                 }
-                                if ($day>25 && $item->status=="incomplete" ) {
+                                if ($day>70 && $item->status=="incomplete" ) {
                                 $color="#da8f8f";
                                 }
                                 @endphp
@@ -98,9 +103,9 @@
                                             <p class="card-text font-bold font-20">
                                                 @if ($item->status == 'incomplete')
                                                 @if ($remain >= 0)
-                                                    {{ $remain }}
+                                                    {{ $remain ." Days Remaining" }}
                                                 @else
-                                                    {{ abs($remain) . ' Late' }}
+                                                    {{ abs($remain) . ' Days Late' }}
                                                 @endif
                                             @endif
                                             </p>

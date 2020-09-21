@@ -13,7 +13,7 @@ class DocumentreportController extends Controller
     {
         $currentdate=nepalicurrenntdate();
         $documentreport=DB::table('documentreports')->join('company_infos','documentreports.company_id','=','company_infos.id')->select('documentreports.*','company_infos.name','company_infos.contact_no','company_infos.reg_date')->Where('documentreports.status', 'like', "incomplete")->orderBy('company_infos.reg_date')->paginate(9);
-        $count=DB::table('documentreports')->join('company_infos','documentreports.company_id','=','company_infos.id')->select('documentreports.*','company_infos.name','company_infos.contact_no','company_infos.reg_date')->Where('documentreports.status', 'like', "incomplete")->count();
+        $count=$documentreport->total();
         return view('report.document')->with('documentreport',$documentreport)->with('current_date',$currentdate)->with('count',$count);
      
     }

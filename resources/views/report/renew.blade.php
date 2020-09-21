@@ -22,7 +22,6 @@
                                data-placement="bottom" title="Send mail to not renewed all shareholders" value="Send Email">
                             </form>
                         </div>
-                        <div class="col-md-10 text-md-right"><b>Total Results: {{ $count }}</b> </div>
                     </div> 
                     <div class="card-body">
                         <form action="{{ route('renew.search') }}" method="post">
@@ -49,6 +48,8 @@
                                 </div>
                             </div>
                         </form>
+                        <b class="badge-pill bg-blue-light text-white font-18">Total Results: {{ $count }}</b>
+                        <b class=" float-right" style="color: #da8f8f"> *Not Renew </b>
                         <hr>
                         <div class="row">
                             @if ($count == null)
