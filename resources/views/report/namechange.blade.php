@@ -63,7 +63,8 @@
                 <b class=" float-right" style="color: #e0d888"> *10-5 &nbsp </b>
                 <b class=" float-right" style="color: #81a6f1"> *20-10 &nbsp </b>
                 <b class=" float-right" style="color: #ccd8f1"> *30-20 &nbsp </b>
-                <b class=" float-right" >Remaining dyas &nbsp</b>
+                <b class=" float-right" >Remaining days &nbsp</b>
+                
 
                 <hr>
                 <div class="row">

@@ -1,7 +1,7 @@
 @extends('dashboard')
 @include('sidemenu')
 @section('title')
-    Dashboard
+  LCC | Dashboard
 @endsection
 @section('content')
     <div class="col-md-12">
