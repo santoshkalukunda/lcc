@@ -3,9 +3,8 @@
     {{ $companyInfo->name }}
 @endsection
 @section('content')
+
 <x-company-sidebar :id="$companyInfo->id"></x-company-sidebar>
-    
-       
             <div class="col-md-12">
                 @if (Session::has('success'))
                     <div class="bg-success text-white p-2">
@@ -13,7 +12,7 @@
                     </div>
                 @endif
                 <div class="card info">
-                    <div class="card-header">About</div>
+                    <div class="card-header" style="font-weight: 900;">About</div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush font-17">
                             <li class="list-group-item">
@@ -50,15 +49,15 @@
                             </li>
                             <div class="row form-group">
                                 <div class="col-md-2 mt-2"><a href="{{ route('company.edit', $companyInfo->id) }}"
-                                        class="text-decoration-none text-white"><button class="btn btn-primary badge-pill form-control"
+                                        class="text-decoration-none text-white"><button class="btn btn-primary  rounded-pill form-control"
                                             type="button"><i class="fa fa-edit"> Edit</i></button></a>
                                 </div>
                                 <div class="col-md-2 mt-2">
                                     <form method="post" action="{{ route('company.destroy', $companyInfo) }}">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger btn-md badge-pill form-control mb-1" type="submit"
-                                            onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"
+                                        <button class="btn btn-danger btn-md  rounded-pill form-control mb-1" type="submit"
+                                            onclick="return confirm('Are you sure to delete?')"><i class="fa  fa-trash-alt"
                                                 data-toggle="tooltip" data-placement="bottom" title="Delete"> Delete
                                             </i></button>
                                     </form>

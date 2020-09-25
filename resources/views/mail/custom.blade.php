@@ -8,8 +8,11 @@
     Dear {{ $shareholderName }},
     
     <p>{!! $mail!!}</p>
-Thanks, <br>
-<b>LCC</b>  <br>
-Dhangadhi, Kailali, Nepal
+    Thank You,<br>
+    {!!$profile->name!!} <br>
+    Thekendra Raj Joshi <br>
+    {!!$profile->contact!!} <br>
+    {!!$profile->address!!} <br>
+    {!!$profile->email!!} <br>
 </body>
 </html>

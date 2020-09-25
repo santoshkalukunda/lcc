@@ -42,10 +42,10 @@
                                 </div>
 
                                 <div class="col-md-2 mt-2">
-                                    <input class="btn btn-primary form-control badge-pill" type="submit" value="Change">
+                                    <input class="btn btn-primary form-control rounded-pill" type="submit" value="Change">
                                 </div>
                                 <div class="col-md-2 mt-2">
-                                    <input class="btn btn-danger form-control  badge-pill" type="reset" value="Reset">
+                                    <input class="btn btn-danger form-control  rounded-pill" type="reset" value="Reset">
                                 </div>
                             </div>
                         </form>
@@ -77,7 +77,7 @@
                                                     @endif
                                                 </p>
                                                 <p class="card-text">Status: <span
-                                                        class=" text-capitalize badge-pill text-white font-18 font-bold {{ $item->status == 'incomplete' ? 'bg-danger' : 'bg-info' }}" aria-readonly>
+                                                        class=" text-capitalize rounded-pill text-white font-18 font-bold {{ $item->status == 'incomplete' ? 'bg-danger' : 'bg-info' }}" aria-readonly>
                                                         {{ $item->status }}
                                                 </span>
                                                 </p>
@@ -86,12 +86,12 @@
                                                 <form action="{{ route('namechange.mail', $item->company_id) }}" method="post"
                                                     {{ $item->status != 'complete' ? 'show' : 'hidden' }}>
                                                     @csrf
-                                                    <input type="submit" class="form-control btn-info badge-pill" value="Send E-mail">
+                                                    <input type="submit" class="form-control btn-info rounded-pill" value="Send E-mail">
                                                 </form>
                                                 </p>
                                                 <p class="card-text">
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary form-control badge-pill"
+                                                    <button type="button" class="btn btn-primary form-control rounded-pill"
                                                         data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                                         Change Status
                                                     </button>
@@ -132,7 +132,7 @@
                                                                     </div>
                                                                     <div class="row">
                                                                         <input type="submit"
-                                                                            class="btn btn-success mt-md-1 ml-4 badge-pill">
+                                                                            class="btn btn-success mt-md-1 ml-4 rounded-pill">
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -145,7 +145,7 @@
                                                     <form method="post" action="{{ route('namechange.destroy', $item->id) }}">
                                                         @csrf
                                                         @method('delete')
-                                                        <button class="btn btn-danger col-md-12 badge-pill" type="submit"
+                                                        <button class="btn btn-danger col-md-12 rounded-pill" type="submit"
                                                             onclick="return confirm('Are you sure to delete?')"><i
                                                                 class="fa fa-trash" data-toggle="tooltip" data-placement="bottom"
                                                                 title="Delete"> Delete</i></button>

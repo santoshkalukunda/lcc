@@ -54,10 +54,10 @@
                     <div class="row form-group">
                         <div class="col-md-2"> </div>
                         <div class="col-md-2 mt-2">
-                            <input type="submit" class="form-control btn btn-info badge-pill"  value="Search">
+                            <input type="submit" class="form-control btn btn-info rounded-pill"  value="Search">
                         </div>
                         <div class="col-md-2 mt-2">
-                            <input type="reset" class="form-control btn btn-danger badge-pill" value="reset">
+                            <input type="reset" class="form-control btn btn-danger  rounded-pill" value="reset">
                         </div>
                     </div>
                 </form>

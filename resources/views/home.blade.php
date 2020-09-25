@@ -94,12 +94,12 @@
                 <div class="row">
                     @isset($company)
                     <div class="col-md-6 list-group mt-3" {{$company->total() == null ? 'hidden': 'show'}}>
-                        <span class=" p-md-3 font-15 font-bold badge-pill bg-blue-light text-white">Newly Registed
+                        <span class=" p-md-3 font-15 font-bold rounded-pill bg-blue-light text-white">Newly Registed
                             Company</span>
                         
                             @foreach ($company as $item)
                                 <a href="{{ route('company.show', $item->id) }}"
-                                    class="list-group-item list-group-item-action list-group-item-success  font-bold badge-pill">{{ $item->name . '  (' . $item->address . ')' }}
+                                    class="list-group-item list-group-item-action list-group-item-success font-bold rounded-pill mt-1">{{ $item->name . '  (' . $item->address . ')' }}
                                 </a>
                             @endforeach
                         
@@ -107,7 +107,7 @@
                     @endisset
                     @isset($documentincomplete)
                     <div class="col-md-6 list-group mt-3" {{$documentincomplete->total() == null ? 'hidden': 'show'}}>
-                        <span class="p-md-3 font-15 font-bold badge-pill bg-blue-light text-white">सुरु विवरण भर्न
+                        <span class="p-md-3 font-15 font-bold rounded-pill bg-blue-light text-white">सुरु विवरण भर्न
                             बाँकी</span>
                         
                             @foreach ($documentincomplete as $item)
@@ -120,8 +120,8 @@
                                 $remain=$lastday-$day;
                                 @endphp
                                 <a href="{{ route('document.show', $item->company_id) }}"
-                                    class="list-group-item list-group-item-action list-group-item-success  font-bold badge-pill">{{ $item->name . '   (' . $item->contact_no . ')' }}
-                                    <span class="badge badge-primary badge-pill">
+                                    class="list-group-item list-group-item-action list-group-item-success  font-bold rounded-pill mt-1">{{ $item->name . '   (' . $item->contact_no . ')' }}
+                                    <span class="badge badge-primary rounded-pill">
                                         @if ($item->status == 'incomplete')
                                             @if ($remain >= 0)
                                                 {{ $remain . ' Days Remaining' }}
@@ -136,12 +136,12 @@
                     @endisset
                     @isset($notaudited)
                         <div class="col-md-6 list-group mt-3" {{$notaudited->total() == null ? 'hidden': 'show'}}>
-                            <span class=" p-md-3 font-15 font-bold badge-pill bg-blue-light text-white">लेखा परिक्षण हुन
+                            <span class=" p-md-3 font-15 font-bold rounded-pill bg-blue-light text-white">लेखा परिक्षण हुन
                                 बाँकी</span>
 
                             @foreach ($notaudited as $item)
                                 <a href="{{ route('audit.show', $item->company_id) }}"
-                                    class="list-group-item list-group-item-action list-group-item-success  font-bold badge-pill">{{ $item->name . '  (' . $item->contact_no . ')' }}
+                                    class="list-group-item list-group-item-action list-group-item-success  font-bold  rounded-pill mt-1">{{ $item->name . '  (' . $item->contact_no . ')' }}
                                 </a>
                             @endforeach
 
@@ -149,12 +149,12 @@
                     @endisset
                     @isset($notrenewed)
                         <div class="col-md-6 list-group  mt-3" {{$notrenewed->total() == null ? 'hidden': 'show'}}>
-                            <span class="p-md-3 font-15 font-bold badge-pill bg-blue-light text-white">वार्षिक अध्यावधिक हुन
+                            <span class="p-md-3 font-15 font-bold rounded-pill bg-blue-light text-white">वार्षिक अध्यावधिक हुन
                                 बाँकी</span>
 
                             @foreach ($notrenewed as $item)
                                 <a href="{{ route('renew.show', $item->company_id) }}"
-                                    class="list-group-item list-group-item-action list-group-item-success  font-bold badge-pill">{{ $item->name . '  (' . $item->contact_no . ')' }}
+                                    class="list-group-item list-group-item-action list-group-item-success  font-bold rounded-pill mt-1">{{ $item->name . '  (' . $item->contact_no . ')' }}
                                 </a>
                             @endforeach
 
@@ -163,7 +163,7 @@
                
                     @isset($namechangeincomplete)
                         <div class="col-md-6 list-group mt-3"{{$namechangeincomplete->total() == null ? 'hidden': 'show'}} >
-                            <span class="p-md-3 font-15 font-bold badge-pill bg-blue-light text-white">नाम परिवर्तन</span>
+                            <span class="p-md-3 font-15 font-bold rounded-pill bg-blue-light text-white">नाम परिवर्तन</span>
                            
                             @foreach ($namechangeincomplete as $item)
                                 @php
@@ -175,8 +175,8 @@
                                 $remain=$last-$day;
                                 @endphp
                                 <a href="{{ route('namechange.show', $item->company_id) }}"
-                                    class="list-group-item list-group-item-action list-group-item-success  font-bold badge-pill">{{ $item->new_name }}
-                                    <span class="badge badge-primary badge-pill">
+                                    class="list-group-item list-group-item-action list-group-item-success  font-bold rounded-pill mt-1">{{ $item->new_name }}
+                                    <span class="badge badge-primary rounded-pill">
                                         @if ($item->status == 'incomplete')
                                             @if ($remain >= 0)
                                                 {{ $remain . ' Days Remaining' }}

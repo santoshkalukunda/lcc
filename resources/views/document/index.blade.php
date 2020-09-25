@@ -29,20 +29,25 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-4 mt-2">
-                                        <input type="hidden" name="company_id" value="{{ $company_id }}">
-                                        <input type="text" name="type" id="type" class="form-control @error('type') is-invalid @enderror" required placeholder=" Document Type">
-                                        @error('type')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
+                                    <input type="hidden" name="company_id" value="{{ $company_id }}">
+                                        
+                                        <select  name="type"  class="form-control @error('type') is-invalid @enderror" required>
+                                    <option value="">Select Document Type</option>
+                                    
+                                    @isset($documenttype)
+                                    @foreach ($documenttype as $item)
+                                        <option>{{$item->type}}</option>
+                                    @endforeach
+                                        
+                                    @endisset
+                                      </select>
                                 </div>
                                 
                                 <div class="col-md-2 mt-2">
-                                    <input class="btn btn-primary form-control badge-pill" type="submit" value="Upload">
+                                    <input class="btn btn-primary form-control rounded-pill" type="submit" value="Upload">
                                 </div>
                                 <div class="col-md-2 mt-2">
-                                    <input class="btn btn-danger form-control badge-pill" type="reset" value="Reset">
+                                    <input class="btn btn-danger form-control rounded-pill" type="reset" value="Reset">
                                 </div>
                             </div>
                         </form>

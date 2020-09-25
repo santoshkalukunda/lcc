@@ -15,7 +15,7 @@
         <div class="card-header">Company Profile</div>
 
         <div class="card-body">
-          <div class="col-md-2  mb-3"><a href="{{route('profile.create')}}"><button class="btn btn-info"><i class="fa fa-plus"> Add Profile</i> </button></a></div>
+          <div class="col-md-2  mb-3"><a href="{{route('profile.create')}}"><button class="btn btn-info form-control"><i class="fa fa-plus"> Add Profile</i> </button></a></div>
 
             @isset($profile)
 
@@ -60,20 +60,13 @@
           </div>
         </h4>
         <div class="row">
+          <div class="col-md-2"></div>
             <div class="col-md-2">
                 <a href="{{ route('profile.edit', $item->id) }}">
-                    <button type="button" class="btn btn-primary" data-toggle="collapse"
+                    <button type="button" class="btn btn-primary form-control" data-toggle="collapse"
                         data-target="#comments"><i class="fa fa-edit"> Edit</i></button></a>
             </div>
-            <div class="col-md-2">
-                <form method="post" action="{{ route('profile.destroy', $item->id) }}">
-                    @csrf
-                    @method('delete')
-                    <button class="btn btn-danger" type="submit"
-                        onclick="return confirm('Are you sure to delete?')"><i
-                            class="fa fa-trash" title="Delete"> Delete</i></button>
-                </form>
-            </div>
+           
         </div>
         
           @endforeach

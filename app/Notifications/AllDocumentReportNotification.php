@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Profile;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -42,12 +43,14 @@ class AllDocumentReportNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        $profile=Profile::first();
         return (new MailMessage)
-        ->subject('Starting details and document submition notification')
+        ->subject('Starting report submition notification')
         ->markdown('mail.document', [
             'shareholderName' => $notifiable->shareholder_name,
             'documentreport=' => $this->documentreport,
             'days' => $this->days,
+            'profile'=>$profile,
         ]);
     }
 

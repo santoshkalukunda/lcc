@@ -20,7 +20,7 @@
                                                 href="{{ route('shareholder.create', $company_id) }}"><i
                                                     class="fa fa-plus btn btn-primary"> Add</i>
                                             </a>--}}
-                                            <input type="submit" class="btn btn-primary badge-pill form-control" value="New Shareholder">
+                                            <input type="submit" class="btn btn-primary rounded-pill form-control" value="New Shareholder">
                                         </form>
                                     </div>
                                 </div>

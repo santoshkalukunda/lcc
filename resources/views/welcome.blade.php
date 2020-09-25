@@ -37,20 +37,48 @@
         </ul>
     </nav>
     <div class="row">
+      @isset($profile)
         <div class="col-md-6">
             <div class="font-bold ml-5 justify-content-center" style="font-size: 40px;  margin-top: 25px;">
-                Welcome To LCC
+                Welcome To 
+            </div>
+          
+            <div class="font-bold ml-5 justify-content-center" style="font-size: 38px;">
+               {{$profile->name}}
             </div>
             <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                Dhangadhi, Kailali, Nepal
+                {{$profile->address}}
             </div>
             <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                091-520000
+                {{$profile->contact}}
             </div>
             <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                <a href="mailto:info@lcc.com.np" class=" text-dark">info@lcc.com.np</a>
+                <a href="mailto:{{$profile->email}}" class=" text-dark">
+                {{$profile->email}}
+                </a>
+            </div>
+            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
+                <a href="{{$profile->facebook}}" class=" text-dark">
+                {{$profile->facebook}}
+                </a>
+            </div>
+            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
+                <a href="{{$profile->twitter}}" class=" text-dark">
+                {{$profile->twitter}}
+                </a>
+            </div>
+            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
+                <a href="{{$profile->linkedin}}" class=" text-dark">
+                {{$profile->linkedin}}
+                </a>
+            </div>
+              <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
+                <a href="{{$profile->youtube}}" class=" text-dark">
+                {{$profile->youtube}}
+                </a>
             </div>
         </div>
+        @endisset
         <div class="col-md-6 pl-lg-5">
             <div class=" text-center font-bold  mt-3 " style="font-size: 30px">
                 <u>Contact Us</u>

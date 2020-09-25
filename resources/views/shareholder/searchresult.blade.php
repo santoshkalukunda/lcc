@@ -14,7 +14,7 @@
                         <form action="{{ route('shareholder-search.result') }}" method="post">
                             @csrf
                             <div class="input-group">
-                                <input type="text" id="shareholder-search-input" name="search" class="form-control badge-pill"
+                                <input type="text" id="shareholder-search-input" name="search" class="form-control rounded-pill"
                                     placeholder="Search Shareholder" aria-label="Search Company" aria-describedby="search" autofocus>
                                 <div class="input-group-append">
                                     <span id="search">

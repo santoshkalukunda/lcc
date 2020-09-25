@@ -57,11 +57,11 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-2 mt-2">
-                                    <input class="btn btn-success badge-pill form-control" type="submit" value="Update">
+                                    <input class="btn btn-success rounded-pill form-control" type="submit" value="Update">
 
                                 </div>
                                 <div class="col-md-2 mt-2">
-                                      <button class="btn btn-info badge-pill form-control" ><a href="{{route('shareholder.show',$shareholder->company_id)}}" class="text-decoration-none text-white">Cancel</a></button>
+                                      <button class="btn btn-info rounded-pill form-control" ><a href="{{route('shareholder.show',$shareholder->company_id)}}" class="text-decoration-none text-white">Cancel</a></button>
                                 </div>
                             </div>
                         </form>

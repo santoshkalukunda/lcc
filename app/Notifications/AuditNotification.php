@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Profile;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -44,11 +45,13 @@ class AuditNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        $profile=Profile::first();
         return (new MailMessage)
-        ->subject('Audit report submition notification')
+        ->subject('Annual audit report submition notification')
         ->markdown('mail.audit', [
             'shareholderName' => $notifiable->shareholder_name,
             'thresholddate' => $this->thresholdate,
+            'profile'=>$profile,
         ]);
     }
 

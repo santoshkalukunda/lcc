@@ -17,8 +17,8 @@
                     <div class="card-body">
                         @isset($audit)
                         @foreach ($audit as $item)
-                        <div class="row">
-                            <div class="col-md-12 font-bold text-center font-18 {{ $currentdate == $item->auditreport_fiscal ? '' : 'bg-danger'}} bg-info ">Status :  {{ $currentdate == $item->auditreport_fiscal ? '' : 'Not'}} Audited</div>
+                        <div class="row m-1">
+                            <div class="col-md-12 font-bold text-center font-18 p-2 {{ $currentdate == $item->auditreport_fiscal ? '' : 'bg-danger'}} bg-info  text-white">{{ $currentdate == $item->auditreport_fiscal ? '' : 'Not'}} Audited</div>
                         </div>
                         <div class="row mt-3 mb-3">
                             <div class="col-md-2">Comments</div>
@@ -35,7 +35,7 @@
                             <form action="{{ route('auditreport.mail', $item->company_id) }}"
                                 method="post" {{ $currentdate == $item->auditreport_fiscal ? 'hidden' : 'show'}}>
                                 @csrf
-                                <input type="submit" class="btn btn-info badge-pill form-control"
+                                <input type="submit" class="btn btn-info rounded-pill form-control"
                                     value="Send Email">
                             </form>
                           </div>
@@ -56,12 +56,12 @@
                                 <div class="row form-group">
                                     <div class="col-md-2">Comments</div>
                                     <div class="col-md-12">
-                                        <textarea name="audit_comments" class="form-control" rows="5" placeholder="Comment here..." required></textarea>
+                                        <textarea name="audit_comments" class="form-control" rows="8" placeholder="Comment here..." required></textarea>
                                     </div>
                                 </div>
                               <div class="row form-group">
                                   <div class="col-md-2">
-                                    <input type="submit" class="btn btn-success form-control badge-pill">
+                                    <input type="submit" class="btn btn-success form-control rounded-pill">
                                   </div>
                                 
                               </div>

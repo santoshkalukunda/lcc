@@ -83,7 +83,7 @@
                         <i class="sidebar-item-icon fa fa-th-large"></i>
                             <span class="nav-label">.</span>
                     </li>
-                    <li>
+                    <li class="{{ (request()->is('home')) ? 'active' : '' }}">
                     <a  href="{{route('home')}}"><i class="sidebar-item-icon fa fa-th-large"></i>
                             <span class="nav-label">Dashboard</span>
                         </a>

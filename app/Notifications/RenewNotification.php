@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Profile;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -40,11 +41,13 @@ class RenewNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        $profile=Profile::first();
         return (new MailMessage)
         ->subject('Anual renew report submition notification')
         ->markdown('mail.renew', [
             'shareholderName' => $notifiable->shareholder_name,
             'thresholddate' => $this->thresholdate,
+            'profile'=>$profile,
         ]);
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   $profile=DB::table('profiles')->first();
+    return view('welcome')->with('profile',$profile);
 });
 
 Auth::routes();
@@ -28,6 +30,10 @@ Route::post('cahngepassword','UserListController@changepasswordupdate')->name('u
 
 
 Route::get('home/search', 'HomeController@search')->name('live_search.action');
+// Must be before company Resource route
+Route::get('company/report','CompanyReportController@index')->name('company.report')->middleware('auth');
+Route::post('company/report','CompanyReportController@report')->name('company.report.show')->middleware('auth');
+
 Route::resource('company', 'CompanyInfoController')->middleware('auth');
 Route::resource('document', 'DocumentController')->middleware('auth');
 
@@ -40,8 +46,7 @@ Route::resource('shareholder', 'ShareholderController')->middleware('auth');
 Route::any('search', 'SearchController@search')->name('company-search')->middleware('auth');
 Route::any('search/list', 'SearchController@searchlist')->name('company-search-list')->middleware('auth');
 Route::any('search/changename', 'SearchController@changename')->name('namechange.search')->middleware('auth');
-Route::get('report/company','CompanyReportController@index')->name('company.report')->middleware('auth');
-Route::post('report/company','CompanyReportController@report')->name('company.report.show')->middleware('auth');
+
 Route::resource('renew','RenewController')->middleware('auth');
 Route::resource('namechange','NamechangeController')->middleware('auth');
 
@@ -82,4 +87,6 @@ Route::post('contactus','ContactUsController@store')->name('contactus.store');
 Route::get('contactus','ContactUsController@index')->name('contactus.index')->middleware('auth');
 Route::any('contactus/{id}','ContactUsController@destroy')->name('contactus.destroy')->middleware('auth');
 Route::resource('thresholddate','ThresholddateController')->middleware('auth');
+Route::resource('documenttype','DocumenttypeController')->middleware('auth');
+Route::resource('fee','FeeController')->middleware('auth');
 

@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Profile;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -40,9 +41,10 @@ class AllShareholderNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        $profile=Profile::first();
         return (new MailMessage)
         ->subject($this->mail->subject)
-        ->view('mail.custom',['shareholderName'=>$notifiable->shareholder_name,'mail'=>$this->mail->message]);
+        ->view('mail.custom',['shareholderName'=>$notifiable->shareholder_name,'mail'=>$this->mail->message,'profile'=>$profile]);
     
     }
 

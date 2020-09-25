@@ -107,8 +107,6 @@ class ProfileController extends Controller
      */
     public function destroy(Profile $profile)
     {
-        Storage::delete($profile->logo);
-        $profile->delete();
-        return redirect()->back()->with('success', 'Record Deleted');
+        
     }
 }

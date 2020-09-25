@@ -3,6 +3,7 @@
     Company Renew report
 @endsection
 @section('content')
+
     <x-company-sidebar :id="$company_id"></x-company-sidebar>
     <div class="container-fluid">
         <div class="row">
@@ -17,10 +18,10 @@
                     <div class="card-body">
                         @isset($renew)
                             @foreach ($renew as $item)
-                                <div class="row">
+                                <div class="row m-1" >
                                     <div
-                                        class="col-md-12 font-bold text-center font-18 {{ $currentdate == $item->renewreport_fiscal ? '' : 'bg-danger' }} bg-info ">
-                                        Status : {{ $currentdate == $item->renewreport_fiscal ? '' : 'Not' }} Renewed</div>
+                                        class="col-md-12 font-bold text-center font-18 p-2 {{ $currentdate == $item->renewreport_fiscal ? '' : 'bg-danger' }} bg-info  text-white">
+                                        {{ $currentdate == $item->renewreport_fiscal ? '' : 'Not' }} Renewed</div>
                                 </div>
                                 <div class="row mt-3 mb-3">
                                     <div class="col-md-2">Comments</div>
@@ -37,7 +38,7 @@
                                         <form action="{{ route('renewreport.mail', $item->company_id) }}" method="post"
                                             {{ $currentdate == $item->renewreport_fiscal ? 'hidden' : 'show' }}>
                                             @csrf
-                                            <input type="submit" class="btn btn-info form-control badge-pill" value="Send Email">
+                                            <input type="submit" class="btn btn-info form-control rounded-pill" value="Send Email">
                                         </form>
                                     </div>
                                 </div>
@@ -56,12 +57,12 @@
                                     </div>
                                     <div class="row form-group">
                                         <div class="col-md-12">
-                                            <textarea name="renew_comments" class="form-control" rows="5" placeholder="Comments here.." required></textarea>
+                                            <textarea name="renew_comments" class="form-control" rows="8" placeholder="Comments here.." required></textarea>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col-md-2">
-                                            <input type="submit" class="btn btn-success form-control  badge-pill">
+                                            <input type="submit" class="btn btn-success form-control  rounded-pill">
                                         </div>
                                         
                                     </div>

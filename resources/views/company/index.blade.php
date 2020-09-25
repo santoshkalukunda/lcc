@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="input-group col-md-12">
                                     <input type="text" id="company-search-input" name="search"
-                                        class="form-control badge-pill" list="suggestions-data-list" placeholder="Search"
+                                        class="form-control rounded-pill" list="suggestions-data-list" placeholder="Search"
                                         aria-label="Search Company" aria-describedby="search" autofocus>
                                     <datalist id="suggestions-data-list">
                                     </datalist>

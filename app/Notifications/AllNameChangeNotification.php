@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Profile;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -42,15 +43,14 @@ class AllNameChangeNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        $nameChange =$this->namechange;
-        
-       
+        $profile=Profile::first();
             return (new MailMessage)
             ->subject('Company Name Change Notification')
             ->markdown('mail.namechange', [
                 'shareholderName' => $notifiable->shareholder_name,
                 'nameChange' => $this->namechange,
                 'curentdate'=>$this->currentdate,
+                'profile'=>$profile,
             ]);
         
       

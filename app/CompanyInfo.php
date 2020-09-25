@@ -56,4 +56,8 @@ class CompanyInfo extends Model
     {
         return $this->hasOne('App\Capital', 'company_id');
     }
+    public function fee()
+    {
+        return $this->hasMany('App\Fee', 'company_id');
+    }
 }

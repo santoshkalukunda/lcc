@@ -192,10 +192,10 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-2"> </div>
-                                <div class="col-md-2 mt-2"><input class="btn btn-success badge-pill form-control" type="submit"
+                                <div class="col-md-2 mt-2"><input class="btn btn-success rounded-pill form-control" type="submit"
                                         value="Update">
                                 </div>
-                                <div class="col-md-2 mt-2"><button class="btn btn-info badge-pill form-control"><a
+                                <div class="col-md-2 mt-2"><button class="btn btn-info  rounded-pill form-control"><a
                                             href="{{ route('company.show', $companyInfo->id) }}"
                                             class="text-decoration-none text-white">Cancel</a></button></div>
                             </div>

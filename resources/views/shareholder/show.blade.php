@@ -23,12 +23,12 @@
                                     {{--<a
                                         href="{{ route('shareholder.create', $company_id) }}"><i
                                             class="fa fa-plus btn btn-primary"> Add</i> </a>--}}
-                                    <input type="submit" class="btn btn-primary form-control badge-pill mb-2" value="New Shareholder">
+                                    <input type="submit" class="btn btn-primary form-control rounded-pill mb-2" value="New Shareholder">
                                 </form>
 
                             </div>
                             <div class="col-md-1">
-                                <a href="{{ route('document.show', $company_id) }}" class="btn btn-info form-control mb-2 badge-pill">Next</a>
+                                <a href="{{ route('document.show', $company_id) }}" class="btn btn-info form-control mb-2 rounded-pill">Next</a>
                             </div>
                             <div class="col-md-7">
                                 <form action="{{ route('shareholder.search.list') }}" method="post">
@@ -36,7 +36,7 @@
                                     <input type="text" name="company_id" value="{{ $company_id }}" hidden>
                                     <div class="input-group">
                                         <input type="text" id="shareholder-search-input" name="search"
-                                            class="form-control badge-pill" placeholder="Search Shareholder"
+                                            class="form-control rounded-pill" placeholder="Search Shareholder"
                                             aria-label="Search Company" aria-describedby="search" autofocus>
                                         <div class="input-group-append">
                                             <span id="search">

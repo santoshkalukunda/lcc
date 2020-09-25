@@ -176,8 +176,8 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-md-2"> </div>
-                        <input class=" col-md-2 form-control btn btn-success badge-pill mr-md-2 ml-md-3 mt-2" type="submit">
-                        <input class=" col-md-2 form-control btn btn-danger badge-pill mt-2" type="reset">
+                        <input class=" col-md-2 form-control btn btn-success  rounded-pill mr-md-2 ml-md-3 mt-2" type="submit">
+                        <input class=" col-md-2 form-control btn btn-danger rounded-pill mt-2" type="reset">
                     </div>
                     </form>
             </div>

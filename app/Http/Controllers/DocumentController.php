@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CompanyInfo;
 use App\Document;
+use App\Documenttype;
 use App\Http\Requests\documentrequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -81,9 +82,10 @@ class DocumentController extends Controller
      */
     public function show($document)
     {
+        $documenttype=Documenttype::get();
         $company_id = $document;
         $data = Document::where('company_id','=',"$document")->get();
-        return view('document.index')->with('company_id', $company_id)->with('document', $data);
+        return view('document.index')->with('company_id', $company_id)->with('document', $data)->with('documenttype',$documenttype);
     }
 
     /**
