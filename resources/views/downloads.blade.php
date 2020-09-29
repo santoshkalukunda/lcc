@@ -7,7 +7,7 @@
         <div id="row justify-content-center">
 
             <div class=" table-responsive-md">
-                <table class=" table mt-md-5 shadow  table-primary table-hover  table-striped table-md">
+                <table class=" table mt-md-5 shadow  table-primary table-hover table-md">
                     <thead class=" bg-blue-light  text-white">
                         <tr>
                             <th>Date</th>

@@ -22,24 +22,6 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #3a76a0;">
         <a class=" navbar-brand nav-link btn btn-outline-info  rounded-pill text-white" href="{{ '/' }}">LCC</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <ul class="navbar-nav nav nav-pill">
-                    <li class=" nav-item">
-                        <a href="{{ url('downloads') }}"
-                        class=" nav-link btn btn-outline-info  rounded-pill text-white">Downloads</a>
-
-                    </li>
-                   <li class=" nav-item ml-md-2">
-                    <a href="{{ url('contact-us') }}"
-                    class=" nav-link btn btn-outline-info  rounded-pill text-white">Contact-us</a>
-                   </li>
-                    </ul>
-            </div>
             <ul class="navbar-nav nav nav-pill ml-auto">
                 @if (Route::has('login'))
                     <div class="top-right links">
@@ -57,7 +39,7 @@
                     </div>
                 @endif
             </ul>
-        </div>
+        
     </nav>
     <div class="row justify-content-center m-auto  text-white">
         @isset($profile)
@@ -77,7 +59,13 @@
                 <div class=" row-cols-md-1 text-md-center font-bold">
                     <h4 class=" font-weight-bold">{{ $profile->email }}</h4>
                 </div>
-
+                <div class=" row my-3 m-auto font-bold justify-content-center">
+                    <a href="{{ url('downloads') }}"
+                class=" nav-link btn btn-outline-info  rounded-pill text-white col-md-1 mx-2">Downloads</a>
+                <a href="{{ url('contact-us') }}"
+                class=" nav-link btn btn-outline-info  rounded-pill text-white col-md-1  mx-2">Contact-us</a>
+                </div>
+               
             </div>
             
         @endisset
