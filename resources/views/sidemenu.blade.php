@@ -77,6 +77,9 @@
             <li class="{{ (request()->is('documenttype*')) ? 'active' : '' }}">
                 <a href="{{ route('documenttype.index') }}">Document Type</a>
             </li>
+            <li class="{{ (request()->is('download*')) ? 'active' : '' }}">
+                <a href="{{ route('download.index') }}">Downloads</a>
+            </li>
             <li class="{{ (request()->is('contactus*')) ? 'active' : '' }}">
                 <a href="{{ route('contactus.index') }}">Contact Us List</a>
             </li>

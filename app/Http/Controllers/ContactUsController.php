@@ -10,7 +10,7 @@ class ContactUsController extends Controller
 {
     public function store(ContactUsRequest $request){
        ContactUs::create($request->all());
-       return redirect()->back();
+       return redirect()->back()->with('success',"Message Sent");
     }
     public function index(){
         $contactus=ContactUs::latest()->paginate(10);

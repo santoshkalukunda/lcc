@@ -8,133 +8,91 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         body {
-            background-image: url("{{ asset('background.jpg') }}");
+            background-image: url("{{ asset('background2.jpg') }}");
             background-repeat: no-repeat;
             height: 650px;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
-
         }
-
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #3a76a0;">
-        <a class="navbar-brand font-24 font-bold text-white" href="{{ '/' }}">LCC</a>
-        <ul class="navbar-nav nav nav-pill ml-auto">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}" class="btn btn-outline-info  badge-pill text-white">Application</a>
-                    @else
-                        <a href="{{ route('login') }}" class=" btn btn-outline-info badge-pill text-white">Login</a>
-                    @endauth
-                </div>
-            @endif
-        </ul>
+        <a class=" navbar-brand nav-link btn btn-outline-info  rounded-pill text-white" href="{{ '/' }}">LCC</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <ul class="navbar-nav nav nav-pill">
+                    <li class=" nav-item">
+                        <a href="{{ url('downloads') }}"
+                        class=" nav-link btn btn-outline-info  rounded-pill text-white">Downloads</a>
+
+                    </li>
+                   <li class=" nav-item ml-md-2">
+                    <a href="{{ url('contact-us') }}"
+                    class=" nav-link btn btn-outline-info  rounded-pill text-white">Contact-us</a>
+                   </li>
+                    </ul>
+            </div>
+            <ul class="navbar-nav nav nav-pill ml-auto">
+                @if (Route::has('login'))
+                    <div class="top-right links">
+                        @auth
+                        <li class=" nav-item">
+                            <a href="{{ url('/home') }}"
+                            class=" btn btn-outline-info  rounded-pill text-white">Application</a>
+                        </li>
+                            
+                        @else
+                        <li class=" nav-item"> 
+                            <a href="{{ route('login') }}" class=" btn btn-outline-info rounded-pill text-white">Login</a>
+                        </li>
+                        @endauth
+                    </div>
+                @endif
+            </ul>
+        </div>
     </nav>
-    <div class="row">
-      @isset($profile)
-        <div class="col-md-6">
-            <div class="font-bold ml-5 justify-content-center" style="font-size: 40px;  margin-top: 25px;">
-                Welcome To 
-            </div>
-          
-            <div class="font-bold ml-5 justify-content-center" style="font-size: 38px;">
-               {{$profile->name}}
-            </div>
-            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                {{$profile->address}}
-            </div>
-            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                {{$profile->contact}}
-            </div>
-            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                <a href="mailto:{{$profile->email}}" class=" text-dark">
-                {{$profile->email}}
-                </a>
-            </div>
-            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                <a href="{{$profile->facebook}}" class=" text-dark">
-                {{$profile->facebook}}
-                </a>
-            </div>
-            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                <a href="{{$profile->twitter}}" class=" text-dark">
-                {{$profile->twitter}}
-                </a>
-            </div>
-            <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                <a href="{{$profile->linkedin}}" class=" text-dark">
-                {{$profile->linkedin}}
-                </a>
-            </div>
-              <div class=" text-md-left font-bold ml-5" style="font-size: 30px">
-                <a href="{{$profile->youtube}}" class=" text-dark">
-                {{$profile->youtube}}
-                </a>
-            </div>
-        </div>
-        @endisset
-        <div class="col-md-6 pl-lg-5">
-            <div class=" text-center font-bold  mt-3 " style="font-size: 30px">
-                <u>Contact Us</u>
-            </div>
-            <div class="ibox mt-md-3 ml-md-5 mr-md-5 widget-stat shadow badge-pill" style="opacity: 0.97">
-                <div class="ibox-body">
-                    <form action="{{ route('contactus.store') }}" method="post">
-                        @csrf
-                        <div class="row justify-content-center mt-md-3 form-group">
-                            <div class="col-md-12">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center mt-md-3 form-group">
-                            <div class="col-md-12">
-                                <input type="text" name="address" class="form-control" placeholder="Your Address"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center mt-md-3 form-group">
-                            <div class="col-md-12">
-                                <input type="tel" name="contact" class="form-control" placeholder=" Your Contact No."
-                                    required>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center mt-md-3 form-group">
-                            <div class="col-md-12">
-                                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-                            </div>
-                        </div>
-                    
-                        <div class="row justify-content-center mt-md-3 form-group">
-                            <div class="col-md-12">
-                                <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="5"
-                                    placeholder="Message"></textarea>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center mt-md-3 form-group">
-                            <div class="col-md-4">
-                                <input type="submit" class="form-control badge-pill btn btn-info" value="Send Message">
-                            </div>
-                        </div>
-                    </form>
+    <div class="row justify-content-center m-auto  text-white">
+        @isset($profile)
+            <div class="col-lg-12 my-4">
+                <div class=" row-cols-md-1 font-bold text-center">
+                <img src="{{asset('storage/'.$profile->logo)}}" class=" img-circle img-fluid img-thumbnail" alt="Lcc logo" style=" height:150px;">
                 </div>
+                <div class=" row-cols-md-1 font-bold text-center">
+                    <h2 class=" font-weight-bold">{{ $profile->name }}</h2>
+                </div>
+                <div class="  row-cols-sm-1 text-md-center font-bold">
+                    <h4 class=" font-weight-bold">{{ $profile->address }}</h4>
+                </div>
+                <div class=" row-cols-md-1 ro text-md-center font-bold">
+                    <h4 class=" font-weight-bold">{{ $profile->contact }}</h4>
+                </div>
+                <div class=" row-cols-md-1 text-md-center font-bold">
+                    <h4 class=" font-weight-bold">{{ $profile->email }}</h4>
+                </div>
+
             </div>
+            
+        @endisset
 
-
-
-        </div>
+    @yield('main-content')
+        
     </div>
     <footer class="fixed-bottom justify-content-center bg-light">
-        <div class="font-13 text-center">{{Date('yy')}} © <b>LCC</b> - All rights reserved.  Powered by: <a href="https://mohrain.com/">Mohrain Websoft (P). Ltd.</a> </div>
+        <div class="font-13 text-center">{{ Date('yy') }} © <b>LCC</b> - All rights reserved. Powered by: <a
+                href="https://mohrain.com/">Mohrain Websoft (P). Ltd.</a> </div>
         <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
     </footer>
 </body>
-<script src="{{asset('js/manifest.js')}}"></script>
-<script src="{{asset('js/vendor.js')}}"></script>
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{ asset('js/manifest.js') }}"></script>
+<script src="{{ asset('js/vendor.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+
 </html>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Download;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,16 @@ Route::get('/', function () {
    $profile=DB::table('profiles')->first();
     return view('welcome')->with('profile',$profile);
 });
+Route::get('downloads', function () {
+    $download=Download::latest()->get();
+     return view('downloads')->with('download',$download);
+ });
+ Route::get('contact-us', function () {
+     return view('contact-us');
+ });
 
 Auth::routes();
-Route::get('home', 'HomeController@index')->name('home');
+Route::get('home/', 'HomeController@index')->name('home');
 Route::get('list','UserListController@index')->name('list.index');
 Route::post('destroy/{id}','UserListController@destroy')->name('user_destroy');
 Route::get('cahngepassword','UserListController@changepassword')->name('user_changepassword');
@@ -89,4 +97,6 @@ Route::any('contactus/{id}','ContactUsController@destroy')->name('contactus.dest
 Route::resource('thresholddate','ThresholddateController')->middleware('auth');
 Route::resource('documenttype','DocumenttypeController')->middleware('auth');
 Route::resource('fee','FeeController')->middleware('auth');
+Route ::resource('download','DownloadController')->middleware('auth');
+
 
