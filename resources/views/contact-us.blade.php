@@ -9,7 +9,7 @@
                 </div>
             @endif
         </div>
-        <div class="ibox mt-md-1 ml-md-5 mr-md-5 widget-stat shadow badge-pill bg-primary">
+        <div class="ibox mt-md-1 ml-md-5 mr-md-5 widget-stat shadow badge-pill bg-info">
             <div class="ibox-body">
                 <div class=" text-center font-bold mb-md-2" style="font-size: 30px">
                     Contact Us
@@ -74,8 +74,8 @@
                             @enderror
                         </div>
                     </div>
-                    
-                    <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                
+                    <div class="form-group {{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}" >
                         <div class="col-md-6">
                             {!! app('captcha')->display() !!}
                             @if ($errors->has('g-recaptcha-response'))
@@ -85,6 +85,7 @@
                             @endif
                         </div>
                     </div>
+                   
                     <div class="row justify-content-center mt-md-3 form-group">
                         <div class="col-md-3">
                             <input type="submit" class="form-control rounded-pill btn btn-info" value="Send">

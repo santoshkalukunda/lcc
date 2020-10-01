@@ -27,10 +27,18 @@
                                     class=" btn-info btn fa fa-download rounded-pill" data-toggle="tooltip"
                                     data-placement="bottom" title="Download"> Download</a>
                             </td>
+
                         </tr>
+                     
 
                         @endforeach
                     @endisset
+                    @if (!$download->count())
+                    <tr>
+                        <td class=" text-danger" colspan="30">Downloads file not available</td>
+                    </tr>
+                    @endif
+                  
                     </tr>
                 </table>
             </div>
