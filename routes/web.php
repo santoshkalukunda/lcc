@@ -103,3 +103,10 @@ Route::resource('thresholddate', 'ThresholddateController')->middleware('auth');
 Route::resource('documenttype', 'DocumenttypeController')->middleware('auth');
 Route::resource('fee', 'FeeController')->middleware('auth');
 Route::resource('download', 'DownloadController')->middleware('auth');
+Route::get('clear_cache', function () {
+
+    \Illuminate\Support\Facades\Artisan::call('make:model test');
+
+    dd("Cache is cleared");
+
+});
