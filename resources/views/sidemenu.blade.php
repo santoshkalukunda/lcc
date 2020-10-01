@@ -49,7 +49,7 @@
             <span class="nav-label">पूँजी वृद्धि</span>
         </a>
     </li>
-    <li class="{{ (request()->is('register','list')) ? 'active' : '' }}">
+    <li class="{{ (request()->is('register','user*')) ? 'active' : '' }}">
         <a href="javascript:;"><i class="sidebar-item-icon fa fa-users"></i>
             <span class="nav-label">Users</span><i class="fa fa-angle-left arrow"></i></a>
         <ul class="nav-2-level collapse">
@@ -57,7 +57,7 @@
                 <a href="{{ route('register') }}" class="{{ (request()->is('register*')) ? 'active' : '' }}">Register</a>
             </li>
             <li>
-                <a href="{{ route('list.index') }}" class="{{ (request()->is('list*')) ? 'active' : '' }}">List</a>
+                <a href="{{ route('list.index') }}" class="{{ (request()->is('user*')) ? 'active' : '' }}">List</a>
             </li>
         </ul>
     </li>

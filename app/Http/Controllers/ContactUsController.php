@@ -9,8 +9,11 @@ use Illuminate\Http\Request;
 class ContactUsController extends Controller
 {
     public function store(ContactUsRequest $request){
-       ContactUs::create($request->all());
-       return redirect()->back()->with('success',"Message Sent");
+
+       $contactus=ContactUs::create($request->validated());
+       if($contactus){
+        return redirect()->back()->with('success',"Message Sent");
+       }
     }
     public function index(){
         $contactus=ContactUs::latest()->paginate(10);

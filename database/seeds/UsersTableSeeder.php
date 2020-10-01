@@ -14,9 +14,25 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $user=array(
-            'name'=>'admin',
-            'email'=>'admin@lcc.com.np',
-            'password'=>Hash::make('admin@1234')
+            array(
+                'name'=>'Super Admin',
+                'email'=>'superadmin@lcc.com.np',
+                'role' => 'superadmin',
+                'password'=>Hash::make('supperp@ssw0rd')
+            ),
+            array(
+                'name'=>'Admin',
+                'email'=>'admin@lcc.com.np',
+                'role' => 'admin',
+                'password'=>Hash::make('adminpassword')
+            ),
+            array(
+                'name'=>'User',
+                'email'=>'user@lcc.com.np',
+                'role' => 'user',
+                'password'=>Hash::make('password')
+            ),
+           
         );
         DB::table('users')->insert($user);
     }

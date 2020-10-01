@@ -15,7 +15,6 @@
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
-            
         }
 
     </style>
@@ -56,7 +55,7 @@
                 <div class="  row-cols-sm-1 text-md-center font-bold">
                     <h4 class=" font-weight-bold">{{ $profile->address }}</h4>
                 </div>
-                <div class=" row-cols-md-1 ro text-md-center font-bold">
+                <div class=" row-cols-md-1 text-md-center font-bold">
                     <h4 class=" font-weight-bold">{{ $profile->contact }}</h4>
                 </div>
                 <div class=" row-cols-md-1 text-md-center font-bold">

@@ -12,14 +12,22 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
+            @if (Session::has('error'))
+                <div class=" bg-danger text-white p-2">
+                    {{ Session::get('error') }}
+                </div> 
+                @endif
                 <div class="card">
                     <div class="card-header">Change Password</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('user_changepassword_update')}}">
                             @csrf
+                           @isset($user_id)
+                           <input type="text" name="user_id" id="user_id" value="{{$user_id}}" hidden>
+                           @endisset
                             <div class="form-group row">
-                                <label for="currentpassword" class="col-md-4 col-form-label text-md-right">{{ __('Current Password') }}</label>
-    
+                                <label for="currentpassword" class="col-md-4 col-form-label text-md-right">{{ __('Your Current Password') }}</label>
+
                                 <div class="col-md-6">
                                     <input id="currentpassword" type="password" class="form-control @error('currentpassword') is-invalid @enderror" name="currentpassword" value="{{ old('currentpassword') }}" required autocomplete="currentpassword" autofocus>
     
