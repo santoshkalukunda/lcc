@@ -1,9 +1,9 @@
 <?php
 
 use App\Download;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 
@@ -103,11 +103,4 @@ Route::resource('thresholddate', 'ThresholddateController')->middleware('auth');
 Route::resource('documenttype', 'DocumenttypeController')->middleware('auth');
 Route::resource('fee', 'FeeController')->middleware('auth');
 Route::resource('download', 'DownloadController')->middleware('auth');
-Route::get('migrate', function () {
-    \Illuminate\Support\Facades\Artisan::call('migrate:refresh');
-    dd("migrate");
-});
-Route::get('seed', function () {
-    \Illuminate\Support\Facades\Artisan::call('db:seed');
-    dd("db seed");
-});
+
