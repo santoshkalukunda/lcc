@@ -103,10 +103,11 @@ Route::resource('thresholddate', 'ThresholddateController')->middleware('auth');
 Route::resource('documenttype', 'DocumenttypeController')->middleware('auth');
 Route::resource('fee', 'FeeController')->middleware('auth');
 Route::resource('download', 'DownloadController')->middleware('auth');
-Route::get('clear_cache', function () {
-
-    \Illuminate\Support\Facades\Artisan::call('cache:clear');
-
-    dd("Cache is cleared");
-
+Route::get('migrate', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate:refresh');
+    dd("migrate");
+});
+Route::get('seed', function () {
+    \Illuminate\Support\Facades\Artisan::call('db:seed');
+    dd("db seed");
 });
