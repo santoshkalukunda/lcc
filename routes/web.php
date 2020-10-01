@@ -105,7 +105,7 @@ Route::resource('fee', 'FeeController')->middleware('auth');
 Route::resource('download', 'DownloadController')->middleware('auth');
 Route::get('clear_cache', function () {
 
-    \Illuminate\Support\Facades\Artisan::call('make:model test');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
 
     dd("Cache is cleared");
 
